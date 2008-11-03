@@ -1,0 +1,207 @@
+{% extends "index.html"%}
+
+{% block javascript %}
+function add_select_form() {
+    var f_org   = document.getElementById('h_org_2');
+    f_org.style.display = 'list-item';
+    var li_this = document.getElementById('select_label');
+    li_this.style.display = 'none';
+}
+
+function switch_org_form(selEl,addEl) {
+    if(selEl.value == 'new') {
+        selEl.style.display = 'none';
+        addEl.style.display = 'inline';
+        var f_new_org = document.getElementById('id_new_org');
+        f_new_org.focus();
+    }
+}
+
+function switch_add_form(selEl,addEl) {
+    selEl.style.display = 'inline';
+    addEl.style.display = 'none';
+    var f_new_org = document.getElementById('id_new_org');
+    selEl.options[selEl.length-1] = new Option(f_new_org.value, '');
+    selEl.options[selEl.length]   = new Option('other', 'new');
+    f_new_org.value = '';
+}
+
+function form_onload() {
+    var f_org      = document.getElementById('id_organization_1');
+    var f_add_org  = document.getElementById('id_add_org_1');
+    var f_add_btn  = document.getElementById('id_add_btn_1');
+    f_org.onchange    = function () { switch_org_form(f_org,f_add_org); };
+    f_add_btn.onclick = function () { switch_add_form(f_org,f_add_org); };
+}
+{% endblock %}
+
+{% block onload %}
+form_onload()
+{% endblock %}
+
+{% block content %}
+<h2>register you lazy ass</h2>
+
+<form action="." method="post" id="register_form">
+    <fieldset>
+        <legend>authentication details</legend>
+        <ol>
+            <li>
+                {% if form.email.errors %}
+                <ul class="errorlist">
+                {% for error in form.email.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            <label for="id_email">e-mail <span>(required)</span></label>
+            {{ form.email }}
+            </li>
+            <li>
+                {% if form.password.errors %}
+                <ul class="errorlist">
+                {% for error in form.password.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="id_password">password <span>(required)</span></label>
+                {{ form.password }}
+            </li>
+            <li>
+                {% if form.password2.errors %}
+                <ul class="errorlist">
+                {% for error in form.password2.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="id_password2">repeat password</label>
+                {{ form.password2 }}
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>personal details</legend>
+        <ol>
+            <li>
+                {% if form.name.errors %}
+                <ul class="errorlist">
+                {% for error in form.name.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="id_name">name <span>(required)</span></label>
+                {{ form.name }}
+            </li>
+            <li>
+                {% if form.surname.errors %}
+                <ul class="errorlist">
+                {% for error in form.surname.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="id_surname">surname <span>(required)</span></label>
+                {{ form.surname }}
+            </li>
+            <li>
+                {# bw careful with errors here - if there are more than 1 orgs#}
+                {% if form.organization_1.errors %}
+                <ul class="errorlist">
+                {% for error in form.organization_1.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="id_organization_1">
+                   organization(s) <span>(required)</span>
+                </label>
+                {{ form.organization_1 }}
+                <span id="id_add_org_1" class="hidden">
+                    <input type="text" id="id_new_org" />
+                    <button type="button" id="id_add_btn_1">add</button>
+                </span>
+            </li>
+            <!-- TODO: temporary hack (hi, every1 :) )
+            <li class="hidden" id="h_org_2">
+                <label></label>
+                {{ form.organization_2 }}
+            </li>
+            <li id="select_label">
+            <label></label>
+                <label class="for_hidden" onclick='add_select_form()'>
+                    <span>select another one</span>
+                </label>
+            </li>
+            -->
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>nights</legend>
+        <ol>
+            {% if form.day_3.errors %}
+            <ul class="errorlist">
+            {% for error in form.day_3.errors %}
+                <li>{{error|escape}}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            <li>
+            {{ form.day_1 }} <label for="id_day_1">day1/day2</label>
+            </li>
+            <li>
+            {{ form.day_2 }} <label for="id_day_2">day2/day3</label>
+            </li>
+            <li>
+            {{ form.day_3 }} <label for="id_day_3">day3/day4</label>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>dinners</legend>
+        <ol>
+            <li>
+            {{ form.dinner_1}} <label for="id_dinner_1">dinner1</label>
+            </li>
+            <li>
+            {{ form.dinner_2}} <label for="id_dinner_2">dinner2</label>
+            </li>
+            <li>
+            {{ form.dinner_3}} <label for="id_dinner_3">dinner3</label>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>breakfasts</legend>
+        <ol>
+            <li>
+            {{ form.breakfast_2 }} <label for="id_breakfast_2">breakfast2</label>
+            </li>
+            <li>
+            {{ form.breakfast_3 }} <label for="id_breakfast_3">breakfast3</label>
+            </li>
+            <li>
+            {{ form.breakfast_4 }} <label for="id_breakfast_4">breakfast4</label>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>other</legend>
+        <ol>
+            <li>
+            {{ form.vegetarian }}  <label for="id_vegetarian">I prefer vegetarian food</label>
+            </li>
+            <li>
+            {{ form.bus }}  <label for="id_bus">I wish to go by bus</label>
+            </li>
+            <li>
+            {{ form.shirt_size}}  <label for="id_shirt_size">shirt size</label>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset><input type="submit" value="register me" /></fieldset>
+</form>
+
+{% endblock %}
