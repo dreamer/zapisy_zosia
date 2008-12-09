@@ -1,0 +1,9 @@
+{% extends "index.html"%}
+{% block content %}
+{% for lecture in lectures %}
+    <h2>{{ lecture.title }}</h2>
+    <div>{{ lecture.duration }}</div>
+    <div>data</div>
+    <p>{{ lecture.abstract }}</p>
+{% endfor %}
+{% endblock %}

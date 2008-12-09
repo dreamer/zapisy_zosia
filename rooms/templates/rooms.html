@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block content %}
+{% for room in rooms_list %}
+    <div>
+        {{ room.number }}
+        -
+        (0/{{ room.capacity }})
+    </div>
+{% endfor %}
+{% endblock %}

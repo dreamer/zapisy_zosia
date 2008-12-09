@@ -1,0 +1,5 @@
+to create database:
+[foo@bar zapisy_zosia]$ python manage.py syncdb
+
+to run developer server (port 8000):
+[foo@bar zapisy_zosia]$ python manage.py runserver

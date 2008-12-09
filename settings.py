@@ -1,10 +1,12 @@
 # Django settings for zapisy_zosia project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
+    ('dreamer_', 'patryk.obara@gmail.com')
 )
 
 MANAGERS = ADMINS
@@ -21,7 +23,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # although not all variations may be possible on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'CET'
 
 # Language code for this installation. All choices can be found here:
 # http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
@@ -70,6 +72,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.getcwd()+os.sep+'templates'
 )
 
 INSTALLED_APPS = (
@@ -79,6 +82,8 @@ INSTALLED_APPS = (
     #'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.formtools',
+    'zapisy_zosia.rooms',
+    'zapisy_zosia.lectures',
     'zapisy_zosia.registration',
     'zapisy_zosia.blog',
 )
