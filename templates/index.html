@@ -28,9 +28,9 @@
 			<!-- skiplink anchor: navigation -->
 			<div id="nav_main">
 				<ul>
-					<li id="current"><a href="/blog/">Blog</a></li>
-					<li><a href="/lectures/">Lectures</a></li>
-					<li><a href="/rooms/">Rooms</a></li>
+                    <li {% ifequal title "Blog" %}id="current"{% endifequal %}><a href="/blog/">Blog</a></li>
+					<li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">Lectures</a></li>
+					<li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">Rooms</a></li>
 				</ul>
 			</div>
 		</div>

@@ -7,7 +7,7 @@ class BlogPost(models.Model):
     title   = models.CharField(max_length=128)
     created = models.DateField(editable=False)
     updated = models.DateTimeField(editable=False)
-    #author = models.ForeignKey(User)
+    author  = models.ForeignKey(User)
     text    = models.TextField(max_length=2048)
     
     def save(self):
@@ -15,4 +15,3 @@ class BlogPost(models.Model):
             self.created = datetime.date.today()
         self.updated = datetime.datetime.today()
         super(BlogPost, self).save()
-

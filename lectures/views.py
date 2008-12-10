@@ -12,6 +12,7 @@ from datetime import datetime
 from models import *
 
 def index(request):
+    title = "Lectures"
     user = request.user
     lectures = Lecture.objects.filter(accepted=True)
     """
