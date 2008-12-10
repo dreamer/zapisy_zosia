@@ -3,3 +3,13 @@ to create database:
 
 to run developer server (port 8000):
 [foo@bar zapisy_zosia]$ python manage.py runserver
+
+
+TASKS - next monday (14.12.08)
+- registration 
+- logging
+- blog posting
+- lectures
+
+DEPLOYMENT TASKS
+- remove serving static files through django

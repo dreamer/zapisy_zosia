@@ -5,6 +5,9 @@ import blog.views
 import lectures.views
 import rooms.views
 
+#dev
+import os
+
 admin.autodiscover()
 urlpatterns = patterns('',
     # Example:
@@ -14,11 +17,14 @@ urlpatterns = patterns('',
 
      (r'^register/$', registration.views.register),
      (r'^register/thanks/', registration.views.thanks),
-     (r'^register/add_org/$', registration.views.add_organization), # TODO
+     # (r'^register/add_org/$', registration.views.add_organization),
      # (r'^register/recover/$', ), # TODO
 
      (r'^blog/$', blog.views.index),
      (r'^lectures/$', lectures.views.index),
-     (r'^rooms/list/$', rooms.views.index),
+     (r'^rooms/$', rooms.views.index),
+
+     (r'^static_media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': os.getcwd()+os.sep+'static_media', 'show_indexes': True}),
 )
 

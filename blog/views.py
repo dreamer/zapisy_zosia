@@ -8,6 +8,7 @@ from django.shortcuts import render_to_response
 from models import *
 
 def index(request):
+    title = "Blog"
     user = request.user
     blog_posts = BlogPost.objects.all()
     return render_to_response('blog.html',locals())

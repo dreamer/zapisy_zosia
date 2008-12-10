@@ -2,6 +2,17 @@
 {% block content %}
 {% for post in blog_posts %}
     <h2>{{ post.title }}</h2>
+    <span><em>{{ post.created }}</em></span>
     <p>{{ post.text }}</p>
+    <div>{{ post.text }}</div>
 {% endfor %}
+{% endblock %}
+
+{% block right_column %}
+<h2>Column with some useless info</h2>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed.</p>
+<blockquote>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed, aliquet   vel, quam. Pellentesque molestie laoreet tortor. </p>
+</blockquote>
+<p>Nulla vitae mauris. Phasellus vel ligula quis dolor bibendum egestas. Duis a   massa ut orci varius placerat. Sed leo nulla, tempor nec.</p>
 {% endblock %}
