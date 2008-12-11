@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'zapisy_zosia.lectures',
     'zapisy_zosia.registration',
     'zapisy_zosia.blog',
+    'zapisy_zosia.common',
 )
 
 # AUTH_PROFILE_MODULE = "registration.zosia_preferences" #??

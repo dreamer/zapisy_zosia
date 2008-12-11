@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response, HttpResponse
+from django.http import HttpResponseRedirect
 
 def login(request):
     #login(request)
