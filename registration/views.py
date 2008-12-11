@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response, HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 from forms import RegisterForm
 from models import UserPreferences
 
@@ -52,3 +53,7 @@ def thanks(request):
 def add_organization(request):
     HttpResponse('foo',mimetype="application/xhtml+xml")
 
+def logout(request):
+    #logout(request)
+    return HttpResponseRedirect('/blog/')
+    

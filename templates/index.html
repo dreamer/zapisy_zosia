@@ -20,7 +20,16 @@
 				<a class="skip" href="#navigation" title="skip link">Skip to the navigation</a><span class="hideme">.</span>
 				<a class="skip" href="#content" title="skip link">Skip to the content</a><span class="hideme">.</span>
 				<!-- end: skip link navigation -->
-                <span> {{ user.first_name }} | <a href="#">Login</a> | <a href="/register/">Register</a></span> </div>
+                <span>
+                {% if user.is_authenticated %}
+                    oh hai, {{ user.first_name }} {{ user.last_name}} |
+                    <a href="/logout/">Logout</a>
+                {% else %}
+                    <a href="/register/">Register</a> |
+                    <a href="/admin/">Login (tmp)</a>
+                {% endif %}
+                </span>
+            </div>
             <h1>ZOSIA | {{ title }}</h1>
 			<span>Zimowy Obóz Studentów Informatyki A &#8226; Bagdag'2009</span></div>
 		<!-- begin: main navigation #nav -->

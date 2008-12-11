@@ -17,6 +17,8 @@ urlpatterns = patterns('',
 
      (r'^register/$', registration.views.register),
      (r'^register/thanks/', registration.views.thanks),
+
+     (r'^logout/$', registration.views.logout),
      # (r'^register/add_org/$', registration.views.add_organization),
      # (r'^register/recover/$', ), # TODO
 
