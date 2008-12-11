@@ -6,7 +6,6 @@ import lectures.views
 import rooms.views
 import common.views
 
-#dev
 import os
 
 admin.autodiscover()
