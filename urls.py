@@ -4,6 +4,7 @@ import registration.views
 import blog.views
 import lectures.views
 import rooms.views
+import common.views
 
 #dev
 import os
@@ -18,7 +19,8 @@ urlpatterns = patterns('',
      (r'^register/$', registration.views.register),
      (r'^register/thanks/', registration.views.thanks),
 
-     (r'^logout/$', registration.views.logout),
+     (r'^logout/$', common.views.logout),
+     (r'^login/$', common.views.login),
      # (r'^register/add_org/$', registration.views.add_organization),
      # (r'^register/recover/$', ), # TODO
 

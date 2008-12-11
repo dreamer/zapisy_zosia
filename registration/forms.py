@@ -81,4 +81,3 @@ class RegisterForm(forms.Form):
         else:
             raise forms.ValidationError("At least one day should be selected.")
     
-    
