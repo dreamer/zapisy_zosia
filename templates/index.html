@@ -6,9 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Language" content="en,pl" />
 <!-- (en) Add your meta data here -->
-<link href="../static_media/css/layout_2col_right_13.css" rel="stylesheet" type="text/css"/>
+<link href="/static_media/css/layout_2col_right_13.css" rel="stylesheet" type="text/css"/>
 <!--[if lte IE 7]>
-<link href="../static_media/css/patches/patch_2col_right_13.css" rel="stylesheet" type="text/css" />
+<link href="/static_media/css/patches/patch_2col_right_13.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 </head>
 <body>
@@ -32,18 +32,17 @@
                         {% for error in login_form.email.errors %}<li>{{error|escape}}</li>{% endfor %}
                         </ul>
                     {% endif %}
-                    <label for="id_email">e-mail</label> {{ login_form.email }}
+                    <label for="id_login_email">e-mail</label> {{ login_form.email }}
                     {% if form.password.errors %}
                         <ul class="errorlist">
                         {% for error in form.password.errors %}<li>{{error|escape}}</li>{% endfor %}
                         </ul>
                     {% endif %}
-                    <label for="id_password">password</label> {{ login_form.password }}
+                    <label for="id_login_password">password</label> {{ login_form.password }}
                     <input type="submit" value="login" />
                     </fieldset>
                     </form>
-                    <a href="/register/">Register</a> |
-                    <a href="/admin/">Login (tmp)</a>
+                    <a href="/register/">Register</a>
                 {% endif %}
                 </span>
             </div>

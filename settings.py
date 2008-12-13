@@ -89,8 +89,6 @@ INSTALLED_APPS = (
     'zapisy_zosia.common',
 )
 
-# AUTH_PROFILE_MODULE = "registration.zosia_preferences" #??
-
 AUTHENTICATION_BACKENDS = (
     'zapisy_zosia.email-auth.EmailBackend',
 )

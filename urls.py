@@ -18,10 +18,10 @@ urlpatterns = patterns('',
      (r'^register/$', registration.views.register),
      (r'^register/thanks/', registration.views.thanks),
 
-     (r'^logout/$', common.views.logout),
-     (r'^login/$', common.views.login),
+     (r'^logout/$', common.views.logout_view),
+     (r'^login/$', common.views.login_view),
      # (r'^register/add_org/$', registration.views.add_organization),
-     # (r'^register/recover/$', ), # TODO
+     (r'^register/recover/$', registration.views.recover),
 
      (r'^blog/$', blog.views.index),
      (r'^lectures/$', lectures.views.index),

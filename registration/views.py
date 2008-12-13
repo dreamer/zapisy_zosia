@@ -8,6 +8,7 @@ from forms import RegisterForm
 from models import UserPreferences
 
 def suggested_username( name, surname ):
+    # deprecated, probably not needed
     # TODO: make database query if username is not already in base
     return '%s_%s' % ( name, surname )
 
@@ -23,7 +24,8 @@ def register(request):
                 user = User.objects.get(email=email)
                 return HttpResponseRedirect('/register/recover/')
             except User.DoesNotExist:
-                user = User(username=username, password=password, email=email)
+                #user = User(username=email, password=password, email=email)
+                user = User.objects.create_user(email, email, password)
                 user.first_name = form.cleaned_data['name']
                 user.last_name  = form.cleaned_data['surname']
                 user.save()
@@ -47,11 +49,12 @@ def register(request):
 
 
 def thanks(request):
-    text = "Thanks!"
-    message = ""
-    return render_to_response('text.html', locals())
+    return render_to_response('thanks.html', locals())
     
 # TODO
-def add_organization(request):
-    HttpResponse('foo',mimetype="application/xhtml+xml")
+#def add_organization(request):
+#    HttpResponse('foo',mimetype="application/xhtml+xml")
+
+def recover(request):
+    return render_to_response('recover.html', locals())
 
