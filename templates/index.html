@@ -23,6 +23,9 @@
                 <span>
                 {% if user.is_authenticated %}
                     oh hai, {{ user.first_name }} {{ user.last_name}} |
+                    {% if user.is_staff %}
+                    <a href="/admin/">Admin's panel</a> |
+                    {% endif %}
                     <a href="/logout/">Logout</a>
                 {% else %}
                     <form action="/login/" method="post" id="login_form">
