@@ -6,4 +6,14 @@
     <div>data</div>
     <p>{{ lecture.abstract }}</p>
 {% endfor %}
+
+{% if lecture_proposition_form %}
+    <form action="." method="POST">
+        <table>
+            {{ lecture_proposition_form.as_table }}
+        </table>
+        <p><input type="submit" value="Suggest lecture"></p>
+    </form>
+{% endif %}
+
 {% endblock %}
