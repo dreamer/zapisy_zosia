@@ -7,12 +7,21 @@ from django.contrib.auth import logout
 from forms import RegisterForm
 from models import UserPreferences
 
+from common.forms import LoginForm
+
 def suggested_username( name, surname ):
     # deprecated, probably not needed
     # TODO: make database query if username is not already in base
     return '%s_%s' % ( name, surname )
 
 def register(request):
+    user = request.user
+    title = "Registration"
+    login_form = LoginForm()
+
+    #if user.is_authenticated:
+    #    return HttpResponseRedirect('/blog/')
+
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():

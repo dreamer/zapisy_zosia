@@ -7,34 +7,31 @@ from django.shortcuts import render_to_response
 
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-#from forms import *
+from common.forms import LoginForm
 
 from models import *
+from forms import *
 
 def index(request):
     title = "Lectures"
     user = request.user
+    login_form = LoginForm()
     lectures = Lecture.objects.filter(accepted=True)
-    """
-    n = len(lectures)
-    if request.user.is_authenticated():
-        form = LectureForm()
+    if user.is_authenticated():
+        lecture_proposition_form = NewLectureForm()
         if request.method == 'POST':
-            form = LectureForm(request.POST)
-            if form.is_valid():
-                # dodaj do bazy
-                # wyciąganie danych z POST w ten sposób gwarantuje poprawnosc typów
-                l = Lecture( title = form.clean_data['title'],
-                             duration  = form.clean_data['duration'],
-                             abstract  = form.clean_data['abstract'],
-                             info      = form.clean_data['info'],
+            lecture_proposition_form = NewLectureForm(request.POST)
+            if lecture_proposition_form.is_valid():
+                form = lecture_proposition_form
+                l = Lecture( title     = form.cleaned_data['title'],
+                             duration  = form.cleaned_data['duration'],
+                             abstract  = form.cleaned_data['abstract'],
+                             #info      = form.cleaned_data['info'],
                              date_time = datetime.now(),
-                             author    = user.last_name + " " + user.first_name,
+                             author    = "foobar", #user.last_name + " " + user.first_name,
                              accepted  = False
                            )
                 l.save()
                 messages = [ "Thank you! Your lecture is awaiting moderation." ]
-                return render_to_response('lectures.html', locals())
-    """
     return render_to_response('lectures.html', locals())
 
