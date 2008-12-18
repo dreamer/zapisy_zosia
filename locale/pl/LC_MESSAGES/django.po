@@ -1,0 +1,29 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyleft 2008
+# This file is distributed under the same license as the zapisy_zosia.
+# dreamer_ <dreamer.tan@gmail.com>, 2008.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-18 17:15+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: dreamer_ <dreamer.tan@gmail.com>\n"
+"Language-Team: noteam <13@37.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/index.html:62
+msgid "Blog"
+msgstr ""
+
+#: templates/index.html:63
+msgid "Lectures"
+msgstr "Wykłady"
+
+#: templates/index.html:64
+msgid "Rooms"
+msgstr "Pokoje"

@@ -44,9 +44,9 @@ TASKS (Backlog)
   - conversion to pdf
 
 * translation
-  - implement django translation system
+  + implement django translation system
+  * translate, translate, translate
   - implement language switching
-  - translate, translate, translate
 
 * testing / user testing
 

@@ -1,10 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>ZOSIA | {{ title }}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="Content-Language" content="en,pl" />
+<meta http-equiv="Content-Language" content="pl,en" />
 <!-- (en) Add your meta data here -->
 <link href="/static_media/css/layout_2col_right_13.css" rel="stylesheet" type="text/css"/>
 <!--[if lte IE 7]>
@@ -51,16 +52,16 @@
                 {% endif %}
                 </span>
             </div>
-            <h1>ZOSIA | {{ title }}</h1>
+            <h1>ZOSIA | {% trans title %}</h1>
 			<span>Zimowy Obóz Studentów Informatyki A &#8226; Bagdad 2009</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
 			<!-- skiplink anchor: navigation -->
 			<div id="nav_main">
 				<ul>
-                    <li {% ifequal title "Blog" %}id="current"{% endifequal %}><a href="/blog/">Blog</a></li>
-					<li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">Lectures</a></li>
-					<li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">Rooms</a></li>
+                    <li {% ifequal title "Blog" %}id="current"{% endifequal %}><a href="/blog/">{% trans "Blog" %}</a></li>
+                    <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
+                    <li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">{% trans "Rooms" %}</a></li>
 				</ul>
 			</div>
 		</div>
