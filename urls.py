@@ -1,3 +1,4 @@
+import os
 from django.conf.urls.defaults import *
 from django.contrib import admin
 import registration.views
@@ -5,13 +6,21 @@ import blog.views
 import lectures.views
 import rooms.views
 import common.views
+from blog.feeds import *
 
-import os
+feeds = {
+    'blog': LatestBlogEntries,
+}
 
 admin.autodiscover()
+
 urlpatterns = patterns('',
     # Example:
     # (r'^zapisy_zosia/', include('zapisy_zosia.foo.urls')),
+
+     # rss feed
+     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
+        {'feed_dict': feeds}),
 
      (r'^admin/(.*)', admin.site.root),
 

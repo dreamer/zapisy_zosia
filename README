@@ -27,10 +27,10 @@ TASKS (Backlog)
 
 + blog posting
   % design
-  * make it look just right
+  + RSS support
+  + make it look just right
   * make sure, that html is not escaped (or move to different markup language)
   - preview for author
-  - RSS template
 
 + lectures
   % design
