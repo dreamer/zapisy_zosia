@@ -30,6 +30,7 @@ TASKS (Backlog)
   * make it look just right
   * make sure, that html is not escaped (or move to different markup language)
   - preview for author
+  - RSS template
 
 + lectures
   % design
@@ -55,4 +56,5 @@ TASKS (Backlog)
   * make sure, that all features are operational also outside of debug mode
   - remove serving static files through django
   - deploy zapisy
+  - domain
 
