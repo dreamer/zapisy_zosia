@@ -67,6 +67,11 @@
 		<div id="main">
 			<!-- begin: #col1 - first float column -->
 			<div id="col1">
+                {% if messages_list %} <!-- TODO -->
+                <ul>
+                    <li>The lecture &quot;Lecture object&quot; was added successfully.</li>
+                </ul>
+                {% endif %}
 				<div id="col1_content" class="clearfix"> <a id="content" name="content"></a>
 					<!-- skiplink anchor: Content -->
                     {% block content %}page content{% endblock %}
@@ -86,7 +91,7 @@
 		<!-- end: #main -->
 		<!-- begin: #footer -->
         <div id="footer">
-            Copyleft <img src="/static_media/images/Copyleft.svg" alt="copyleft" style="width:0.8em"/> all rights reversed | <a href="http://github.com/dreamer/zapisy_zosia">src</a><br />
+            Copyleft <img src="http://localhost:8000/static_media/images/Copyleft.svg" alt="copyleft" style="width:0.7em"/> all rights reversed | <a href="http://github.com/dreamer/zapisy_zosia">src</a><br />
             Layout based on <a href="http://www.yaml.de/">YAML</a>
         </div>
 		<!-- end: #footer -->

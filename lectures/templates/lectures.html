@@ -1,4 +1,6 @@
 {% extends "index.html"%}
+
+
 {% block content %}
 {% for lecture in lectures %}
     <h2>{{ lecture.title }}</h2>
@@ -16,4 +18,15 @@
     </form>
 {% endif %}
 
-{% endblock %}
+{% endblock content %}
+
+
+{% block right_column %}
+{% if user.is_authenticated %}
+    <h2>You can suggest new lecture!</h2>
+    <p>Hurray!!</p>
+{% else %}
+    <h2>Ops, you're not logged in</h2>
+    <p>You have to be registered and authenticated before suggesting new lecture.</p>
+{% endif %}
+{% endblock right_column %}

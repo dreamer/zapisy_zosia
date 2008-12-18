@@ -3,6 +3,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# this is small hack to make user
+# more meaningfull (we're using email as
+# user id anyway)
+User.__unicode__ = User.get_full_name
+
 class Organization(models.Model):
     name = models.CharField(max_length=64)
 
@@ -29,5 +34,8 @@ class UserPreferences(models.Model):
 
     # ? anonimowy - nie chce zeby jego imie/nazwisko/mail pojawialy sie na stronie
     # ? wplacil   - zaplacil za... za Zosie+busa / sama zosie a busa osobno?
+
+    def __str__(self):
+        return "%s %s" % (self.user.first_name, self.user.last_name)
 
 

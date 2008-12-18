@@ -15,3 +15,6 @@ class BlogPost(models.Model):
             self.created = datetime.date.today()
         self.updated = datetime.datetime.today()
         super(BlogPost, self).save()
+    
+    def __str__(self):
+        return self.title
