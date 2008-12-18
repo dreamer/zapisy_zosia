@@ -5,12 +5,54 @@ to run developer server (port 8000):
 [foo@bar zapisy_zosia]$ python manage.py runserver
 
 
-TASKS - next monday (14.12.08)
-- registration 
-- logging
-- blog posting
-- lectures
+TASKS - priorities for next monday (22.12.08)
+- make first deployment on ksi
 
-DEPLOYMENT TASKS
-- remove serving static files through django
+TASKS (Backlog)
+# essential, not implemented features are marked as '*'
+# features 'in progress' are marked as '+'
+# features 'not decided' or 'would be nice' are marked as '-'
+# frozen or 101% complete features are marked as '%'
+
++ registration 
+  % design
+  * send email to complete registration
+  * make sure, that you added all required preferences
+  - display info about money and sample bank account info
+
++ logging in
+  % design
+  * feedback for user after unsuccesful login
+  * password recovery
+
++ blog posting
+  % design
+  * make it look just right
+  * make sure, that html is not escaped (or move to different markup language)
+  - preview for author
+
++ lectures
+  % design
+  * make form look and behave correct
+  * make lecture list look right
+  - "suggest lecture" link above lecture list
+  - conversion to pdf
+
+* rooms registration
+  % design
+  - conversion to pdf
+
+* translation
+  - implement django translation system
+  - implement language switching
+  - translate, translate, translate
+
+* testing / user testing
+
++ deployment
+  % access to ksi (ask dreamer_, if you need it too)
+  % install and make mod_python running
+  * make sure, that all features are operational also outside of debug mode
+  - remove serving static files through django
+  - deploy zapisy
 
