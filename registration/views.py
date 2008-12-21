@@ -58,6 +58,10 @@ def register(request):
 
 
 def thanks(request):
+    user = request.user
+    title = "Registration"
+    login_form = LoginForm()
+
     return render_to_response('thanks.html', locals())
     
 # TODO
@@ -65,5 +69,9 @@ def thanks(request):
 #    HttpResponse('foo',mimetype="application/xhtml+xml")
 
 def recover(request):
+    user = request.user
+    title = "Password recovery"
+    login_form = LoginForm()
+
     return render_to_response('recover.html', locals())
 
