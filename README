@@ -1,9 +1,11 @@
+DEVELOPMENT
 to create database:
 [foo@bar zapisy_zosia]$ python manage.py syncdb
 
 to run developer server (port 8000):
 [foo@bar zapisy_zosia]$ python manage.py runserver
 
+DEPLOYMENT
 
 TASKS - priorities for next monday (22.12.08)
 - make first deployment on ksi
@@ -57,6 +59,9 @@ TASKS (Backlog)
   % remove serving static files through django
   + deploy zapisy
   * prepare meaningfull, non-debug error pages (404, etc)
-  * switch from sqlite to mysql
+  + switch from sqlite to mysql (install python-mysqldb in appropriate version, test)
+  * support for memcached?
+  * after final deployment, make sure that database user doesn't have too many priviledges
+  + update DEPLOYMENT section of this document
   - domain
 
