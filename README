@@ -54,7 +54,9 @@ TASKS (Backlog)
   % access to ksi (ask dreamer_, if you need it too)
   % install and make mod_python running
   * make sure, that all features are operational also outside of debug mode
-  - remove serving static files through django
-  - deploy zapisy
+  % remove serving static files through django
+  + deploy zapisy
+  * prepare meaningfull, non-debug error pages (404, etc)
+  * switch from sqlite to mysql
   - domain
 
