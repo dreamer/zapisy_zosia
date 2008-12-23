@@ -33,23 +33,25 @@
                     {% endif %}
                     <a href="/logout/">Logout</a>
                 {% else %}
-                    <form action="/login/" method="post" id="login_form">
-                    <fieldset>
-                    {% if login_form.email.errors %}
-                        <ul class="errorlist">
-                        {% for error in login_form.email.errors %}<li>{{error|escape}}</li>{% endfor %}
-                        </ul>
-                    {% endif %}
-                    <label for="id_login_email">e-mail</label> {{ login_form.email }}
-                    {% if form.password.errors %}
-                        <ul class="errorlist">
-                        {% for error in form.password.errors %}<li>{{error|escape}}</li>{% endfor %}
-                        </ul>
-                    {% endif %}
-                    <label for="id_login_password">password</label> {{ login_form.password }}
-                    <input type="submit" value="login" />
-                    </fieldset>
-                    </form>
+                    {% if login_form %}
+                        <form action="/login/" method="post" id="login_form">
+                        <fieldset>
+                        {% if login_form.email.errors %}
+                            <ul class="errorlist">
+                            {% for error in login_form.email.errors %}<li>{{error|escape}}</li>{% endfor %}
+                            </ul>
+                        {% endif %}
+                        <label for="id_login_email">e-mail</label> {{ login_form.email }}
+                        {% if form.password.errors %}
+                            <ul class="errorlist">
+                            {% for error in form.password.errors %}<li>{{error|escape}}</li>{% endfor %}
+                            </ul>
+                        {% endif %}
+                        <label for="id_login_password">password</label> {{ login_form.password }}
+                        <input type="submit" value="login" />
+                        </fieldset>
+                        </form>
+                        {% endif %} {# login_form #}
                     <a href="/register/">Register</a>
                 {% endif %}
                 </span>
