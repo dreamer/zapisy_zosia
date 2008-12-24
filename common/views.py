@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from forms import *
 
 def login_view(request):
-    print request
     title = "Login"
     user = request.user
     if not user.is_authenticated():
