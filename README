@@ -26,10 +26,9 @@ TASKS (Backlog)
 + logging in
   % design
   % feedback for user after unsuccesful login
+  % meaningful redirect after login or logout
   * password recovery
   * visual design
-  - (after succesfull login or logout)
-    redirect to page from where POST was sent instead of hardcoded value
 
 + blog posting
   % design

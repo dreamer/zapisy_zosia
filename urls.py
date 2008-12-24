@@ -32,8 +32,9 @@ urlpatterns = patterns('',
      # (r'^register/add_org/$', registration.views.add_organization),
 
      # login / logout
-     (r'^logout/$', common.views.logout_view),
      (r'^login/$', common.views.login_view),
+     (r'^logout/$', common.views.logout_view),
+     (r'^logout/bye/$', common.views.thanks),
 
      # apps main urls
      (r'^blog/$', blog.views.index),

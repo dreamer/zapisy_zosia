@@ -61,7 +61,6 @@ def thanks(request):
     user = request.user
     title = "Registration"
     login_form = LoginForm()
-
     return render_to_response('thanks.html', locals())
     
 # TODO
