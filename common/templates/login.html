@@ -7,9 +7,12 @@
     {% if reason %} {# atheistic template ;) #}
         <h2>Ops, login was unsuccesful... :(</h2>
         <p>{{ reason }}</p>
+        <p>You may want to <a href="/register/recover/">recover</a> your password.</p>
     {% else %}
         <h2>Greetings, stranger! :)</h2>
     {% endif %}
+    <div>
+    </div>
     <form action="/login/" method="post" id="login_form">
         <table>
         {{ form.as_table }}
