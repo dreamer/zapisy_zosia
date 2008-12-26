@@ -35,12 +35,68 @@ function form_onload() {
 }
 {% endblock %}
 
+{% block css %}
+
+fieldset {
+    border: 0;
+}
+
+fieldset ol {
+    padding: 0;
+}
+
+fieldset ol li {
+    list-style: none;
+    padding: 0.1em;
+}
+
+fieldset label {
+    font-size: 80%;
+    vertical-align: top;
+    display: inline-block;
+    width: 15em;
+}
+
+label span {
+    font-style: italic;
+    font-size: 0.7em;
+}
+
+ul.errorlist {
+   margin: 0;
+   padding: 0;
+}
+
+.errorlist li {
+    font-size: 0.7em;
+    background-color: red;
+    color: white;
+    display: block;
+    padding: 0.15em;
+}
+
+label.for_hidden {
+    width: 15em;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+label.for_hidden span {
+    font-size: 0.7em;
+}
+
+.hidden {
+    display: none;
+}
+{% endblock css %}
+
 {% block onload %}
 form_onload()
-{% endblock %}
+{% endblock onload %}
 
 {% block content %}
-<h2>register you lazy ass</h2>
+<h2>Register</h2>
 
 <form action="." method="post" id="register_form">
     <fieldset>

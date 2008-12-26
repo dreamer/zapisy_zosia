@@ -13,8 +13,16 @@
 <![endif]-->
 <link rel="alternate" type="application/rss+xml" title="RSS"
       href="/feeds/blog/">
+<script type="text/javascript">
+{% block javascript %}{% endblock %}
+</script>
+<style type="text/css">
+<!--
+{% block css %}{% endblock %}
+-->
+</style>
 </head>
-<body>
+<body onload='{% block onload%}{% endblock %}'>
 <div id="page_margins">
 	<div id="page">
 		<div id="header">
