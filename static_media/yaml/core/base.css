@@ -35,6 +35,9 @@
   /* (de) Korrektur: Das Zurücksetzen der Abstände verursacht zu kleine Selectboxen. */
   option { padding-left: 0.4em; }
 
+  /* (en) Correction: padding reset resulted in ugly non-standard ckeckboxes in Opera */
+  input { padding: 1pt; }
+
  /**
   * (en) Global fix of the Italics bugs in IE 5.x and IE 6
   * (de) Globale Korrektur des Italics Bugs des IE 5.x und IE 6

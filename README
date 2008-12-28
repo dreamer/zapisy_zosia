@@ -18,6 +18,7 @@ TASKS (Backlog)
 
 + registration 
   % design
+  + form layout
   * send email to complete registration
   * make sure, that you added all required preferences
   - display info about money and sample bank account info
