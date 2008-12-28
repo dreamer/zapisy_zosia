@@ -17,7 +17,7 @@ def suggested_username( name, surname ):
 def register(request):
     user = request.user
     title = "Registration"
-    login_form = LoginForm()
+    # login_form = LoginForm()
 
     #if user.is_authenticated:
     #    return HttpResponseRedirect('/blog/')
