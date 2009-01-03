@@ -7,9 +7,6 @@ to run developer server (port 8000):
 
 DEPLOYMENT
 
-TASKS - priorities for next monday (22.12.08)
-- make first deployment on ksi
-
 TASKS (Backlog)
 # essential, not implemented features are marked as '*'
 # features 'in progress' are marked as '+'
@@ -23,6 +20,7 @@ TASKS (Backlog)
   * make sure, that you added all required preferences
   - display info about money and sample bank account info
   * captcha
+  - changing your registration info
 
 + logging in
   % design
@@ -59,12 +57,12 @@ TASKS (Backlog)
 + deployment
   % access to ksi (ask dreamer_, if you need it too)
   % install and make mod_python running
-  * make sure, that all features are operational also outside of debug mode
+  % switch from sqlite to mysql
   % remove serving static files through django
+  * make sure, that all features are operational also outside of debug mode
   + deploy zapisy
   * prepare meaningfull, non-debug error pages (404, etc)
-  + switch from sqlite to mysql (install python-mysqldb in appropriate version, test)
-  * support for memcached?
+  - support for memcached?
   * after final deployment, make sure that database user doesn't have too many priviledges
   + update DEPLOYMENT section of this document
   - domain

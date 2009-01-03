@@ -60,11 +60,11 @@
                         </fieldset>
                         </form>
                         {% endif %} {# login_form #}
-                    <a href="/register/">Register</a>
+                    {# <a href="/register/">Register</a> #}
                 {% endif %}
                 </span>
             </div>
-            <h1>ZOSIA | {% trans title %}</h1>
+            <h1><a href="/blog/">ZOSIA</a> | {% trans title %}</h1>
 			<span>Zimowy Obóz Studentów Informatyki A &#8226; Bagdad 2009</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
@@ -72,6 +72,9 @@
 			<div id="nav_main">
 				<ul>
                     <li {% ifequal title "Blog" %}id="current"{% endifequal %}><a href="/blog/">{% trans "Blog" %}</a></li>
+                    {% if not user.is_authenticated %}
+                    <li {% ifequal title "Registration" %}id="current"{% endifequal %}><a href="/register/">{% trans "Registration" %}</a></li>
+                    {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
                     {# <li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">{% trans "Rooms" %}</a></li> #}
 				</ul>
