@@ -5,13 +5,13 @@ import datetime
 
 class BlogPost(models.Model):
     title   = models.CharField(max_length=128)
-    pub_date = models.DateField(editable=False)
+    pub_date = models.DateTimeField(editable=False)
     author  = models.ForeignKey(User)
     text    = models.TextField(max_length=2048)
     
     def save(self):
         if not self.id:
-            self.pub_date = datetime.date.today()
+            self.pub_date = datetime.datetime.now()
         super(BlogPost, self).save()
     
     def __str__(self):

@@ -1,5 +1,7 @@
 {% extends "index.html"%}
 
+{% load markup %}
+
 {% block content %}
 {% for post in blog_posts %}
     {% if forloop.first %}
@@ -9,7 +11,7 @@
     {% endif %}
     <div>by {{ post.author.get_full_name }}</div>
     <span><em>{{ post.pub_date|date:"l, F j, Y"  }}</em></span>
-    <div>{{ post.text }}</div>
+    <div>{{ post.text|textile }}</div>
 {% endfor %}
 {% endblock %}
 
