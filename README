@@ -42,10 +42,12 @@ TASKS (Backlog)
 
 + blog posting
   % design
+  % markup language implemented
+  % make it look just right
   + RSS support
-  + make it look just right
-  * make sure, that html is not escaped (or move to different markup language)
   - preview for author
+  - textile cheat-sheet http://textile.thresholdstate.com/
+  * test
 
 + lectures
   % design
