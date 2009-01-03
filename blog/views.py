@@ -20,6 +20,6 @@ def main_view(view):
 @main_view
 def index(request):
     user = request.user
-    blog_posts = BlogPost.objects.all()
+    blog_posts = BlogPost.objects.order_by('-pub_date')
     return locals()
 
