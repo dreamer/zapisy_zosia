@@ -35,7 +35,7 @@ class UserPreferences(models.Model):
     # ? anonimowy - nie chce zeby jego imie/nazwisko/mail pojawialy sie na stronie
     # ? wplacil   - zaplacil za... za Zosie+busa / sama zosie a busa osobno?
 
-    def __str__(self):
-        return "%s %s" % (self.user.first_name, self.user.last_name)
+    def __unicode__(self):
+        return u"%s %s" % (self.user.first_name, self.user.last_name)
 
 

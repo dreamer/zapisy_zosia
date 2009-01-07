@@ -8,5 +8,7 @@ class NewLectureForm(forms.Form):
     abstract = forms.CharField( widget=forms.Textarea(),
                                 initial="short lecture abstract",
                                 required=True )
-    #info = forms
+    info = forms.CharField( widget=forms.Textarea(),
+                                initial="info for organizers",
+                                required=False )
 

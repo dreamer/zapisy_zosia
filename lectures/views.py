@@ -6,7 +6,6 @@ from django.template.loader import get_template
 from django.shortcuts import render_to_response
 
 from django.contrib.auth.decorators import login_required
-from datetime import datetime
 from common.forms import LoginForm
 
 from models import *
@@ -23,15 +22,7 @@ def index(request):
             lecture_proposition_form = NewLectureForm(request.POST)
             if lecture_proposition_form.is_valid():
                 form = lecture_proposition_form
-                l = Lecture( title     = form.cleaned_data['title'],
-                             duration  = form.cleaned_data['duration'],
-                             abstract  = form.cleaned_data['abstract'],
-                             #info      = form.cleaned_data['info'],
-                             date_time = datetime.now(),
-                             author    = "foobar", #user.last_name + " " + user.first_name,
-                             accepted  = False
-                           )
-                l.save()
+                Lecture.objects.create_lecture(form, request.user)
                 messages = [ "Thank you! Your lecture suggestion has been sent and is awaiting moderation." ]
     return render_to_response('lectures.html', locals())
 
