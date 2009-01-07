@@ -1,5 +1,37 @@
 {% extends "index.html"%}
 
+{% block css %}
+fieldset {
+    border: 0;
+}
+
+fieldset ol {
+    padding: 0;
+}
+
+fieldset ol li {
+    list-style: none;
+    padding: 0.1em;
+}
+
+fieldset label {
+    font-size: 80%;
+    vertical-align: top;
+    display: inline-block;
+    width: 15em;
+}
+
+label span {
+    font-style: italic;
+    font-size: 0.7em;
+}
+
+ul.errorlist {
+   margin: 0;
+   padding: 0;
+}
+{% endblock %}
+
 {% block content %}
 {% if messages %}
     <ul class="messages">
@@ -9,10 +41,10 @@
     </ul>
 {% endif %}
 
-<h1>Lectures</h1>
+<h2>Lectures</h2>
 {% if lectures %}
 {% for lecture in lectures %}
-    <h2>{{ lecture.title }}</h2>
+    <h3>{{ lecture.title }}</h3>
     <div>{{ lecture.duration }}</div>
     <div>data</div>
     <p>{{ lecture.abstract }}</p>
@@ -22,13 +54,64 @@
 {% endif %}
 
 {% if lecture_proposition_form %}
-<h1>Suggest your lecture</h1>
+<h2>Suggest your lecture</h2>
     <form action="." method="POST">
-        <table>
-            {{ lecture_proposition_form.as_table }}
-        </table>
-        <p><input type="submit" value="Suggest lecture"></p>
+    <fieldset>
+    <legend>Public info</legend>
+        <ol>
+            <li>
+                {% if lecture_proposition_form.title.errors %}
+                <ul class="errorlist">
+                {% for error in lecture_proposition_form.title.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            <label for="id_title">Title <span>(required)</span></label>
+            {{ lecture_proposition_form.title }}
+            </li>
+            <li>
+                {% if lecture_proposition_form.duration.errors %}
+                <ul class="errorlist">
+                {% for error in lecture_proposition_form.duration.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            <label for="id_duration">Duration <span>(in minutes, required)</span></label>
+            {{ lecture_proposition_form.duration }}
+            </li>
+            <li>
+                {% if lecture_proposition_form.abstract.errors %}
+                <ul class="errorlist">
+                {% for error in lecture_proposition_form.abstract.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                {% endif %}
+                <label for="id_abstract">Abstract <span>(required)</span></label>
+            {{ lecture_proposition_form.abstract }}
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+    <legend>For moderators only</legend>
+        <ol>
+            <li>
+                {% if lecture_proposition_form.info.errors %}
+                <ul class="errorlist">
+                {% for error in lecture_proposition_form.info.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="id_info">Comments intended for admins/moderators/organizers/etc regarding your lecture.</label>
+                {{ lecture_proposition_form.info }}
+            </li>
+        </ol>
+    </fieldset>
+    <p><input type="submit" value="Suggest lecture"></p>
     </form>
+
 {% endif %}
 
 {% endblock content %}

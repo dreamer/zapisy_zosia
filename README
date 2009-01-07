@@ -57,8 +57,8 @@ TASKS (Backlog)
 + lectures
   % design
   % feedback after lecture suggesting
-  * make form look and behave correct
-  * make lecture list look right
+  + make form look and behave correct
+  + make lecture list look right
   - "suggest lecture" link above lecture list
   - conversion to pdf
 
@@ -92,4 +92,5 @@ TASKS (Backlog)
   - valid xhtml,css
   - correct mimetypes
   - select some license
+  - remove duplicated code (css blocks in forms)
 
