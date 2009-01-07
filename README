@@ -32,6 +32,7 @@ TASKS (Backlog)
   - display info about money and sample bank account info
   * captcha
   - changing your registration info
+  - make organizations working again
 
 + logging in
   % design
@@ -80,7 +81,9 @@ TASKS (Backlog)
   + update DEPLOYMENT section of this document
   - domain
 
-- other cool stuff
+- other cool/important stuff
   - change admin templates
   * clickable logo
+  - valid xhtml,css
+  - correct mimetypes
 
