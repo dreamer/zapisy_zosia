@@ -1,15 +1,28 @@
 {% extends "index.html"%}
 
-
 {% block content %}
+{% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h1>Lectures</h1>
+{% if lectures %}
 {% for lecture in lectures %}
     <h2>{{ lecture.title }}</h2>
     <div>{{ lecture.duration }}</div>
     <div>data</div>
     <p>{{ lecture.abstract }}</p>
 {% endfor %}
+{% else %}
+    None yet. You can be first!
+{% endif %}
 
 {% if lecture_proposition_form %}
+<h1>Suggest your lecture</h1>
     <form action="." method="POST">
         <table>
             {{ lecture_proposition_form.as_table }}
@@ -19,7 +32,6 @@
 {% endif %}
 
 {% endblock content %}
-
 
 {% block right_column %}
 {% if user.is_authenticated %}

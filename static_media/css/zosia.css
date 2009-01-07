@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/**
+ * css changes related to zosia only
+ * this generaly should be kept separately for purpose
+ * of merging future versions of yaml
+ */
+
+/**
+ * blog posts related:
+ */
+.blog_post { margin: 0.5em 5em 2em 1em; }
+.bp_author {
+    color: #999;
+    margin-left: 1em;
+}
+.bp_date {
+    color: #999;
+    margin-left: 1em;
+}
+
+/**
+ * messages in lectures app
+ */
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/**
+ * meh, if firefox didnt break list-style css by misplacing list-style-image
+ * it would be far much easier :/
+ */
+.messages > * {
+    background-color: #ffc;
+    background-image: url('/static_media/images/face-smile-24.png');
+    background-repeat: no-repeat;
+    background-position: 0.2em 0.2em;
+    height: 2em;
+    border: 1px solid #eeb;
+    padding: 0.2em 0 0 2.5em;
+    margin: 0 0 0.3em 0;
+}

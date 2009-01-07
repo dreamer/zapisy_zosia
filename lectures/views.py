@@ -32,6 +32,6 @@ def index(request):
                              accepted  = False
                            )
                 l.save()
-                messages = [ "Thank you! Your lecture is awaiting moderation." ]
+                messages = [ "Thank you! Your lecture suggestion has been sent and is awaiting moderation." ]
     return render_to_response('lectures.html', locals())
 

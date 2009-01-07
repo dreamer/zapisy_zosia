@@ -1,3 +1,7 @@
+LICENSE
+The YAML framework is published under the Creative Commons Attribution 2.0 License.
+Smiley images in static_media/images are part of GNOME project, thus under GPLv2.
+
 PREREQUISITIES
 
 you will of course need:
@@ -52,6 +56,7 @@ TASKS (Backlog)
 
 + lectures
   % design
+  % feedback after lecture suggesting
   * make form look and behave correct
   * make lecture list look right
   - "suggest lecture" link above lecture list
@@ -86,4 +91,5 @@ TASKS (Backlog)
   * clickable logo
   - valid xhtml,css
   - correct mimetypes
+  - select some license
 
