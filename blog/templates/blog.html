@@ -16,10 +16,26 @@
 {% endblock %}
 
 {% block right_column %}
+{#      wydaje mi się, że ten blok nie powinien być wszucany do trans-stringów      #}
+{#      ułatwi to wrzucanie niektórych ważnych informacji (np linków do sponsorów), #}
+{#      w przyszłości to powinno być przesunięte do bazy. (dreamer_)                #}
 <h2>Column with some useless info</h2>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed.</p>
-<blockquote>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed, aliquet   vel, quam. Pellentesque molestie laoreet tortor. </p>
-</blockquote>
-<p>Nulla vitae mauris. Phasellus vel ligula quis dolor bibendum egestas. Duis a   massa ut orci varius placerat. Sed leo nulla, tempor nec.</p>
+<p>
+I trochę ważnych informacji, np: ośrodek. Ale nie za dużo; zamiast tego kotwica
+do pierwszego posta.
+</p>
+<p>
+Tu są pewne Bardzo Ważne Daty (chronologicznie):
+<ul>
+    <li>Termin rozpoczęcia zapisów i przyjmowania wykładów</li>
+    <li>Termin zakończenia zapisów</li>
+    <li>Ostateczny termin wpłat</li>
+    <li>Zapisy na pokoje</li>
+    <li>Koniec przyjmowania wykładów</li>
+    <li>Początek-koniec ZOSI</li>
+</ul>
+<h3>Sponsorzy</h3>
+<p>
+Jakiś jest pewnie.
+</p>
 {% endblock %}
