@@ -53,9 +53,9 @@ urlpatterns = patterns('',
      (r'^password_change/$', common.views.password_change),
      (r'^password_change/done/$', common.views.password_change_done),
 
-     # (r'^password_reset/$', 'django.contrib.auth.views.password_reset'),
-     # (r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done'),
-     # (r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm'),
-     # (r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
+     (r'^password_reset/$', 'django.contrib.auth.views.password_reset'),
+     (r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done'),
+     (r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm'),
+     (r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
 )
 
