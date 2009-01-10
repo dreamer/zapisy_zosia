@@ -42,3 +42,61 @@
     padding: 0.2em 0 0 2.5em;
     margin: 0 0 0.3em 0;
 }
+
+/**
+ * following are used in forms; it was formerly inside css template block
+ */
+
+fieldset {
+    border: 0;
+}
+
+fieldset ol {
+    padding: 0;
+}
+
+fieldset ol li {
+    list-style: none;
+    padding: 0.1em;
+}
+
+fieldset label {
+    font-size: 80%;
+    vertical-align: top;
+    display: inline-block;
+    width: 15em;
+}
+
+label span {
+    font-style: italic;
+    font-size: 0.7em;
+}
+
+ul.errorlist {
+   margin: 0;
+   padding: 0;
+}
+
+.errorlist li {
+    font-size: 0.7em;
+    background-color: red;
+    color: white;
+    display: block;
+    padding: 0.15em;
+}
+
+label.for_hidden {
+    width: 15em;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+label.for_hidden span {
+    font-size: 0.7em;
+}
+
+.hidden {
+    display: none;
+}
+

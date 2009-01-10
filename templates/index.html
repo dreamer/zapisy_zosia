@@ -3,9 +3,8 @@
 {% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>ZOSIA | {% trans title %}</title>
+    <title>ZOSIA | {% trans title %} }</title>
 <meta http-equiv="Pragma" content="no-cache"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Language" content="pl,en" />
 <link href="/static_media/css/layout_2col_right_13.css" rel="stylesheet" type="text/css"/>
@@ -38,6 +37,7 @@
                 <span>
                 {% if user.is_authenticated %}
                     oh hai, {{ user.first_name }} {{ user.last_name}} |
+                    <a href="/password_change/">{% trans "Change password" %}</a> |
                     {% if user.is_staff %}
                     <a href="/admin/">Admin's panel</a> |
                     {% endif %}

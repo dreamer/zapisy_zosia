@@ -50,8 +50,9 @@ urlpatterns = patterns('',
         {'document_root': os.getcwd()+os.sep+'static_media', 'show_indexes': True}),
 
      # urls required for password change/recovery (fallback error atm)
-     # (r'^password_change/$', 'django.contrib.auth.views.password_change'),
-     # (r'^password_change/done/$', 'django.contrib.auth.views.password_change_done'),
+     (r'^password_change/$', common.views.password_change),
+     (r'^password_change/done/$', common.views.password_change_done),
+
      # (r'^password_reset/$', 'django.contrib.auth.views.password_reset'),
      # (r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done'),
      # (r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm'),

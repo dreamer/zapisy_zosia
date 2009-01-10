@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response, HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import *
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, PasswordChangeForm
 from forms import *
 
 def login_view(request):
@@ -42,4 +44,24 @@ def thanks(request):
     title = "Bye!"
     login_form = LoginForm()
     return render_to_response('bye.html', locals())
+
+
+@login_required
+def password_change(request):
+    user = request.user
+    title = "Change password"
+    if request.method == "POST":
+        pc_form = PasswordChangeForm(request.user, request.POST)
+        if pc_form.is_valid():
+            pc_form.save()
+            return HttpResponseRedirect("done/")
+    else:
+        pc_form = PasswordChangeForm(request.user)
+    return render_to_response("change_password.html", locals())
+
+@login_required
+def password_change_done(request):
+    user = request.user
+    title = "Change password"
+    return render_to_response("change_password_done.html", locals())
 
