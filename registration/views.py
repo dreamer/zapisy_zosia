@@ -31,7 +31,7 @@ def register(request):
                                            form.cleaned_data['surname'])
             try:
                 user = User.objects.get(email=email)
-                return HttpResponseRedirect('/register/recover/')
+                return HttpResponseRedirect('/password_reset/')
             except User.DoesNotExist:
                 #user = User(username=email, password=password, email=email)
                 user = User.objects.create_user(email, email, password)
@@ -66,11 +66,4 @@ def thanks(request):
 # TODO
 #def add_organization(request):
 #    HttpResponse('foo',mimetype="application/xhtml+xml")
-
-def recover(request):
-    user = request.user
-    title = "Password recovery"
-    login_form = LoginForm()
-
-    return render_to_response('recover.html', locals())
 

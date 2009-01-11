@@ -7,13 +7,22 @@ from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, Passwo
 from forms import *
 
 def login_view(request):
+    # hmm, I've moved too much stuff in here, it's a bit messy
+    # and HTTP_REFERER trickery should probably be better handled
+    # but it's 6 a.m. already
+    # Special thanks to my good friend, caffeine (dreamer_)
     title = "Login"
     user = request.user
+    try:
+        referer = request.META['HTTP_REFERER']
+    except Exception:
+        referer = ''
     if not user.is_authenticated():
         form = LoginForm()
         try:
             reason = None # theistic code ;)
             greetings_stranger = False
+            greetings_resetter = False
             email = request.POST['email']
             password = request.POST['password']
             user = authenticate(username=email, password=password)
@@ -26,13 +35,17 @@ def login_view(request):
                 reason = 'LOGIN_invalid'
         except Exception:
             greetings_stranger = True
-        if not reason and not greetings_stranger:
+        if referer.endswith('/reset/done/'):
+            greetings_resetter = True
+            greetings_stranger = False
+        if not reason and not greetings_stranger and not greetings_resetter:
             # login quietly
-            referer = request.META['HTTP_REFERER']
-            if referer.endswith('/login/') or referer.endswith('/bye/'):
+            if referer.endswith('/login/') or referer.endswith('/bye/') or referer.endswith('/reset/done/'):
                 referer = '/blog/'
             return HttpResponseRedirect(referer)
-    # this template acutally is used only in case of unsuccesfull login
+    # this template is used in case of:
+    # - unsuccesfull login
+    # - login after password reset (aka 'password recovery')
     return render_to_response('login.html', locals())
 
 def logout_view(request):

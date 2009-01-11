@@ -1,6 +1,8 @@
 LICENSE
+a little bit of code was copied and slightly modified from Django itself
 The YAML framework is published under the Creative Commons Attribution 2.0 License.
 Smiley images in static_media/images are part of GNOME project, thus under GPLv2.
+logo_zosi.svg was created by Adrian Dziubek
 
 PREREQUISITIES
 
@@ -19,6 +21,8 @@ to create database:
 
 to run developer server (port 8000):
 [foo@bar zapisy_zosia]$ python manage.py runserver
+
+TRANSLATION
 
 DEPLOYMENT
 
@@ -42,8 +46,9 @@ TASKS (Backlog)
   % design
   % feedback for user after unsuccesful login
   % meaningful redirect after login or logout
-  * password recovery
-  * visual design
+  % password reset
+  % password change
+  - visual design
 
 + blog posting
   % design
@@ -67,8 +72,8 @@ TASKS (Backlog)
   - conversion to pdf
 
 * translation
-  + implement django translation system
-  * translate, translate, translate
+  % implement django translation system
+  + translate, translate, translate
   - implement language switching
 
 * testing / user testing
@@ -85,12 +90,13 @@ TASKS (Backlog)
   * after final deployment, make sure that database user doesn't have too many priviledges
   + update DEPLOYMENT section of this document
   - domain
+  - smtp account
 
 - other cool/important stuff
-  - change admin templates
+  + change admin templates
   * clickable logo
   - valid xhtml,css
   - correct mimetypes
-  - select some license
-  - remove duplicated code (css blocks in forms)
+  + select some license
+  + remove duplicated code (css blocks in forms, unused blocks in templates)
 

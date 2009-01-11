@@ -30,7 +30,6 @@ urlpatterns = patterns('',
      # registration related
      (r'^register/$', registration.views.register),
      (r'^register/thanks/', registration.views.thanks),
-     (r'^register/recover/$', registration.views.recover),
      # (r'^register/add_org/$', registration.views.add_organization),
 
      # login / logout
@@ -49,13 +48,21 @@ urlpatterns = patterns('',
      (r'^static_media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.getcwd()+os.sep+'static_media', 'show_indexes': True}),
 
-     # urls required for password change/recovery (fallback error atm)
+     # urls required for password change/reset
      (r'^password_change/$', common.views.password_change),
      (r'^password_change/done/$', common.views.password_change_done),
 
-     (r'^password_reset/$', 'django.contrib.auth.views.password_reset'),
-     (r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done'),
-     (r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm'),
-     (r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
+     (r'^password_reset/$', 
+         'django.contrib.auth.views.password_reset',
+         { 'template_name':'password_reset_form.html' }),
+     (r'^password_reset/done/$', 
+         'django.contrib.auth.views.password_reset_done',
+         { 'template_name':'password_reset_done.html' }),
+     (r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 
+         'django.contrib.auth.views.password_reset_confirm',
+         { 'template_name':'password_reset_confirm.html' }),
+     (r'^reset/done/$',
+         'django.contrib.auth.views.password_reset_complete',
+         { 'template_name':'password_reset_complete.html' }),
 )
 
