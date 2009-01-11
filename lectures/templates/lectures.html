@@ -1,4 +1,5 @@
 {% extends "index.html"%}
+{% load i18n %}
 
 {% block css %}
 fieldset {
@@ -36,12 +37,12 @@ ul.errorlist {
 {% if messages %}
     <ul class="messages">
         {% for msg in messages %}
-        <li>{{ msg }}</li>
+        {% blocktrans %}<li>{{ msg }}</li>{% endblocktrans %}
         {% endfor %}
     </ul>
 {% endif %}
 
-<h2>Lectures</h2>
+<h2>{% trans "Lectures" %}</h2>
 {% if lectures %}
 {% for lecture in lectures %}
     <h3>{{ lecture.title }}</h3>
@@ -50,14 +51,14 @@ ul.errorlist {
     <p>{{ lecture.abstract }}</p>
 {% endfor %}
 {% else %}
-    None yet. You can be first!
+    {% trans "None yet. You can be first!" %}<p />
 {% endif %}
 
 {% if lecture_proposition_form %}
-<h2>Suggest your lecture</h2>
+<h2>{% trans "Suggest your lecture" %}</h2>
     <form action="." method="POST">
     <fieldset>
-    <legend>Public info</legend>
+    <legend>{% trans "Public info" %}</legend>
         <ol>
             <li>
                 {% if lecture_proposition_form.title.errors %}
@@ -67,7 +68,7 @@ ul.errorlist {
                 {% endfor %}
                 </ul>
                 {% endif %}
-            <label for="id_title">Title <span>(required)</span></label>
+            <label for="id_title">{% trans "Title" %}</label>
             {{ lecture_proposition_form.title }}
             </li>
             <li>
@@ -78,7 +79,7 @@ ul.errorlist {
                 {% endfor %}
                 </ul>
                 {% endif %}
-            <label for="id_duration">Duration <span>(in minutes, required)</span></label>
+            <label for="id_duration">{% trans "Duration" %}<span>{% trans "(in minutes)" %}</span></label>
             {{ lecture_proposition_form.duration }}
             </li>
             <li>
@@ -88,13 +89,13 @@ ul.errorlist {
                     <li>{{error|escape}}</li>
                 {% endfor %}
                 {% endif %}
-                <label for="id_abstract">Abstract <span>(required)</span></label>
+                <label for="id_abstract">{% trans "Abstract" %}</label>
             {{ lecture_proposition_form.abstract }}
             </li>
         </ol>
     </fieldset>
     <fieldset>
-    <legend>For moderators only</legend>
+    <legend>{% trans "Additional information" %}</legend>
         <ol>
             <li>
                 {% if lecture_proposition_form.info.errors %}
@@ -104,12 +105,12 @@ ul.errorlist {
                 {% endfor %}
                 </ul>
                 {% endif %}
-                <label for="id_info">Comments intended for admins/moderators/organizers/etc regarding your lecture.</label>
+                <label for="id_info">{% trans "Your suggestions, requests and comments intended for organizers and a lot more, what you always wanted to say these philistinic bastards with purulent knees" %}</label>
                 {{ lecture_proposition_form.info }}
             </li>
         </ol>
     </fieldset>
-    <p><input type="submit" value="Suggest lecture"></p>
+    <p><input type="submit" value="{% trans "Suggest" %}"></p>
     </form>
 
 {% endif %}
@@ -118,10 +119,10 @@ ul.errorlist {
 
 {% block right_column %}
 {% if user.is_authenticated %}
-    <h2>You can suggest new lecture!</h2>
-    <p>Hurray!!</p>
+    <h2>{% trans "Yes we can" %}</h2>
+    <p>{% trans "Hurray" %}</p>
 {% else %}
-    <h2>Ops, you're not logged in</h2>
-    <p>You have to be registered and authenticated before suggesting new lecture.</p>
+    <h2>{% trans "Ops, youre not logged in" %}</h2>
+    <p>{% trans "You have to be registered" %}</p>
 {% endif %}
 {% endblock right_column %}

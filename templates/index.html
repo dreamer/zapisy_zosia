@@ -36,12 +36,12 @@
 				<!-- end: skip link navigation -->
                 <span>
                 {% if user.is_authenticated %}
-                    oh hai, {{ user.first_name }} {{ user.last_name}} |
+                    {% trans "oh hai" %}, {{ user.first_name }} {{ user.last_name}} |
                     <a href="/password_change/">{% trans "Change password" %}</a> |
                     {% if user.is_staff %}
-                    <a href="/admin/">Admin's panel</a> |
+                    <a href="/admin/">{% trans "Administration panel" %}</a> |
                     {% endif %}
-                    <a href="/logout/">Logout</a>
+                    <a href="/logout/">{% trans "Logout" %}</a>
                 {% else %}
                     {% if login_form %}
                         <form action="/login/" method="post" id="login_form">
@@ -57,17 +57,17 @@
                             {% for error in form.password.errors %}<li>{{error|escape}}</li>{% endfor %}
                             </ul>
                         {% endif %}
-                        <label for="id_login_password">password</label> {{ login_form.password }}
+                        <label for="id_login_password">{% trans "password" %}</label> {{ login_form.password }}
                         <input type="submit" value="login" />
                         </fieldset>
                         </form>
                         {% endif %} {# login_form #}
-                    {# <a href="/register/">Register</a> #}
+                    {# <a href="/register/">{% trans "Register" %}</a> #}
                 {% endif %}
                 </span>
             </div>
             <h1><a href="/blog/">ZOSIA</a> | {% trans title %}</h1>
-			<span>Zimowy Obóz Studentów Informatyki A &#8226; Bagdad 2009</span></div>
+			<span>Zimowy Obóz Studentów Informatyki A &#8226; Przesieka 2009</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
 			<!-- skiplink anchor: navigation -->

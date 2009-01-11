@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 
+from django.utils.translation import ugettext as _
 from django.http import *
 from django.template import Context
 from django.template.loader import get_template
@@ -23,6 +24,6 @@ def index(request):
             if lecture_proposition_form.is_valid():
                 form = lecture_proposition_form
                 Lecture.objects.create_lecture(form, request.user)
-                messages = [ "Thank you! Your lecture suggestion has been sent and is awaiting moderation." ]
+                messages = [ _("thankyou") ]
     return render_to_response('lectures.html', locals())
 

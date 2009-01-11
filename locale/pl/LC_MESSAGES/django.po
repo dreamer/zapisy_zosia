@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-18 17:15+0100\n"
+"POT-Creation-Date: 2009-01-11 04:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: dreamer_ <dreamer.tan@gmail.com>\n"
 "Language-Team: noteam <13@37.org>\n"
@@ -16,14 +16,123 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/index.html:62
-msgid "Blog"
-msgstr ""
-
-#: templates/index.html:63
+#: lectures/templates/lectures.html:45 templates/index.html:80
 msgid "Lectures"
 msgstr "Wykłady"
 
-#: templates/index.html:64
-msgid "Rooms"
-msgstr "Pokoje"
+#: lectures/templates/lectures.html:54
+msgid "None yet. You can be first!"
+msgstr "Jeszcze nikt nie zaproponował wykładu. Twój może być pierwszy!"
+
+#: lectures/templates/lectures.html:58
+msgid "Suggest your lecture"
+msgstr "Zaproponuj wykład"
+
+#: lectures/templates/lectures.html:61
+msgid "Public info"
+msgstr "Informacje wymagane"
+
+#: lectures/templates/lectures.html:71
+msgid "Title"
+msgstr "Tytuł"
+
+#: lectures/templates/lectures.html:82
+#, fuzzy
+msgid "Duration"
+msgstr "Rejestracja"
+
+#: lectures/templates/lectures.html:82
+msgid "(in minutes)"
+msgstr " (w minutach)"
+
+#: lectures/templates/lectures.html:92
+msgid "Abstract"
+msgstr "Abstrakt"
+
+#: lectures/templates/lectures.html:98
+msgid "Additional information"
+msgstr "Informacje dodatkowe"
+
+#: lectures/templates/lectures.html:108
+msgid ""
+"Your suggestions, requests and comments intended for organizers and a lot "
+"more, what you always wanted to say these philistinic bastards with purulent "
+"knees"
+msgstr ""
+"Uwagi, prośby i wszelkie komentarze dotyczące wykładu, którymi chciałbyś się "
+"podzielić z organizatorami."
+
+msgid "thankyou"
+msgstr "Dziękujemy! Twój wykład czeka na akceptację moderatora."
+
+#: lectures/templates/lectures.html:113
+msgid "Suggest"
+msgstr "Zaproponuj wykład"
+
+#: lectures/templates/lectures.html:122
+msgid "Yes we can"
+msgstr "Wielki napis bez celu"
+
+#: lectures/templates/lectures.html:123
+msgid "Hurray"
+msgstr "ale myślę nad nim"
+
+#: lectures/templates/lectures.html:125
+#, fuzzy
+msgid "Ops, youre not logged in"
+msgstr "Ojej, nie jesteś zalogowany."
+
+#: lectures/templates/lectures.html:126
+msgid "You have to be registered"
+msgstr ""
+"Jeśli tylko się zarejestrujesz, będziesz mógł dodać swój wykład (and there "
+"will be a cake)."
+
+#: templates/change_password.html:14
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/change_password.html:33
+msgid "Password (again)"
+msgstr "Hasło (ponownie)"
+
+#: templates/change_password.html:38 templates/index.html:40
+msgid "Change password"
+msgstr "Zmień hasło"
+
+#: templates/index.html:39
+msgid "oh hai"
+msgstr "Witaj"
+
+#: templates/index.html:42
+msgid "Administration panel"
+msgstr "Panel administracyjny"
+
+#: templates/index.html:44
+msgid "Logout"
+msgstr "Wyloguj"
+
+#: templates/index.html:60
+#, fuzzy
+msgid "password"
+msgstr "Zmień hasło"
+
+#: templates/index.html:76
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/index.html:78
+msgid "Registration"
+msgstr "Rejestracja"
+
+#: templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr ""
+
+#~ msgid "(required)"
+#~ msgstr " (wymagane)"
+
+#~ msgid "Rooms"
+#~ msgstr "Pokoje"
