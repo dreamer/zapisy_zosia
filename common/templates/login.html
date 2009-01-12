@@ -1,21 +1,22 @@
 {% extends "index.html"%}
+{% load i18n %}
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h2>Hello, aren't you logged in already? :)</h2>
+    <h2>{% trans "loggedalready" %}</h2>
 {% else %}
     {% if reason %} {# atheistic template ;) #}
-        <h2>Ops, login was unsuccesful... :(</h2>
+        <h2>{% trans "loginfail" %}</h2>
         <p>{{ reason }}</p>
-        <p>You may want to <a href="/register/recover/">recover</a> your password.</p>
+        <p>{% trans "loginfailrecover" %}</p>
     {% else %}
-        <h2>Greetings, stranger! :)</h2>
+        <h2>{% trans "stranger" %}</h2>
     {% endif %}
     <form action="/login/" method="post" id="login_form">
         <table>
         {{ form.as_table }}
         </table>
-        <input type="submit" value="login" />
+        <input type="submit" value="{% trans "loginbutton" %}" />
     </form>
 {% endif %}
 {% endblock %}

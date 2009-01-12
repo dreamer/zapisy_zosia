@@ -79,7 +79,7 @@ ul.errorlist {
                 {% endfor %}
                 </ul>
                 {% endif %}
-            <label for="id_duration">{% trans "Duration" %}<span>{% trans "(in minutes)" %}</span></label>
+            <label for="id_duration">{% trans "duraszatan" %}<span>{% trans "inminutes" %}</span></label>
             {{ lecture_proposition_form.duration }}
             </li>
             <li>
@@ -89,7 +89,7 @@ ul.errorlist {
                     <li>{{error|escape}}</li>
                 {% endfor %}
                 {% endif %}
-                <label for="id_abstract">{% trans "Abstract" %}</label>
+                <label for="id_abstract">{% trans "Abstract" %}<span>{% trans "(max chars)" %}</span></label>
             {{ lecture_proposition_form.abstract }}
             </li>
         </ol>

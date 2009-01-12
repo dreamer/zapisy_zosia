@@ -8,13 +8,52 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-11 04:29+0100\n"
+"POT-Creation-Date: 2009-01-12 23:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: dreamer_ <dreamer.tan@gmail.com>\n"
 "Language-Team: noteam <13@37.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: common/templates/bye.html:5
+msgid "bye"
+msgstr "Wylogowałeś się."
+
+#: common/templates/bye.html:7
+msgid "thanks for visit"
+msgstr "Dziękujemy za wizytę i do zobaczenia na ZOSI!"
+
+#: common/templates/login.html:6
+msgid "loggedalready"
+msgstr "Powtórne logowanie nie było konieczne ;)"
+
+#: common/templates/login.html:9
+msgid "loginfail"
+msgstr "Niestety, logowanie się nie powiodło."
+
+#: common/templates/login.html:11
+msgid "loginfailrecover"
+msgstr ""
+"Jeżeli już posiadasz swoje konto, możesz <a href='/register/"
+"recover/'>odzyskać</a> hasło."
+
+#: common/templates/login.html:13
+msgid "stranger"
+msgstr "Witaj nieznajomy! <br>Zapraszamy do zalogowania się."
+
+#: common/templates/login.html:19
+msgid "loginbutton"
+msgstr "Zaloguj"
+
+#: lectures/views.py:27
+msgid "thankyou"
+msgstr "Dziękujemy! Twój wykład czeka na akceptację moderatora."
+
+#: lectures/templates/lectures.html:40
+#, python-format
+msgid "<li>%(msg)s</li>"
+msgstr ""
 
 #: lectures/templates/lectures.html:45 templates/index.html:80
 msgid "Lectures"
@@ -37,17 +76,20 @@ msgid "Title"
 msgstr "Tytuł"
 
 #: lectures/templates/lectures.html:82
-#, fuzzy
-msgid "Duration"
-msgstr "Rejestracja"
+msgid "duraszatan"
+msgstr "Czas trwania"
 
 #: lectures/templates/lectures.html:82
-msgid "(in minutes)"
+msgid "inminutes"
 msgstr " (w minutach)"
 
 #: lectures/templates/lectures.html:92
 msgid "Abstract"
 msgstr "Abstrakt"
+
+#: lectures/templates/lectures.html:92
+msgid "(max chars)"
+msgstr " (do 512 znaków)"
 
 #: lectures/templates/lectures.html:98
 msgid "Additional information"
@@ -62,9 +104,6 @@ msgstr ""
 "Uwagi, prośby i wszelkie komentarze dotyczące wykładu, którymi chciałbyś się "
 "podzielić z organizatorami."
 
-msgid "thankyou"
-msgstr "Dziękujemy! Twój wykład czeka na akceptację moderatora."
-
 #: lectures/templates/lectures.html:113
 msgid "Suggest"
 msgstr "Zaproponuj wykład"
@@ -78,7 +117,6 @@ msgid "Hurray"
 msgstr "ale myślę nad nim"
 
 #: lectures/templates/lectures.html:125
-#, fuzzy
 msgid "Ops, youre not logged in"
 msgstr "Ojej, nie jesteś zalogowany."
 
@@ -87,6 +125,131 @@ msgid "You have to be registered"
 msgstr ""
 "Jeśli tylko się zarejestrujesz, będziesz mógł dodać swój wykład (and there "
 "will be a cake)."
+
+#: registration/templates/register_form.html:44 templates/index.html:78
+msgid "Registration"
+msgstr "Rejestracja"
+
+#: registration/templates/register_form.html:48
+msgid "authentication"
+msgstr "dane do uwierzytelniania"
+
+#: registration/templates/register_form.html:58
+#: registration/templates/register_form.html:69
+#: registration/templates/register_form.html:80
+#: registration/templates/register_form.html:96
+#: registration/templates/register_form.html:107
+#: registration/templates/register_form.html:120
+msgid "(required)"
+msgstr " (wymagane)"
+
+#: registration/templates/register_form.html:69 templates/index.html:60
+msgid "password"
+msgstr "hasło"
+
+#: registration/templates/register_form.html:80
+msgid "repeatepas"
+msgstr "powtórz hasło"
+
+#: registration/templates/register_form.html:86
+msgid "personal"
+msgstr "dane osobowe"
+
+#: registration/templates/register_form.html:96
+msgid "name"
+msgstr "imię"
+
+#: registration/templates/register_form.html:107
+msgid "surname"
+msgstr "nazwisko"
+
+#: registration/templates/register_form.html:120
+msgid "organization"
+msgstr "organizacja"
+
+#: registration/templates/register_form.html:125
+msgid "add"
+msgstr "Dodaj"
+
+#: registration/templates/register_form.html:143
+msgid "nights"
+msgstr "noclegi "
+
+#: registration/templates/register_form.html:153
+msgid "night12"
+msgstr "5 / 6 marca"
+
+#: registration/templates/register_form.html:156
+msgid "night23"
+msgstr "6 / 7 marca"
+
+#: registration/templates/register_form.html:159
+msgid "night34"
+msgstr "7 / 8 marca"
+
+#: registration/templates/register_form.html:164
+msgid "dinners"
+msgstr "obiady"
+
+#: registration/templates/register_form.html:167
+msgid "dinner1"
+msgstr "5 marca"
+
+#: registration/templates/register_form.html:170
+msgid "dinner2"
+msgstr "6 marca"
+
+#: registration/templates/register_form.html:173
+msgid "dinner3"
+msgstr "7 marca"
+
+#: registration/templates/register_form.html:178
+msgid "breakfasts"
+msgstr "śniadania"
+
+#: registration/templates/register_form.html:181
+msgid "breakfast2"
+msgstr "6 marca"
+
+#: registration/templates/register_form.html:184
+msgid "breakfast3"
+msgstr "7 marca"
+
+#: registration/templates/register_form.html:187
+msgid "breakfast4"
+msgstr "8 marca"
+
+#: registration/templates/register_form.html:192
+msgid "others"
+msgstr "pozostałe"
+
+#: registration/templates/register_form.html:195
+msgid "veggies"
+msgstr "Preferuję kuchnię wegetariańską (nie mylić z&nbsp;ichtiwegetariańską)."
+
+#: registration/templates/register_form.html:198
+msgid "bussies"
+msgstr ""
+"Gdyby organizator zapewniał autokar, skorzystałbym z&nbsp;takiej formy "
+"transportu."
+
+#: registration/templates/register_form.html:201
+msgid "shirties"
+msgstr "rozmiar koszulki"
+
+#: registration/templates/register_form.html:205
+msgid "register"
+msgstr "Zarejestruj"
+
+#: registration/templates/thanks.html:5
+msgid "tyouregister"
+msgstr "Rejestracja prawie ukończona."
+
+#: registration/templates/thanks.html:7
+msgid "checkmail"
+msgstr ""
+"<p />Właśnie został wysłany do Ciebie mail aktywacyjny. <br>Kliknięcie "
+"zamieszczonego w nim odnośnika kończy proces rejestracji."
 
 #: templates/change_password.html:14
 msgid "Please correct the error below."
@@ -114,25 +277,10 @@ msgstr "Panel administracyjny"
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/index.html:60
-#, fuzzy
-msgid "password"
-msgstr "Zmień hasło"
-
 #: templates/index.html:76
 msgid "Blog"
 msgstr "Blog"
 
-#: templates/index.html:78
-msgid "Registration"
-msgstr "Rejestracja"
-
 #: templates/admin/base_site.html:4
 msgid "Django site admin"
 msgstr ""
-
-#~ msgid "(required)"
-#~ msgstr " (wymagane)"
-
-#~ msgid "Rooms"
-#~ msgstr "Pokoje"

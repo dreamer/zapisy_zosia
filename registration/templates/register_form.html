@@ -1,4 +1,5 @@
 {% extends "index.html"%}
+{% load i18n %}
 
 {% block javascript %}
 function add_select_form() {
@@ -40,11 +41,11 @@ form_onload()
 {% endblock onload %}
 
 {% block content %}
-<h2>Register</h2>
+<h2>{% trans "Registration" %}</h2>
 
 <form action="." method="post" id="register_form">
     <fieldset>
-        <legend>authentication details</legend>
+        <legend>{% trans "authentication" %}</legend>
         <ol>
             <li>
                 {% if form.email.errors %}
@@ -54,7 +55,7 @@ form_onload()
                 {% endfor %}
                 </ul>
                 {% endif %}
-            <label for="id_email">e-mail <span>(required)</span></label>
+            <label for="id_email">e-mail <span>{% trans "(required)" %}</span></label>
             {{ form.email }}
             </li>
             <li>
@@ -65,7 +66,7 @@ form_onload()
                 {% endfor %}
                 </ul>
                 {% endif %}
-                <label for="id_password">password <span>(required)</span></label>
+                <label for="id_password">{% trans "password" %} <span>{% trans "(required)" %}</span></label>
                 {{ form.password }}
             </li>
             <li>
@@ -76,13 +77,13 @@ form_onload()
                 {% endfor %}
                 </ul>
                 {% endif %}
-                <label for="id_password2">repeat password</label>
+                <label for="id_password2">{% trans "repeatepas" %} <span>{% trans "(required)" %}</span></label>
                 {{ form.password2 }}
             </li>
         </ol>
     </fieldset>
     <fieldset>
-        <legend>personal details</legend>
+        <legend>{% trans "personal" %}</legend>
         <ol>
             <li>
                 {% if form.name.errors %}
@@ -92,7 +93,7 @@ form_onload()
                 {% endfor %}
                 </ul>
                 {% endif %}
-                <label for="id_name">name <span>(required)</span></label>
+                <label for="id_name">{% trans "name" %} <span>{% trans "(required)" %}</span></label>
                 {{ form.name }}
             </li>
             <li>
@@ -103,7 +104,7 @@ form_onload()
                 {% endfor %}
                 </ul>
                 {% endif %}
-                <label for="id_surname">surname <span>(required)</span></label>
+                <label for="id_surname">{% trans "surname" %} <span>{% trans "(required)" %}</span></label>
                 {{ form.surname }}
             </li>
             <li>
@@ -116,12 +117,12 @@ form_onload()
                 </ul>
                 {% endif %}
                 <label for="id_organization_1">
-                   organization(s) <span>(required)</span>
+                   {% trans "organization" %} <span>{% trans "(required)" %}</span>
                 </label>
                 {{ form.organization_1 }}
                 <span id="id_add_org_1" class="hidden">
                     <input type="text" id="id_new_org" />
-                    <button type="button" id="id_add_btn_1">add</button>
+                    <button type="button" id="id_add_btn_1">{% trans "add" %}</button>
                 </span>
             </li>
             <!-- TODO: temporary hack (hi, every1 :) )
@@ -139,7 +140,7 @@ form_onload()
         </ol>
     </fieldset>
     <fieldset>
-        <legend>nights</legend>
+        <legend>{% trans "nights" %}</legend>
         <ol>
             {% if form.day_3.errors %}
             <ul class="errorlist">
@@ -149,59 +150,59 @@ form_onload()
             </ul>
             {% endif %}
             <li>
-            {{ form.day_1 }} <label for="id_day_1">day1/day2</label>
+            {{ form.day_1 }} <label for="id_day_1">{% trans "night12" %}</label>
             </li>
             <li>
-            {{ form.day_2 }} <label for="id_day_2">day2/day3</label>
+            {{ form.day_2 }} <label for="id_day_2">{% trans "night23" %}</label>
             </li>
             <li>
-            {{ form.day_3 }} <label for="id_day_3">day3/day4</label>
+            {{ form.day_3 }} <label for="id_day_3">{% trans "night34" %}</label>
             </li>
         </ol>
     </fieldset>
     <fieldset>
-        <legend>dinners</legend>
+        <legend>{% trans "dinners" %}</legend>
         <ol>
             <li>
-            {{ form.dinner_1}} <label for="id_dinner_1">dinner1</label>
+            {{ form.dinner_1}} <label for="id_dinner_1">{% trans "dinner1" %}</label>
             </li>
             <li>
-            {{ form.dinner_2}} <label for="id_dinner_2">dinner2</label>
+            {{ form.dinner_2}} <label for="id_dinner_2">{% trans "dinner2" %}</label>
             </li>
             <li>
-            {{ form.dinner_3}} <label for="id_dinner_3">dinner3</label>
+            {{ form.dinner_3}} <label for="id_dinner_3">{% trans "dinner3" %}</label>
             </li>
         </ol>
     </fieldset>
     <fieldset>
-        <legend>breakfasts</legend>
+        <legend>{% trans "breakfasts" %}</legend>
         <ol>
             <li>
-            {{ form.breakfast_2 }} <label for="id_breakfast_2">breakfast2</label>
+            {{ form.breakfast_2 }} <label for="id_breakfast_2">{% trans "breakfast2" %}</label>
             </li>
             <li>
-            {{ form.breakfast_3 }} <label for="id_breakfast_3">breakfast3</label>
+            {{ form.breakfast_3 }} <label for="id_breakfast_3">{% trans "breakfast3" %}</label>
             </li>
             <li>
-            {{ form.breakfast_4 }} <label for="id_breakfast_4">breakfast4</label>
+            {{ form.breakfast_4 }} <label for="id_breakfast_4">{% trans "breakfast4" %}</label>
             </li>
         </ol>
     </fieldset>
     <fieldset>
-        <legend>other</legend>
+        <legend>{% trans "others" %}</legend>
         <ol>
             <li>
-            {{ form.vegetarian }}  <label for="id_vegetarian">I prefer vegetarian food</label>
+            {{ form.vegetarian }}  <label for="id_vegetarian">{% trans "veggies" %}</label>
             </li>
             <li>
-            {{ form.bus }}  <label for="id_bus">I wish to go by bus</label>
+            {{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label>
             </li>
             <li>
-            {{ form.shirt_size}}  <label for="id_shirt_size">shirt size</label>
+            {{ form.shirt_size}}  <label for="id_shirt_size">{% trans "shirties" %}</label>
             </li>
         </ol>
     </fieldset>
-    <fieldset><input type="submit" value="register me" /></fieldset>
+    <fieldset><input type="submit" value="{% trans "register" %}" /></fieldset>
 </form>
 
 {% endblock content %}
