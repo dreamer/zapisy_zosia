@@ -33,10 +33,11 @@ def register(request):
                 user = User.objects.get(email=email)
                 return HttpResponseRedirect('/password_reset/')
             except User.DoesNotExist:
-                #user = User(username=email, password=password, email=email)
                 user = User.objects.create_user(email, email, password)
                 user.first_name = form.cleaned_data['name']
                 user.last_name  = form.cleaned_data['surname']
+                user.is_active = False
+                # send mail
                 user.save()
             prefs = UserPreferences(user=user)
             prefs.day_1       = form.cleaned_data['day_1']
@@ -50,6 +51,7 @@ def register(request):
             prefs.dinner_3    = form.cleaned_data['dinner_3']
             prefs.bus         = form.cleaned_data['bus']
             prefs.vegetarian  = form.cleaned_data['vegetarian']
+            prefs.shirt_size  = form.cleaned_data['shirt_size']
             prefs.save()
             return HttpResponseRedirect('/register/thanks/')
     else:

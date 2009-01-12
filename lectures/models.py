@@ -24,7 +24,7 @@ class LectureManager(models.Manager):
 class Lecture(models.Model):
     title     = models.CharField(max_length=128)
     duration  = models.PositiveIntegerField(max_length=3)
-    abstract  = models.TextField(max_length=2048)
+    abstract  = models.TextField(max_length=512)
     info      = models.TextField(max_length=2048)
     #dodatkowe info dla organizatorów
     author    = models.ForeignKey(User)

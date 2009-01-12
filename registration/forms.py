@@ -1,18 +1,12 @@
 # -*- coding: UTF-8 -*-
 
 from django import forms 
+from models import SHIRT_SIZE_CHOICES
 
 ORG_CHOICES = (
     ('uwr', 'Uniwersytet Wrocławski'),
     ('ksi', 'Koło Studentów Informatyki'),
     ('new',   'other'),
-)
-
-SHIRT_SIZE_CHOICES = (
-    ('S', 'S'),
-    ('M', 'M'),
-    ('L', 'L'),
-    ('XL', 'XL'),
 )
 
 class RegisterForm(forms.Form):

@@ -8,8 +8,16 @@ from django.contrib.auth.models import User
 # user id anyway)
 User.__unicode__ = User.get_full_name
 
+SHIRT_SIZE_CHOICES = (
+    ('S', 'S'),
+    ('M', 'M'),
+    ('L', 'L'),
+    ('XL', 'XL'),
+)
+
 class Organization(models.Model):
     name = models.CharField(max_length=64)
+
 
 class UserPreferences(models.Model):
     # This is the only required field
@@ -31,11 +39,13 @@ class UserPreferences(models.Model):
     # inne
     bus         = models.BooleanField()
     vegetarian  = models.BooleanField()
+    paid        = models.BooleanField()
+    shirt_size  = models.CharField(max_length=2, choices=SHIRT_SIZE_CHOICES)
 
     # ? anonimowy - nie chce zeby jego imie/nazwisko/mail pojawialy sie na stronie
-    # ? wplacil   - zaplacil za... za Zosie+busa / sama zosie a busa osobno?
 
     def __unicode__(self):
         return u"%s %s" % (self.user.first_name, self.user.last_name)
+    
 
 

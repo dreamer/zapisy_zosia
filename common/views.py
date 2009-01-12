@@ -19,27 +19,28 @@ def login_view(request):
         referer = ''
     if not user.is_authenticated():
         form = LoginForm()
+        email = request.POST['email']
+        password = request.POST['password']
         try:
             reason = None # theistic code ;)
-            greetings_stranger = False
-            greetings_resetter = False
-            email = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(username=email, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request,user)
+            usr = User.objects.get(email=email)
+            if usr.is_active:
+                usr = authenticate(username=email, password=password)
+                if usr: 
+                    login(request,usr)
                 else:
+                    # wrong password
                     reason = 'LOGIN_account_disabled'
             else:
-                reason = 'LOGIN_invalid'
+                # user is not active
+                reason = 'LOGIN_account_disabled'
         except Exception:
-            greetings_stranger = True
-        if referer.endswith('/reset/done/'):
-            greetings_resetter = True
-            greetings_stranger = False
-        if not reason and not greetings_stranger and not greetings_resetter:
-            # login quietly
+            # user does not exit
+            reason = 'LOGIN_account_disabled'
+        if not reason:
+            if referer.endswith('/reset/done/'):
+                greetings_resetter = True
+                greetings_stranger = False
             if referer.endswith('/login/') or referer.endswith('/bye/') or referer.endswith('/reset/done/'):
                 referer = '/blog/'
             return HttpResponseRedirect(referer)
