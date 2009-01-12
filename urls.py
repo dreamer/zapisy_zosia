@@ -31,6 +31,7 @@ urlpatterns = patterns('',
      (r'^register/$', registration.views.register),
      (r'^register/thanks/', registration.views.thanks),
      # (r'^register/add_org/$', registration.views.add_organization),
+     (r'^register/activate/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', registration.views.activate_user),
 
      # login / logout
      (r'^login/$', common.views.login_view),
@@ -64,5 +65,6 @@ urlpatterns = patterns('',
      (r'^reset/done/$',
          'django.contrib.auth.views.password_reset_complete',
          { 'template_name':'password_reset_complete.html' }),
+     
 )
 
