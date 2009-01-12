@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from django.shortcuts import render_to_response, HttpResponse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from forms import RegisterForm
