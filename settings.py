@@ -95,3 +95,10 @@ AUTHENTICATION_BACKENDS = (
     'zapisy_zosia.email-auth.EmailBackend',
 )
 
+# well, it's temporary, of course...
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '25'
+EMAIL_HOST_USER = 'zosia2009.test@gmail.com'
+EMAIL_HOST_PASSWORD = 'zosiatest'
+EMAIL_USE_TLS = True
+

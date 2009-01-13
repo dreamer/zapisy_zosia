@@ -3,7 +3,7 @@
 {% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>ZOSIA | {% trans title %} }</title>
+    <title>ZOSIA 2009</title>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Language" content="pl,en" />
@@ -66,8 +66,8 @@
                 {% endif %}
                 </span>
             </div>
-            <h1><a href="/blog/">ZOSIA</a> | {% trans title %}</h1>
-			<span>Zimowy Obóz Studentów Informatyki A &#8226; Przesieka 2009</span></div>
+            <h1><a href="/blog/">ZOSIA</a> | {% block title %}{% trans title %}{% endblock %}</h1> 
+			<span>Zimowy Obóz Studentów Informatyki A &#8226; Bagdad 2009</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
 			<!-- skiplink anchor: navigation -->

@@ -7,32 +7,51 @@ from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, Passwo
 from forms import *
 
 def login_view(request):
+    # hmm, I've moved too much stuff in here, it's a bit messy
+    # and HTTP_REFERER trickery should probably be better handled
+    # but it's 6 a.m. already
+    # Special thanks to my good friend, caffeine (dreamer_)
     title = "Login"
     user = request.user
+    reason = None # theistic code ;)
+    try:
+        referer = request.META['HTTP_REFERER']
+    except Exception:
+        referer = None
     if not user.is_authenticated():
-        form = LoginForm()
-        try:
-            reason = None # theistic code ;)
-            greetings_stranger = False
-            email = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(username=email, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request,user)
-                else:
+        if request.POST:
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                email    = form.cleaned_data['email']
+                password = form.cleaned_data['password']
+                try:
+                    usr = User.objects.get(email=email)
+                    if usr.is_active:
+                        usr = authenticate(username=email, password=password)
+                        if usr: 
+                            login(request,usr)
+                        else:
+                            # wrong password
+                            reason = 'LOGIN_account_disabled'
+                    else:
+                        # user is not active
+                        reason = 'LOGIN_account_disabled'
+                except Exception:
+                    # user does not exit
                     reason = 'LOGIN_account_disabled'
-            else:
-                reason = 'LOGIN_invalid'
-        except Exception:
-            greetings_stranger = True
-        if not reason and not greetings_stranger:
-            # login quietly
-            referer = request.META['HTTP_REFERER']
-            if referer.endswith('/login/') or referer.endswith('/bye/'):
-                referer = '/blog/'
-            return HttpResponseRedirect(referer)
-    # this template acutally is used only in case of unsuccesfull login
+                if not reason:
+                    if referer.endswith('/reset/done/'):
+                        greetings_resetter = True
+                        greetings_stranger = False
+                    if (referer is None) or referer.endswith('/login/') or referer.endswith('/bye/') or referer.endswith('/reset/done/'):
+                        referer = '/blog/'
+                    return HttpResponseRedirect(referer)
+        else:
+            form = LoginForm()
+    # this template is used in case of:
+    # - link from activation email
+    # - unsuccesfull login
+    # - login after password reset (aka 'password recovery')
     return render_to_response('login.html', locals())
 
 def logout_view(request):

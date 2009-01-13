@@ -17,7 +17,7 @@ def index(request):
     user = request.user
     login_form = LoginForm()
     lectures = Lecture.objects.filter(accepted=True)
-    if user.is_authenticated():
+    if user.is_authenticated() and user.is_active:
         lecture_proposition_form = NewLectureForm()
         if request.method == 'POST':
             lecture_proposition_form = NewLectureForm(request.POST)

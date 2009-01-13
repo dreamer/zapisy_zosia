@@ -14,8 +14,8 @@ class BlogPost(models.Model):
             self.pub_date = datetime.datetime.now()
         super(BlogPost, self).save()
     
-    def __str__(self):
-        return self.title
+    def __unicode__(self):
+        return u"%s" % self.title
 
     def get_absolute_url(self):
         return "/blog/"
