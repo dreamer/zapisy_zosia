@@ -1,12 +1,12 @@
 # -*- coding: UTF-8 -*-
 
 from django import forms 
-from models import SHIRT_SIZE_CHOICES
+from models import SHIRT_SIZE_CHOICES, SHIRT_TYPES_CHOICES
 
 ORG_CHOICES = (
     ('uwr', 'Uniwersytet Wrocławski'),
     ('ksi', 'Koło Studentów Informatyki'),
-    ('new',   'other'),
+    ('new', 'other'),
 )
 
 class RegisterForm(forms.Form):
@@ -36,6 +36,7 @@ class RegisterForm(forms.Form):
 
     vegetarian = forms.BooleanField(required=False)
     shirt_size = forms.ChoiceField(choices=SHIRT_SIZE_CHOICES)
+    shirt_type = forms.ChoiceField(choices=SHIRT_TYPES_CHOICES)
     bus        = forms.BooleanField(required=False)
 
     def validate_nonempty(self,x):

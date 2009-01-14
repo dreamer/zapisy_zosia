@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext as _
 
 # this is small hack to make user
 # more meaningfull (we're using email as
@@ -14,6 +15,12 @@ SHIRT_SIZE_CHOICES = (
     ('L', 'L'),
     ('XL', 'XL'),
 )
+
+SHIRT_TYPES_CHOICES = (
+    ('m', _('classic')),
+    ('f', _('women')),
+)
+
 
 class Organization(models.Model):
     name = models.CharField(max_length=64)
@@ -41,6 +48,7 @@ class UserPreferences(models.Model):
     vegetarian  = models.BooleanField()
     paid        = models.BooleanField()
     shirt_size  = models.CharField(max_length=2, choices=SHIRT_SIZE_CHOICES)
+    shirt_type  = models.CharField(max_length=1, choices=SHIRT_TYPES_CHOICES)
 
     # ? anonimowy - nie chce zeby jego imie/nazwisko/mail pojawialy sie na stronie
 

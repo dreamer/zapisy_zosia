@@ -1,2 +1,24 @@
-click, click
+Dziękujemy za rejestrację w systemie zapisów na ZOSIę.
+
+Aby aktywować konto kliknij w poniższy link:
+
 http://{{site_name}}/register/activate/{{uid}}-{{token}}/
+
+
+Zachowaj ten mail, aby wiedzieć, że:
+
+Termin zapisów upływa 14 stycznia 2009r.
+Termin wpłat upływa 14 stycznia 2009r.
+
+Natomiast wpłat należy dokonywać na poniższe konto:
+
+Powiernictwo Odbudowy Rzeszy
+ul. Zadrugi 16
+Wurstland 51-123
+12 3456 7890 1234 5678 9012 3456
+
+Tytuł przelewu:
+Jam jest [imię nazwisko] syn Tuchajbeja!
+
+UWAGA!
+Powyższe dane są przykładowe!

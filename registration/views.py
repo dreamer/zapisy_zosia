@@ -65,7 +65,7 @@ def register(request):
                     'uid': int_to_base36(user.id),
                     'token': token_generator.make_token(user),
                 }
-                send_mail( 'ZOSIA Activation link title', 
+                send_mail( _('activation_mail_title'), 
                             t.render(Context(c)),
                            'from@example.com',
                             [ user.email ], 
@@ -85,6 +85,7 @@ def register(request):
             prefs.bus         = form.cleaned_data['bus']
             prefs.vegetarian  = form.cleaned_data['vegetarian']
             prefs.shirt_size  = form.cleaned_data['shirt_size']
+            prefs.shirt_type  = form.cleaned_data['shirt_type']
             prefs.save()
             return HttpResponseRedirect('/register/thanks/')
     else:

@@ -214,7 +214,10 @@ form_onload()
             {{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label>
             </li>
             <li>
-            {{ form.shirt_size}}  <label for="id_shirt_size">{% trans "shirties" %}</label>
+            <label for="id_shirt_size">{% trans "shirties" %}</label> {{ form.shirt_size}}  
+            </li>
+            <li>
+            <label for="id_shirt_type">{% trans "shirt_type" %}</label> {{ form.shirt_type}} 
             </li>
         </ol>
     </fieldset>
