@@ -76,6 +76,7 @@ ul.errorlist {
     color: white;
     display: block;
     padding: 0.15em;
+    width: 20em;
 }
 label.for_hidden {
     width: 15em;

@@ -13,7 +13,11 @@
     width: 10em;
 }
 #register_other label {
-    width: 50em;
+    display: inline;
+    width: 15.3em;
+}
+.nasty_choices_li label { float: left; }
+.nasty_choices_li select { width: 6em; }
 }
 {% endblock css %}
 
@@ -213,10 +217,10 @@ form_onload()
             <li>
             {{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label>
             </li>
-            <li>
+            <li class="nasty_choices_li">
             <label for="id_shirt_size">{% trans "shirties" %}</label> {{ form.shirt_size}}  
             </li>
-            <li>
+            <li class="nasty_choices_li">
             <label for="id_shirt_type">{% trans "shirt_type" %}</label> {{ form.shirt_type}} 
             </li>
         </ol>
