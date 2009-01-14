@@ -13,6 +13,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.utils.http import base36_to_int, int_to_base36
 from django.template import Context, loader
 from django.contrib.sites.models import RequestSite
+from django.utils.translation import ugettext as _
 
 
 def suggested_username( name, surname ):
@@ -24,14 +25,14 @@ def activate_user(request, uidb36=None, token=None):
     assert uidb36 is not None and token is not None
     try:
         uid_int = base36_to_int(uidb36)
-    except ValueError:
-        raise Http404
-    usr = get_object_or_404(User, id=uid_int)
+        usr = get_object_or_404(User, id=uid_int)
+    except Exception:
+        return render_to_response('reactivation.html', {})
     if token_generator.check_token(usr, token):
         usr.is_active = True
         usr.save()
     else:
-        raise Http404
+        return render_to_response('reactivation.html', {})
     return HttpResponseRedirect('/login/') # yeah, right...
 
 
