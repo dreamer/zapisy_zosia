@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 23:01+0100\n"
+"POT-Creation-Date: 2009-01-14 22:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: dreamer_ <dreamer.tan@gmail.com>\n"
 "Language-Team: noteam <13@37.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "bye"
 msgstr "Wylogowałeś się."
 
-#: common/templates/bye.html:7
+#: common/templates/bye.html:7 common/templates/reactivation.html:7
 msgid "thanks for visit"
 msgstr "Dziękujemy za wizytę i do zobaczenia na ZOSI!"
 
@@ -35,8 +35,7 @@ msgstr "Niestety, logowanie się nie powiodło."
 #: common/templates/login.html:11
 msgid "loginfailrecover"
 msgstr ""
-"Jeżeli już posiadasz swoje konto, możesz <a href='/register/"
-"recover/'>odzyskać</a> hasło."
+"Jeżeli już posiadasz swoje konto, możesz <a href='/password_reset/'>odzyskać</a> hasło."
 
 #: common/templates/login.html:13
 msgid "stranger"
@@ -45,6 +44,10 @@ msgstr "Witaj nieznajomy! <br>Zapraszamy do zalogowania się."
 #: common/templates/login.html:19
 msgid "loginbutton"
 msgstr "Zaloguj"
+
+#: common/templates/reactivation.html:5
+msgid "reactivate"
+msgstr "Użyty link aktywacyjny jest nieprawidłowy lub nieaktualny."
 
 #: lectures/views.py:27
 msgid "thankyou"
@@ -281,6 +284,110 @@ msgstr "Wyloguj"
 msgid "Blog"
 msgstr "Blog"
 
+#: templates/password_reset_complete.html:4
+#: templates/password_reset_confirm.html:4
+#: templates/password_reset_done.html:4 templates/password_reset_form.html:4
+msgid "Home"
+msgstr ""
+
+#: templates/password_reset_complete.html:4
+#: templates/password_reset_confirm.html:6
+#: templates/password_reset_done.html:4 templates/password_reset_form.html:4
+#: templates/password_reset_form.html:6 templates/password_reset_form.html:10
+#, fuzzy
+msgid "Password reset"
+msgstr "hasło"
+
+#: templates/password_reset_complete.html:6
+#: templates/password_reset_complete.html:10
+msgid "Password reset complete"
+msgstr ""
+
+#: templates/password_reset_complete.html:12
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: templates/password_reset_complete.html:14
+msgid "Log in"
+msgstr ""
+
+#: templates/password_reset_confirm.html:4
+msgid "Password reset confirmation"
+msgstr ""
+
+#: templates/password_reset_confirm.html:12
+#, fuzzy
+msgid "Enter new password"
+msgstr "Zmień hasło"
+
+#: templates/password_reset_confirm.html:14
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: templates/password_reset_confirm.html:18
+#, fuzzy
+msgid "New password:"
+msgstr "hasło"
+
+#: templates/password_reset_confirm.html:20
+#, fuzzy
+msgid "Confirm password:"
+msgstr "Zmień hasło"
+
+#: templates/password_reset_confirm.html:21
+#, fuzzy
+msgid "Change my password"
+msgstr "Zmień hasło"
+
+#: templates/password_reset_confirm.html:26
+msgid "Password reset unsuccessful"
+msgstr ""
+
+#: templates/password_reset_confirm.html:28
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: templates/password_reset_done.html:6 templates/password_reset_done.html:10
+msgid "Password reset successful"
+msgstr ""
+
+#: templates/password_reset_done.html:12
+msgid ""
+"We've e-mailed you instructions for setting your password to the e-mail "
+"address you submitted. You should be receiving it shortly."
+msgstr ""
+
+#: templates/password_reset_form.html:12
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll e-mail "
+"instructions for setting a new one."
+msgstr ""
+
+#: templates/password_reset_form.html:16
+msgid "E-mail address:"
+msgstr "Adres e-mail:"
+
+#: templates/password_reset_form.html:16
+#, fuzzy
+msgid "Reset my password"
+msgstr "hasło"
+
 #: templates/admin/base_site.html:4
 msgid "Django site admin"
 msgstr ""
+
+msgid "shirt_type"
+msgstr "rodzaj koszulki"
+
+msgid "classic"
+msgstr "klasyczny"
+
+msgid "woman"
+msgstr "damski"
+
+msgid "activation_mail_title"
+msgstr "Mail aktywacyjny systemu zapisów na ZOSIę"
