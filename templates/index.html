@@ -13,7 +13,7 @@
 <link href="/static_media/css/patches/patch_2col_right_13.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 <link rel="alternate" type="application/rss+xml" title="RSS"
-      href="/feeds/blog/">
+      href="/feeds/blog/"/>
 <script type="text/javascript">
 {% block javascript %}{% endblock %}
 </script>
@@ -28,13 +28,6 @@
 	<div id="page">
 		<div id="header">
 			<div id="topnav">
-				<!-- start: skip link navigation -->
-                <!-- 
-                <a class="skip" href="#navigation" title="skip link">Skip to the navigation</a><span class="hideme">.</span>
-				<a class="skip" href="#content" title="skip link">Skip to the content</a><span class="hideme">.</span>
-                -->
-				<!-- end: skip link navigation -->
-                <span>
                 {% if user.is_authenticated %}
                     {% trans "oh hai" %}, {{ user.first_name }} {{ user.last_name}} |
                     <a href="/password_change/">{% trans "Change password" %}</a> |
@@ -43,31 +36,31 @@
                     {% endif %}
                     <a href="/logout/">{% trans "Logout" %}</a>
                 {% else %}
-                    {% if login_form %}
-                        <form action="/login/" method="post" id="login_form">
-                        <fieldset>
-                        {% if login_form.email.errors %}
-                            <ul class="errorlist">
-                            {% for error in login_form.email.errors %}<li>{{error|escape}}</li>{% endfor %}
-                            </ul>
-                        {% endif %}
-                        <label for="id_login_email">e-mail</label> {{ login_form.email }}
-                        {% if form.password.errors %}
-                            <ul class="errorlist">
-                            {% for error in form.password.errors %}<li>{{error|escape}}</li>{% endfor %}
-                            </ul>
-                        {% endif %}
-                        <label for="id_login_password">{% trans "password" %}</label> {{ login_form.password }}
-                        <input type="submit" value="login" />
-                        </fieldset>
-                        </form>
-                        {% endif %} {# login_form #}
+                {% if login_form %}
+                    <form action="/login/" method="post" id="login_form">
+                    <fieldset>
+                    {% if login_form.email.errors %}
+                        <ul class="errorlist">
+                        {% for error in login_form.email.errors %}<li>{{error|escape}}</li>{% endfor %}
+                        </ul>
+                    {% endif %}
+                    <label for="id_login_email">e-mail</label> {{ login_form.email }}
+                    {% if form.password.errors %}
+                        <ul class="errorlist">
+                        {% for error in form.password.errors %}<li>{{error|escape}}</li>{% endfor %}
+                        </ul>
+                    {% endif %}
+                    <label for="id_login_password">{% trans "password" %}</label> {{ login_form.password }}
+                    <input type="submit" value="login" />
+                    </fieldset>
+                    </form>
+                    {% endif %} {# login_form #}
                     {# <a href="/register/">{% trans "Register" %}</a> #}
                 {% endif %}
-                </span>
             </div>
-            <h1><a href="/blog/">ZOSIA</a> | {% block title %}{% trans title %}{% endblock %}</h1> 
-			<span>Zimowy Obóz Studentów Informatyki A &#8226; Bagdad 2009</span></div>
+            <a href="/blog/"><img src="/static_media/images/logo_zosi_shadow.png" alt="ZOSIA" /></a>
+            {# <h1> {% block title %}{% trans title %}{% endblock %}</h1> // to było, ale nie jest #}
+			<span>Zimowy Obóz Studentów Informatyki A &#8226; Przesieka 2009</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
 			<!-- skiplink anchor: navigation -->

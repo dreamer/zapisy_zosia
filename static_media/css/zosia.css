@@ -100,3 +100,33 @@ label.for_hidden span {
     display: none;
 }
 
+/**
+ * logo
+ */
+#header {
+    height: 4em;
+}
+#header img {
+    position: absolute;
+    top: 0;
+}
+#header span {
+    position: relative;
+    top: 3em;
+    left: 0.5em;
+}
+
+/**
+ * login form / links on top of the page
+ */
+#login_form fieldset {}
+#login_form label {
+    width: auto;
+    font-size: 1em;
+    margin: auto;
+    vertical-align: middle;
+    margin-bottom: 1pt;
+    margin-left: 1em;
+}
+#login_form input {}
+
