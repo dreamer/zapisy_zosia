@@ -47,36 +47,29 @@
  * following are used in forms; it was formerly inside css template block
  */
 
-fieldset {
-    border: 0;
+fieldset { border: 0; }
+fieldset legend { 
+    font-weight: 600;
+    padding: 0.2em;
 }
-
-fieldset ol {
-    padding: 0;
-}
-
+fieldset ol { padding: 0; }
 fieldset ol li {
     list-style: none;
     padding: 0.1em;
 }
-
 fieldset label {
-    font-size: 80%;
     vertical-align: top;
     display: inline-block;
     width: 15em;
 }
-
 label span {
     font-style: italic;
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
-
 ul.errorlist {
    margin: 0;
    padding: 0;
 }
-
 .errorlist li {
     font-size: 0.7em;
     background-color: red;
@@ -84,21 +77,16 @@ ul.errorlist {
     display: block;
     padding: 0.15em;
 }
-
 label.for_hidden {
     width: 15em;
     cursor: pointer;
     color: blue;
     text-decoration: underline;
 }
-
 label.for_hidden span {
     font-size: 0.7em;
 }
-
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
 /**
  * logo

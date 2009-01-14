@@ -1,6 +1,22 @@
 {% extends "index.html"%}
 {% load i18n %}
 
+{% block css %}
+#register_nights, 
+#register_breakfasts, 
+#register_dinners { 
+    display: inline;
+}
+#register_nights     label,
+#register_breakfasts label,
+#register_dinners    label { 
+    width: 10em;
+}
+#register_other label {
+    width: 50em;
+}
+{% endblock css %}
+
 {% block javascript %}
 function add_select_form() {
     var f_org   = document.getElementById('h_org_2');
@@ -44,7 +60,7 @@ form_onload()
 <h2>{% trans "Registration" %}</h2>
 
 <form action="." method="post" id="register_form">
-    <fieldset>
+    <fieldset id="register_auth">
         <legend>{% trans "authentication" %}</legend>
         <ol>
             <li>
@@ -82,7 +98,7 @@ form_onload()
             </li>
         </ol>
     </fieldset>
-    <fieldset>
+    <fieldset id="register_personal">
         <legend>{% trans "personal" %}</legend>
         <ol>
             <li>
@@ -139,7 +155,7 @@ form_onload()
             -->
         </ol>
     </fieldset>
-    <fieldset>
+    <fieldset id="register_nights">
         <legend>{% trans "nights" %}</legend>
         <ol>
             {% if form.day_3.errors %}
@@ -160,7 +176,7 @@ form_onload()
             </li>
         </ol>
     </fieldset>
-    <fieldset>
+    <fieldset id="register_dinners">
         <legend>{% trans "dinners" %}</legend>
         <ol>
             <li>
@@ -174,7 +190,7 @@ form_onload()
             </li>
         </ol>
     </fieldset>
-    <fieldset>
+    <fieldset id="register_breakfasts">
         <legend>{% trans "breakfasts" %}</legend>
         <ol>
             <li>
@@ -188,7 +204,7 @@ form_onload()
             </li>
         </ol>
     </fieldset>
-    <fieldset>
+    <fieldset id="register_other">
         <legend>{% trans "others" %}</legend>
         <ol>
             <li>
