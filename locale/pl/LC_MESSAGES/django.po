@@ -386,7 +386,7 @@ msgstr "rodzaj koszulki"
 msgid "classic"
 msgstr "klasyczny"
 
-msgid "woman"
+msgid "women"
 msgstr "damski"
 
 msgid "activation_mail_title"
