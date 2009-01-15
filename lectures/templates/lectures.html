@@ -1,5 +1,6 @@
 {% extends "index.html"%}
 {% load i18n %}
+{% load markup %}
 
 {% block content %}
 {% if messages %}
@@ -14,9 +15,8 @@
 {% if lectures %}
 {% for lecture in lectures %}
     <h3>{{ lecture.title }}</h3>
-    <div>{{ lecture.duration }}</div>
-    <div>data</div>
-    <p>{{ lecture.abstract }}</p>
+    <strong>{{ lecture.author }}</strong>
+    {{ lecture.abstract|textile }}
 {% endfor %}
 {% else %}
     {% trans "None yet. You can be first!" %}<p />
