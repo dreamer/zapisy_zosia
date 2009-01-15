@@ -34,9 +34,9 @@ TASKS (Backlog)
 
 + registration 
   % design
-  + form layout
-  * send email to complete registration
-  * make sure, that you added all required preferences
+  % form layout
+  + send email to complete registration
+  + make sure, that you added all required preferences
   - display info about money and sample bank account info
   * captcha
   - changing your registration info
@@ -77,11 +77,13 @@ TASKS (Backlog)
   - implement language switching
 
 * testing / user testing
+  % 1st day of testing done
 
 + deployment
   % access to ksi (ask dreamer_, if you need it too)
   % install and make mod_python running
   % switch from sqlite to mysql
+  % switch from mysql (bastard) to postgres
   % remove serving static files through django
   * make sure, that all features are operational also outside of debug mode
   + deploy zapisy
@@ -90,13 +92,18 @@ TASKS (Backlog)
   * after final deployment, make sure that database user doesn't have too many priviledges
   + update DEPLOYMENT section of this document
   - domain
-  - smtp account
+  + smtp account
 
 - other cool/important stuff
   + change admin templates
-  * clickable logo
-  - valid xhtml,css
+  % clickable logo
+  + valid xhtml,css
   - correct mimetypes
   + select some license
-  + remove duplicated code (css blocks in forms, unused blocks in templates)
+  % remove duplicated code (css blocks in forms, unused blocks in templates)
+  % support for shirt types
+  * summary view for admins
+  % css fixes (layout)
+  - css fixes (colours)
+  
 
