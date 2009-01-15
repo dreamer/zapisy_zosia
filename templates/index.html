@@ -67,7 +67,9 @@
 			<div id="nav_main">
 				<ul>
                     <li {% ifequal title "Blog" %}id="current"{% endifequal %}><a href="/blog/">{% trans "Blog" %}</a></li>
-                    {% if not user.is_authenticated %}
+                    {% if user.is_authenticated %}
+                    <li {% ifequal title "Change preferences" %}id="current"{% endifequal %}><a href="/change_preferences/">{% trans "Change preferences" %}</a></li>
+                    {% else %}
                     <li {% ifequal title "Registration" %}id="current"{% endifequal %}><a href="/register/">{% trans "Registration" %}</a></li>
                     {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>

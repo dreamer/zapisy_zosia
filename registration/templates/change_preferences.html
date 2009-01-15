@@ -1,0 +1,135 @@
+{% extends "index.html"%}
+{% load i18n %}
+
+{% block css %}
+#register_nights, 
+#register_breakfasts, 
+#register_dinners { 
+    display: inline;
+}
+#register_nights     label,
+#register_breakfasts label,
+#register_dinners    label { 
+    width: 10em;
+}
+#register_other label {
+    display: inline;
+    width: 15.3em;
+}
+.nasty_choices_li label { float: left; }
+.nasty_choices_li select { width: 7em; }
+}
+{% endblock css %}
+
+{% block content %}
+<h2>{% trans "Preferences" %}</h2>
+
+<form action="." method="post" id="register_form">
+    <fieldset id="register_auth">
+        <legend>{% trans "authentication" %}</legend>
+        <ol>
+            <li>
+            <label>e-mail</label>
+                {{ user.email }}
+            </li>
+            <li>
+                <label>{% trans "password" %}</label>
+                <a href="/password_change/">{% trans "change" %}</a>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset id="register_personal">
+        <legend>{% trans "personal" %}</legend>
+        <ol>
+            <li>
+            <label>{% trans "name" %}, {% trans "surname" %}</label>
+                {{ user.first_name }} {{ user.last_name }}
+            </li>
+            <li>
+                {# bw careful with errors here - if there are more than 1 orgs#}
+                {% if form.organization_1.errors %}
+                <ul class="errorlist">
+                {% for error in form.organization_1.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="id_organization_1">
+                   {% trans "organization" %}
+                </label>
+                {{ form.organization_1 }}
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset id="register_nights">
+        <legend>{% trans "nights" %}</legend>
+        <ol>
+            {% if form.day_3.errors %}
+            <ul class="errorlist">
+            {% for error in form.day_3.errors %}
+                <li>{{error|escape}}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            <li>
+            {{ form.day_1 }} <label for="id_day_1">{% trans "night12" %}</label>
+            </li>
+            <li>
+            {{ form.day_2 }} <label for="id_day_2">{% trans "night23" %}</label>
+            </li>
+            <li>
+            {{ form.day_3 }} <label for="id_day_3">{% trans "night34" %}</label>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset id="register_dinners">
+        <legend>{% trans "dinners" %}</legend>
+        <ol>
+            <li>
+            {{ form.dinner_1}} <label for="id_dinner_1">{% trans "dinner1" %}</label>
+            </li>
+            <li>
+            {{ form.dinner_2}} <label for="id_dinner_2">{% trans "dinner2" %}</label>
+            </li>
+            <li>
+            {{ form.dinner_3}} <label for="id_dinner_3">{% trans "dinner3" %}</label>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset id="register_breakfasts">
+        <legend>{% trans "breakfasts" %}</legend>
+        <ol>
+            <li>
+            {{ form.breakfast_2 }} <label for="id_breakfast_2">{% trans "breakfast2" %}</label>
+            </li>
+            <li>
+            {{ form.breakfast_3 }} <label for="id_breakfast_3">{% trans "breakfast3" %}</label>
+            </li>
+            <li>
+            {{ form.breakfast_4 }} <label for="id_breakfast_4">{% trans "breakfast4" %}</label>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset id="register_other">
+        <legend>{% trans "others" %}</legend>
+        <ol>
+            <li>
+            {{ form.vegetarian }}  <label for="id_vegetarian">{% trans "veggies" %}</label>
+            </li>
+            <li>
+            {{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label>
+            </li>
+            <li class="nasty_choices_li">
+            <label for="id_shirt_size">{% trans "shirties" %}</label> {{ form.shirt_size}}  
+            </li>
+            <li class="nasty_choices_li">
+            <label for="id_shirt_type">{% trans "shirt_type" %}</label> {{ form.shirt_type}} 
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset><input type="submit" value="{% trans "Save" %}" /></fieldset>
+</form>
+
+{% endblock content %}
+
+

@@ -33,6 +33,8 @@ urlpatterns = patterns('',
      # (r'^register/add_org/$', registration.views.add_organization),
      (r'^register/activate/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', registration.views.activate_user),
 
+     (r'^change_preferences/$', registration.views.change_preferences),
+
      # login / logout
      (r'^login/$', common.views.login_view),
      (r'^logout/$', common.views.logout_view),

@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, HttpResponse
 from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
-from forms import RegisterForm
+from forms import *
 from models import UserPreferences, Organization
 from common.forms import LoginForm
 from django.core.mail import send_mail
@@ -14,6 +14,7 @@ from django.utils.http import base36_to_int, int_to_base36
 from django.template import Context, loader
 from django.contrib.sites.models import RequestSite
 from django.utils.translation import ugettext as _
+from django.contrib.auth.decorators import login_required
 
 
 def suggested_username( name, surname ):
@@ -112,7 +113,10 @@ def thanks(request):
     login_form = LoginForm()
     return render_to_response('thanks.html', locals())
     
-# TODO
-#def add_organization(request):
-#    HttpResponse('foo',mimetype="application/xhtml+xml")
+@login_required
+def change_preferences(request):
+    user = request.user
+    title = "Change preferences"
+    form = ChangePrefsForm()
+    return render_to_response('change_preferences.html', locals())
 

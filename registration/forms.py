@@ -3,6 +3,8 @@
 from django import forms 
 from models import SHIRT_SIZE_CHOICES, SHIRT_TYPES_CHOICES
 from models import getOrgChoices as organization_choices
+from django.utils.translation import ugettext as _
+
 
 class RegisterForm(forms.Form):
 
@@ -72,5 +74,42 @@ class RegisterForm(forms.Form):
         if day1 or day2 or day3:
             return day3
         else:
-            raise forms.ValidationError("At least one day should be selected.")
+            raise forms.ValidationError(_("At least one day should be selected."))
     
+
+
+# grrr, this REALLY should not be copied'n'pasted but
+# correct form class hierarchy should be developed
+# no time :(
+class ChangePrefsForm(forms.Form):
+    def __init__(self, *args, **kwargs) :
+        super(forms.Form, self) .__init__(*args, **kwargs)
+        self.fields['organization_1'].choices = organization_choices()[:-1]
+    
+    organization_1 = forms.ChoiceField(choices=organization_choices())
+
+    day_1 = forms.BooleanField(required=False, initial=True)
+    day_2 = forms.BooleanField(required=False, initial=True)
+    day_3 = forms.BooleanField(required=False, initial=True)
+
+    breakfast_2 = forms.BooleanField(required=False, initial=True)
+    breakfast_3 = forms.BooleanField(required=False, initial=True)
+    breakfast_4 = forms.BooleanField(required=False, initial=True)
+
+    dinner_1 = forms.BooleanField(required=False, initial=True)
+    dinner_2 = forms.BooleanField(required=False, initial=True)
+    dinner_3 = forms.BooleanField(required=False, initial=True)
+
+    vegetarian = forms.BooleanField(required=False)
+    shirt_size = forms.ChoiceField(choices=SHIRT_SIZE_CHOICES)
+    shirt_type = forms.ChoiceField(choices=SHIRT_TYPES_CHOICES)
+    bus        = forms.BooleanField(required=False)
+
+    def clean_day_3(self):
+        day1 = self.cleaned_data.get('day_1')
+        day2 = self.cleaned_data.get('day_2')
+        day3 = self.cleaned_data.get('day_3')
+        if day1 or day2 or day3:
+            return day3
+        else:
+            raise forms.ValidationError(_("At least one day should be selected."))
