@@ -117,6 +117,30 @@ def thanks(request):
 def change_preferences(request):
     user = request.user
     title = "Change preferences"
+    prefs = UserPreferences.objects.get(user=user)
     form = ChangePrefsForm()
+    if request.POST:
+        form = ChangePrefsForm(request.POST)
+        form.add_bad_org(prefs)
+        if form.is_valid():
+            # save everything
+            prefs.org         = Organization.objects.get(
+                                    id=form.cleaned_data['organization_1'])
+            prefs.day_1       = form.cleaned_data['day_1']
+            prefs.day_2       = form.cleaned_data['day_2']
+            prefs.day_3       = form.cleaned_data['day_3']
+            prefs.breakfast_2 = form.cleaned_data['breakfast_2']
+            prefs.breakfast_3 = form.cleaned_data['breakfast_3']
+            prefs.breakfast_4 = form.cleaned_data['breakfast_4']
+            prefs.dinner_1    = form.cleaned_data['dinner_1']
+            prefs.dinner_2    = form.cleaned_data['dinner_2']
+            prefs.dinner_3    = form.cleaned_data['dinner_3']
+            prefs.bus         = form.cleaned_data['bus']
+            prefs.vegetarian  = form.cleaned_data['vegetarian']
+            prefs.shirt_size  = form.cleaned_data['shirt_size']
+            prefs.shirt_type  = form.cleaned_data['shirt_type']
+            prefs.save()
+    else:
+        form.initialize(prefs)
     return render_to_response('change_preferences.html', locals())
 

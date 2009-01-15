@@ -85,20 +85,33 @@ class ChangePrefsForm(forms.Form):
     def __init__(self, *args, **kwargs) :
         super(forms.Form, self) .__init__(*args, **kwargs)
         self.fields['organization_1'].choices = organization_choices()[:-1]
-    
+
+    def add_bad_org(self,prefs):
+        if not prefs.org.accepted:
+            self.fields['organization_1'].choices.append( (prefs.org.id,prefs.org.name) )
+
+    def initialize(self,prefs):
+        # change values depending on given user preferences
+        for key in prefs.__dict__.keys():
+            if self.fields.has_key(key):
+                self.fields[key].initial = prefs.__dict__[key]
+        # organization selection
+        self.add_bad_org(prefs)
+        self.fields['organization_1'].initial = prefs.org.id
+
     organization_1 = forms.ChoiceField(choices=organization_choices())
 
-    day_1 = forms.BooleanField(required=False, initial=True)
-    day_2 = forms.BooleanField(required=False, initial=True)
-    day_3 = forms.BooleanField(required=False, initial=True)
+    day_1 = forms.BooleanField(required=False)
+    day_2 = forms.BooleanField(required=False)
+    day_3 = forms.BooleanField(required=False)
 
-    breakfast_2 = forms.BooleanField(required=False, initial=True)
-    breakfast_3 = forms.BooleanField(required=False, initial=True)
-    breakfast_4 = forms.BooleanField(required=False, initial=True)
+    breakfast_2 = forms.BooleanField(required=False)
+    breakfast_3 = forms.BooleanField(required=False)
+    breakfast_4 = forms.BooleanField(required=False)
 
-    dinner_1 = forms.BooleanField(required=False, initial=True)
-    dinner_2 = forms.BooleanField(required=False, initial=True)
-    dinner_3 = forms.BooleanField(required=False, initial=True)
+    dinner_1 = forms.BooleanField(required=False)
+    dinner_2 = forms.BooleanField(required=False)
+    dinner_3 = forms.BooleanField(required=False)
 
     vegetarian = forms.BooleanField(required=False)
     shirt_size = forms.ChoiceField(choices=SHIRT_SIZE_CHOICES)
