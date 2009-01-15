@@ -2,14 +2,14 @@
 
 from django import forms 
 from models import SHIRT_SIZE_CHOICES, SHIRT_TYPES_CHOICES
-
-ORG_CHOICES = (
-    ('uwr', 'Uniwersytet Wrocławski'),
-    ('ksi', 'Koło Studentów Informatyki'),
-    ('new', 'other'),
-)
+from models import getOrgChoices as organization_choices
 
 class RegisterForm(forms.Form):
+
+    def __init__(self, *args, **kwargs) :
+        super(forms.Form, self) .__init__(*args, **kwargs)
+        self.fields['organization_1'].choices = organization_choices()
+
     email    = forms.EmailField(required=True)
     password  = forms.CharField(widget=forms.PasswordInput())
     password2 = forms.CharField(widget=forms.PasswordInput())
@@ -17,10 +17,8 @@ class RegisterForm(forms.Form):
     name    = forms.CharField()
     surname = forms.CharField()
 
-    organization_1 = forms.ChoiceField(choices=ORG_CHOICES)
-    # TODO: enable this
-    #organization_2 = forms.ChoiceField(choices=ORG_CHOICES)
-    #organization_3 = forms.ChoiceField(choices=ORG_CHOICES)
+    organization_1 = forms.ChoiceField(choices=organization_choices())
+    organization_2 = forms.CharField(required=False)
 
     day_1 = forms.BooleanField(required=False, initial=True)
     day_2 = forms.BooleanField(required=False, initial=True)

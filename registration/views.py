@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from forms import RegisterForm
-from models import UserPreferences
+from models import UserPreferences, Organization
 from common.forms import LoginForm
 from django.core.mail import send_mail
 from django.contrib.auth.tokens import default_token_generator as token_generator
@@ -72,8 +72,20 @@ def register(request):
                             [ user.email ], 
                             fail_silently=True )
                 user.save()
-
+            #saving organization
+            try:
+                org1 = form.cleaned_data['organization_1']
+                org2 = form.cleaned_data['organization_2']
+                if org1 == 'new':
+                    org = Organization(name=org2, accepted=False)
+                    org.save()
+                else:
+                    org = Organization.objects.get(id=org1)
+            except Exception:
+                org = Organization("fail",accepted=False)
+                org.save()
             prefs = UserPreferences(user=user)
+            prefs.org         = org
             prefs.day_1       = form.cleaned_data['day_1']
             prefs.day_2       = form.cleaned_data['day_2']
             prefs.day_3       = form.cleaned_data['day_3']

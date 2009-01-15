@@ -21,14 +21,27 @@ SHIRT_TYPES_CHOICES = (
     ('f', _('women')),
 )
 
-
 class Organization(models.Model):
-    name = models.CharField(max_length=64)
+    name     = models.CharField(max_length=64)
+    accepted = models.BooleanField()
 
+    def __unicode__(self):
+        return u"%s" % self.name
+
+# converts organizations in database into
+# choices for option fields
+def getOrgChoices():
+    list = [ (org.id, org.name) 
+           for org in Organization.objects.filter(accepted=True) ]
+    list = list[:13]
+    list.append( ('new', 'inna') )
+    return tuple(list)
 
 class UserPreferences(models.Model):
     # This is the only required field
     user = models.ForeignKey(User, unique=True)
+
+    org = models.ForeignKey(Organization)
 
     # opłaty
     day_1 = models.BooleanField()

@@ -14,6 +14,7 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'paid',
     'shirt_size',
     'shirt_type',
+    'org',
     )
 admin.site.register(UserPreferences, UserPreferencesAdmin)
 admin.site.register(Organization)

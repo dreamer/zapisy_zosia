@@ -22,37 +22,21 @@
 {% endblock css %}
 
 {% block javascript %}
-function add_select_form() {
-    var f_org   = document.getElementById('h_org_2');
-    f_org.style.display = 'list-item';
-    var li_this = document.getElementById('select_label');
-    li_this.style.display = 'none';
-}
-
 function switch_org_form(selEl,addEl) {
     if(selEl.value == 'new') {
-        selEl.style.display = 'none';
         addEl.style.display = 'inline';
-        var f_new_org = document.getElementById('id_new_org');
+        var f_new_org = document.getElementById('id_organization_2');
         f_new_org.focus();
+    } else {
+        addEl.style.display = 'none';
     }
-}
-
-function switch_add_form(selEl,addEl) {
-    selEl.style.display = 'inline';
-    addEl.style.display = 'none';
-    var f_new_org = document.getElementById('id_new_org');
-    selEl.options[selEl.length-1] = new Option(f_new_org.value, '');
-    selEl.options[selEl.length]   = new Option('other', 'new');
-    f_new_org.value = '';
 }
 
 function form_onload() {
     var f_org      = document.getElementById('id_organization_1');
     var f_add_org  = document.getElementById('id_add_org_1');
-    var f_add_btn  = document.getElementById('id_add_btn_1');
-    f_org.onchange    = function () { switch_org_form(f_org,f_add_org); };
-    f_add_btn.onclick = function () { switch_add_form(f_org,f_add_org); };
+    f_org.onchange = function () { switch_org_form(f_org,f_add_org); };
+    switch_org_form(f_org,f_add_org);
 }
 {% endblock %}
 
@@ -141,16 +125,10 @@ form_onload()
                 </label>
                 {{ form.organization_1 }}
                 <span id="id_add_org_1" class="hidden">
-                    <input type="text" id="id_new_org" />
-                    <button type="button" id="id_add_btn_1">{% trans "add" %}</button>
+                    {{ form.organization_2 }}
                 </span>
             </li>
-            <!-- TODO: temporary hack (hi, every1 :) )
-            <li class="hidden" id="h_org_2">
-                <label></label>
-                {{ form.organization_2 }}
-            </li>
-            <li id="select_label">
+            <!--
             <label></label>
                 <label class="for_hidden" onclick='add_select_form()'>
                     <span>select another one</span>
