@@ -108,7 +108,7 @@ def thanks(request):
     login_form = LoginForm()
     return render_to_response('thanks.html', locals())
  
-def payment(user):
+def count_payment(user):
     # returns how much money user is going to pay
     # ok, temporarily it is hardcoded, probably should
     # be moved somewhere else
@@ -116,6 +116,11 @@ def payment(user):
     days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 50
     breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 8
     dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 10
+    bonus_payment       = 0
+    if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 1
+    if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 1
+    if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 1
+    return days_payment + breakfasts_payment + dinners_payment + bonus_payment
 
 
 @login_required
@@ -147,5 +152,6 @@ def change_preferences(request):
             prefs.save()
     else:
         form.initialize(prefs)
+    payment = count_payment(user)
     return render_to_response('change_preferences.html', locals())
 

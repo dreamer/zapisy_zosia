@@ -22,6 +22,27 @@
 {% endblock css %}
 
 {% block content %}
+<h2>Dane do przelewu</h2>
+<table>
+<tr><td>
+<pre>rachunek odbiorcy
+tytuł przelewu
+imię, nazwisko odbiorcy
+adres 
+miejscowość
+kwota
+</pre>
+</td><td>
+<pre>12 3456 7890 1234 5678 9012 3456
+[ZOSIA09] {{user.email}}
+Powiernictwo Odbudowy Rzeszy
+ul. Zadrugi 16
+Wurstland 51-123
+{{ payment }} zł
+</pre>
+</td></tr>
+</table>
+
 <h2>{% trans "Preferences" %}</h2>
 
 <form action="." method="post" id="register_form">
@@ -142,4 +163,5 @@
 
 {% endblock content %}
 
-
+{% block right_column %}
+{% endblock %}
