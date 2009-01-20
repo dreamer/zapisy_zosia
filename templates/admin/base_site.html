@@ -3,6 +3,17 @@
 
 {% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
 
+{% block extrahead %}
+<script type="text/javascript">
+    <!--
+    main = function() {
+        
+    }
+    /* document.onload = alert(1); */
+    -->
+</script>
+{% endblock %}
+
 {% block branding %}
 <h1 id="site-name"><a href="/blog/">ZOSIA</a> | {{ title }} </h1>
 {% endblock %}

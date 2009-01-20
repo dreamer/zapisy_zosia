@@ -35,12 +35,12 @@ TASKS (Backlog)
 + registration 
   % design
   % form layout
+  % make organizations working again
   + send email to complete registration
   + make sure, that you added all required preferences
   - display info about money and sample bank account info
-  * captcha
-  - changing your registration info
-  - make organizations working again
+  - captcha
+  + changing your registration info
 
 + logging in
   % design
@@ -57,7 +57,6 @@ TASKS (Backlog)
   + RSS support
   - preview for author
   - textile cheat-sheet http://textile.thresholdstate.com/
-  * test
 
 + lectures
   % design
@@ -66,10 +65,12 @@ TASKS (Backlog)
   + make lecture list look right
   - "suggest lecture" link above lecture list
   - conversion to pdf
+  * multiple authors
 
 * rooms registration
   % design (http://code.google.com/p/zapisy-zosia/wiki/ZapisyNaPokoje)
   - conversion to pdf
+  * logs
 
 * translation
   % implement django translation system
@@ -78,6 +79,7 @@ TASKS (Backlog)
 
 * testing / user testing
   % 1st day of testing done
+  % 2nd day of testing (no new results)
 
 + deployment
   % access to ksi (ask dreamer_, if you need it too)
@@ -85,14 +87,14 @@ TASKS (Backlog)
   % switch from sqlite to mysql
   % switch from mysql (bastard) to postgres
   % remove serving static files through django
-  * make sure, that all features are operational also outside of debug mode
   + deploy zapisy
-  * prepare meaningfull, non-debug error pages (404, etc)
-  - support for memcached?
-  * after final deployment, make sure that database user doesn't have too many priviledges
-  + update DEPLOYMENT section of this document
-  - domain
   + smtp account
+  + update DEPLOYMENT section of this document
+  - support for memcached?
+  - domain
+  * make sure, that all features are operational also outside of debug mode
+  * prepare meaningfull, non-debug error pages (404, etc)
+  * after final deployment, make sure that database user doesn't have too many priviledges
 
 - other cool/important stuff
   + change admin templates
@@ -105,5 +107,6 @@ TASKS (Backlog)
   * summary view for admins
   % css fixes (layout)
   - css fixes (colours)
-  
+  - rozjechany formularz w odzyskiwaniu hasła
+  ** BACKUP
 
