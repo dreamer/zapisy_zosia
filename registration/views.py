@@ -17,11 +17,6 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
 
 
-def suggested_username( name, surname ):
-    # deprecated, probably not needed
-    # TODO: make database query if username is not already in base
-    return '%s_%s' % ( name, surname )
-
 def activate_user(request, uidb36=None, token=None):
     assert uidb36 is not None and token is not None
     try:
@@ -112,7 +107,17 @@ def thanks(request):
     title = "Registration"
     login_form = LoginForm()
     return render_to_response('thanks.html', locals())
-    
+ 
+def payment(user):
+    # returns how much money user is going to pay
+    # ok, temporarily it is hardcoded, probably should
+    # be moved somewhere else
+    prefs = UserPreferences.objects.get(user=user)
+    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 50
+    breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 8
+    dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 10
+
+
 @login_required
 def change_preferences(request):
     user = request.user

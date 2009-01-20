@@ -161,6 +161,11 @@ form_onload()
     <fieldset id="register_dinners">
         <legend>{% trans "dinners" %}</legend>
         <ol>
+            {% if form.dinner_3.errors %}
+            <ul class="errorlist">
+            {% for error in form.dinner_3.errors %}<li>{{error|escape}}</li>{% endfor %}
+            </ul>
+            {% endif %}
             <li>
             {{ form.dinner_1}} <label for="id_dinner_1">{% trans "dinner1" %}</label>
             </li>
@@ -175,6 +180,11 @@ form_onload()
     <fieldset id="register_breakfasts">
         <legend>{% trans "breakfasts" %}</legend>
         <ol>
+            {% if form.breakfast_4.errors %}
+            <ul class="errorlist">
+            {% for error in form.breakfast_4.errors %}<li>{{error|escape}}</li>{% endfor %}
+            </ul>
+            {% endif %}
             <li>
             {{ form.breakfast_2 }} <label for="id_breakfast_2">{% trans "breakfast2" %}</label>
             </li>

@@ -29,7 +29,8 @@ urlpatterns = patterns('',
 
      # registration related
      (r'^register/$', registration.views.register),
-     (r'^register/thanks/', registration.views.thanks),
+     (r'^register/thanks/$', registration.views.thanks),
+
      # (r'^register/add_org/$', registration.views.add_organization),
      (r'^register/activate/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', registration.views.activate_user),
 

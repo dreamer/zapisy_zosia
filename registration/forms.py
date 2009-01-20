@@ -6,6 +6,32 @@ from models import getOrgChoices as organization_choices
 from django.utils.translation import ugettext as _
 
 
+def lambda_clean_meal(meal,p1,p2,p3,z):
+    # ok, this if fuckin hacky function... so stay tuned
+    # meal is name of field (without suffix) that we wanna validate
+    # p1, p2, p3 are _pais_ of _numeral suffixes_ (meal_suffix, day_suffix)
+    #
+    # we return validator method for (field_3) validating
+    # if meals are bought for respective hotel nights
+    #
+    # this field is reused several times, so its kinda
+    # hacky path for DRY principle ;)
+    #
+    # usecase (in class body):
+    #    clean_supper_3 = lambda_clean_meal('supper',(1,1),(2,2),(3,3))
+    #
+    def f(s):
+        for n,d in [p1,p2,p3]:
+            mealx = "%s_%s" % (meal,n)
+            dayx  = "%s_%s" % ("day", d)
+            x = s.cleaned_data.get(mealx)
+            d = s.cleaned_data.get(dayx)
+            if x and not d:
+                raise forms.ValidationError(_("You can buy meal only for adequate hotel night."))
+        return s.cleaned_data.get("%s_%i" % (meal,z))
+    return lambda(s):f(s)
+
+
 class RegisterForm(forms.Form):
 
     def __init__(self, *args, **kwargs) :
@@ -76,6 +102,9 @@ class RegisterForm(forms.Form):
         else:
             raise forms.ValidationError(_("At least one day should be selected."))
     
+    clean_dinner_3    = lambda_clean_meal('dinner',    (1,1), (2,2), (3,3), 3 )
+    clean_breakfast_4 = lambda_clean_meal('breakfast', (2,1), (3,2), (4,3), 4 )
+
 
 
 # grrr, this REALLY should not be copied'n'pasted but
@@ -126,3 +155,7 @@ class ChangePrefsForm(forms.Form):
             return day3
         else:
             raise forms.ValidationError(_("At least one day should be selected."))
+
+    clean_dinner_3    = lambda_clean_meal('dinner',    (1,1), (2,2), (3,3), 3 )
+    clean_breakfast_4 = lambda_clean_meal('breakfast', (2,1), (3,2), (4,3), 4 )
+
