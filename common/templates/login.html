@@ -12,7 +12,7 @@
     {% else %}
         <h2>{% trans "stranger" %}</h2>
     {% endif %}
-    <form action="/login/" method="post" id="login_form">
+    <form action="/login/{% if get_redir %}?next={{ get_redir }}{% endif %}" method="post" id="login_form">
         <table>
         {{ form.as_table }}
         </table>
@@ -21,11 +21,3 @@
 {% endif %}
 {% endblock %}
 
-{% block right_column %}
-<h2>Column with some useless info</h2>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed.</p>
-<blockquote>
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed, aliquet   vel, quam. Pellentesque molestie laoreet tortor. </p>
-</blockquote>
-<p>Nulla vitae mauris. Phasellus vel ligula quis dolor bibendum egestas. Duis a   massa ut orci varius placerat. Sed leo nulla, tempor nec.</p>
-{% endblock %}

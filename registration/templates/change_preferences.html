@@ -22,6 +22,7 @@
 {% endblock css %}
 
 {% block content %}
+{% if payment %}
 <h2>Dane do przelewu</h2>
 <table>
 <tr><td>
@@ -42,6 +43,11 @@ Wurstland 51-123
 </pre>
 </td></tr>
 </table>
+{% else %}
+    <ul class="error_messages">
+        <li>{% trans "Repair errors below, please." %}</li>
+    </ul>
+{% endif %}
 
 <h2>{% trans "Preferences" %}</h2>
 

@@ -38,6 +38,7 @@ urlpatterns = patterns('',
 
      # login / logout
      (r'^login/$', common.views.login_view),
+     (r'^accounts/login/', common.views.login_view),
      (r'^logout/$', common.views.logout_view),
      (r'^logout/bye/$', common.views.thanks),
 

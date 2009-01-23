@@ -29,7 +29,7 @@ def activate_user(request, uidb36=None, token=None):
         usr.save()
     else:
         return render_to_response('reactivation.html', {})
-    return HttpResponseRedirect('/login/') # yeah, right...
+    return HttpResponseRedirect('/login/?next=/change_preferences/') # yeah, right...
 
 
 def register(request):
@@ -45,8 +45,7 @@ def register(request):
         if form.is_valid():
             email    = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            username = suggested_username( form.cleaned_data['name'],
-                                           form.cleaned_data['surname'])
+            username = form.cleaned_data['email']
             try:
                 user = User.objects.get(email=email)
                 return HttpResponseRedirect('/password_reset/')
@@ -150,8 +149,9 @@ def change_preferences(request):
             prefs.shirt_size  = form.cleaned_data['shirt_size']
             prefs.shirt_type  = form.cleaned_data['shirt_type']
             prefs.save()
+            payment = count_payment(user)
     else:
         form.initialize(prefs)
-    payment = count_payment(user)
+        payment = count_payment(user)
     return render_to_response('change_preferences.html', locals())
 

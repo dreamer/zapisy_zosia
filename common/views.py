@@ -15,6 +15,9 @@ def login_view(request):
     user = request.user
     reason = None # theistic code ;)
     try:
+        get_redir = request.GET['next']
+        if user.is_authenticated():
+            return HttpResponseRedirect(get_redir)
         referer = request.META['HTTP_REFERER']
     except Exception:
         referer = None
@@ -32,17 +35,24 @@ def login_view(request):
                             login(request,usr)
                         else:
                             # wrong password
-                            reason = 'LOGIN_account_disabled'
+                            # reason = 'LOGIN_account_disabled'
+                            pass
                     else:
                         # user is not active
-                        reason = 'LOGIN_account_disabled'
+                        # reason = 'LOGIN_account_disabled'
+                        pass
                 except Exception:
                     # user does not exit
-                    reason = 'LOGIN_account_disabled'
+                    # reason = 'LOGIN_account_disabled'
+                    pass
                 if not reason:
-                    if referer.endswith('/reset/done/'):
-                        greetings_resetter = True
-                        greetings_stranger = False
+                    try:
+                        next = request.GET['next']
+                        if next: return HttpResponseRedirect(next)
+                        if referer.endswith('/reset/done/'):
+                            greetings_resetter = True
+                            greetings_stranger = False
+                    except Exception: pass
                     if (referer is None) or referer.endswith('/login/') or referer.endswith('/bye/') or referer.endswith('/reset/done/'):
                         referer = '/blog/'
                     return HttpResponseRedirect(referer)

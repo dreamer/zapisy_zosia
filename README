@@ -37,8 +37,8 @@ TASKS (Backlog)
   % form layout
   % make organizations working again
   + send email to complete registration
-  + make sure, that you added all required preferences
-  - display info about money and sample bank account info
+  % make sure, that you added all required preferences
+  + display info about money and sample bank account info
   - captcha
   + changing your registration info
 
@@ -61,8 +61,8 @@ TASKS (Backlog)
 + lectures
   % design
   % feedback after lecture suggesting
-  + make form look and behave correct
-  + make lecture list look right
+  % make form look and behave correct
+  % make lecture list look right
   - "suggest lecture" link above lecture list
   - conversion to pdf
   * multiple authors
@@ -109,4 +109,7 @@ TASKS (Backlog)
   - css fixes (colours)
   - rozjechany formularz w odzyskiwaniu hasła
   ** BACKUP
+  - system state switching / blocking registration
+  - correct redirect on login_required
+  - favikonka
 
