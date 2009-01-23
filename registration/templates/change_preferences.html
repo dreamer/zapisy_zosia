@@ -22,7 +22,12 @@
 {% endblock css %}
 
 {% block content %}
-{% if payment %}
+{% if user_paid %}
+    <ul class="messages">
+        <li>{% trans "Paid was registered, see you soon!" %}</li>
+    </ul>
+{% else %}
+{% if payment and not user_paid %}
 <h2>Dane do przelewu</h2>
 <table>
 <tr><td>
@@ -47,6 +52,7 @@ Wurstland 51-123
     <ul class="error_messages">
         <li>{% trans "Repair errors below, please." %}</li>
     </ul>
+{% endif %}
 {% endif %}
 
 <h2>{% trans "Preferences" %}</h2>
@@ -88,6 +94,7 @@ Wurstland 51-123
             </li>
         </ol>
     </fieldset>
+    {% if not user_paid %}
     <fieldset id="register_nights">
         <legend>{% trans "nights" %}</legend>
         <ol>
@@ -147,6 +154,7 @@ Wurstland 51-123
             </li>
         </ol>
     </fieldset>
+    {% endif %}
     <fieldset id="register_other">
         <legend>{% trans "others" %}</legend>
         <ol>
