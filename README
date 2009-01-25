@@ -25,6 +25,8 @@ to run developer server (port 8000):
 TRANSLATION
 
 DEPLOYMENT
+to change registration final date - change final_date in
+registration/helpers.py
 
 TASKS (Backlog)
 # essential, not implemented features are marked as '*'
@@ -91,7 +93,7 @@ TASKS (Backlog)
   + smtp account
   + update DEPLOYMENT section of this document
   - support for memcached?
-  - domain
+  + domain
   * make sure, that all features are operational also outside of debug mode
   * prepare meaningfull, non-debug error pages (404, etc)
   * after final deployment, make sure that database user doesn't have too many priviledges
@@ -106,10 +108,10 @@ TASKS (Backlog)
   % support for shirt types
   * summary view for admins
   % css fixes (layout)
-  - css fixes (colours)
+  + css fixes (colours)
   - rozjechany formularz w odzyskiwaniu hasła
   ** BACKUP
-  - system state switching / blocking registration
-  - correct redirect on login_required
+  + system state switching / blocking registration
+  % correct redirect on login_required
   - favikonka
 
