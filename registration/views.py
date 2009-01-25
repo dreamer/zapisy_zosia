@@ -15,6 +15,7 @@ from django.template import Context, loader
 from django.contrib.sites.models import RequestSite
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
+from helpers import *
 
 
 def activate_user(request, uidb36=None, token=None):
@@ -33,6 +34,9 @@ def activate_user(request, uidb36=None, token=None):
 
 
 def register(request):
+    if is_registration_disabled():
+        raise Http404
+
     user = request.user
     title = "Registration"
     # login_form = LoginForm()

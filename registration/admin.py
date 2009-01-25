@@ -21,4 +21,10 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'org',
     )
 admin.site.register(UserPreferences, UserPreferencesAdmin)
-admin.site.register(Organization)
+
+class OrganizationAdmin(admin.ModelAdmin):
+    list_display = (
+    'name',
+    'accepted'
+    )
+admin.site.register(Organization, OrganizationAdmin)
