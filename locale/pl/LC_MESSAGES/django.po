@@ -116,11 +116,11 @@ msgstr "Zaproponuj wykład"
 
 #: lectures/templates/lectures.html:90
 msgid "Yes we can"
-msgstr "Wielki napis bez celu"
+msgstr "&nbsp;&nbsp;&nbsp;"
 
 #: lectures/templates/lectures.html:91
 msgid "Hurray"
-msgstr "ale myślę nad nim"
+msgstr "&nbsp;&nbsp;&nbsp;"
 
 #: lectures/templates/lectures.html:93
 msgid "Ops, youre not logged in"
@@ -154,7 +154,7 @@ msgstr "Mail aktywacyjny systemu zapisów na ZOSIę"
 
 #: registration/templates/change_preferences.html:27
 msgid "Paid was registered, see you soon!"
-msgstr ""
+msgstr "Zarejestrowaliśmy Twoją wpłatę, do zobaczenia na ZOSI!"
 
 #: registration/templates/change_preferences.html:53
 msgid "Repair errors below, please."
