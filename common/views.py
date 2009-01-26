@@ -35,15 +35,15 @@ def login_view(request):
                             login(request,usr)
                         else:
                             # wrong password
-                            # reason = 'LOGIN_account_disabled'
+                            reason = 'LOGIN_account_disabled'
                             pass
                     else:
                         # user is not active
-                        # reason = 'LOGIN_account_disabled'
+                        reason = 'LOGIN_account_disabled'
                         pass
                 except Exception:
                     # user does not exit
-                    # reason = 'LOGIN_account_disabled'
+                    reason = 'LOGIN_account_disabled'
                     pass
                 if not reason:
                     try:

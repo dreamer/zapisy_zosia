@@ -71,7 +71,7 @@
                     <li {% ifequal title "Change preferences" %}id="current"{% endifequal %}><a href="/change_preferences/">{% trans "Change preferences" %}</a></li>
                     {% else %}
                     {% load time_block_helpers %}
-                        {% registration_link title %}
+                        {% if title %}{% registration_link title %}{% endif %}
                         {# <li {% ifequal title "Registration" %}id="current"{% endifequal %}><a href="/register/">{% trans "Registration" %}</a></li> #}
                     {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
@@ -108,8 +108,8 @@
 		<!-- end: #main -->
 		<!-- begin: #footer -->
         <div id="footer">
-            <a rel="license" href="http://creativecommons.org/licenses/by/2.5/pl/"><img alt="Creative Commons License" style="border-width:0; margin: 0.2em 0.4em 0 0; float:left;" src="http://i.creativecommons.org/l/by/2.5/pl/88x31.png" /></a>Except where otherwise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.5/pl/">Creative Commons Attribution 2.5 Poland License</a>.<br/>
-            <a href="http://github.com/dreamer/zapisy_zosia">src</a> | Layout based on <a href="http://www.yaml.de/">YAML</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/2.5/pl/"><img alt="Creative Commons License" style="border-width:0; margin: 0.2em 0.4em 0 0; float:left;" src="http://i.creativecommons.org/l/by/2.5/pl/88x31.png" /></a>{% trans "Except where otherwise noted, content on this site is licensed under a" %} <a rel="license" href="http://creativecommons.org/licenses/by/2.5/pl/">Creative Commons Attribution 2.5 Poland</a>.<br/>
+            <a href="http://github.com/dreamer/zapisy_zosia">src</a> | Layout {% trans "based on" %} <a href="http://www.yaml.de/">YAML</a>
         </div>
 		<!-- end: #footer -->
 	</div>
