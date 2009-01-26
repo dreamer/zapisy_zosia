@@ -26,7 +26,7 @@ TRANSLATION
 
 DEPLOYMENT
 to change registration final date - change final_date in
-registration/helpers.py
+registration/helpers.py and restart server (!)
 
 TASKS (Backlog)
 # essential, not implemented features are marked as '*'
@@ -38,11 +38,11 @@ TASKS (Backlog)
   % design
   % form layout
   % make organizations working again
-  + send email to complete registration
+  % send email to complete registration
   % make sure, that you added all required preferences
-  + display info about money and sample bank account info
+  % display info about money and sample bank account info
   - captcha
-  + changing your registration info
+  % changing your registration info
 
 + logging in
   % design
@@ -82,6 +82,8 @@ TASKS (Backlog)
 * testing / user testing
   % 1st day of testing done
   % 2nd day of testing (no new results)
+  % testing / bugfixing
+  + final registration testing
 
 + deployment
   % access to ksi (ask dreamer_, if you need it too)
@@ -108,10 +110,10 @@ TASKS (Backlog)
   % support for shirt types
   * summary view for admins
   % css fixes (layout)
-  + css fixes (colours)
+  % css fixes (colours)
   - rozjechany formularz w odzyskiwaniu hasła
   ** BACKUP
-  + system state switching / blocking registration
+  % system state switching / blocking registration
   % correct redirect on login_required
   - favikonka
 
