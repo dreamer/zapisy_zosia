@@ -3,6 +3,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
+from django.core.mail import send_mail
+from django.template import Context, loader
 
 # this is small hack to make user
 # more meaningfull (we're using email as
@@ -73,6 +75,11 @@ class UserPreferences(models.Model):
         # database - lets check if 'paid' field is different
         old = UserPreferences.objects.get(id=self.id)
         if self.paid and not old.paid:
-            print "send super mail"
+            t = loader.get_template('payment_registered_email.txt')
+            send_mail( u'Wpłata na ZOSIę została zaksięgowana.', 
+                         t.render(Context({})),
+                         'from@example.com',
+                         [ self.user.email ], 
+                         fail_silently=True )
         super(UserPreferences, self).save() 
 

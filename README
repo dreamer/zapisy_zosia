@@ -126,9 +126,7 @@ TASKS (Backlog)
   % przesuń cennik
   % daty w blogu
   % przesunąć info o przyjęciu wykładu, wyczyścić formularz...
-  + mail przy potwierdzeniu wpłaty:
-Z radością informujemy, że zaksięgowana została Twoja wpłata [w wysokosci xx zł ?] na konto systemu zapisów na ZOSIę.
-Od tej pory wszelkie zmiany ustawień, które wiązałyby się ze zmianą kosztów pobytu prosimy omawiać z organizatorami obozu.
+  % mail przy potwierdzeniu wpłaty:
   - info o tym mailu dla usera
   - koszt autokaru w koszcie zosi?
   - wyłącz debug
@@ -137,4 +135,5 @@ Od tej pory wszelkie zmiany ustawień, które wiązałyby się ze zmianą koszt�
   - hasło można zmienić na mniej niż 6 literowe
   - 150 miejsc :/ trzeba to jakoś uwzględnić (150 pierwszych wpłat)
   - czcionki...
+  - podpisać maile?
 
