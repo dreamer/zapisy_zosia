@@ -67,6 +67,12 @@ class UserPreferences(models.Model):
 
     def __unicode__(self):
         return u"%s %s" % (self.user.first_name, self.user.last_name)
-    
 
+    def save(self):
+        # at this moment object probably is different from one in
+        # database - lets check if 'paid' field is different
+        old = UserPreferences.objects.get(id=self.id)
+        if self.paid and not old.paid:
+            print "send super mail"
+        super(UserPreferences, self).save() 
 
