@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+
+    <title>ZOSIA 2009 - użytkownicy</title>
+
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="en,pl">
+    <script type="text/javascript">
+    <!--
+        /* js goes here */
+    -->
+    </script>
+    <style type="text/css">
+    <!--
+        body  { background-color: white; color: black; }
+        xtable {
+            border-spacing: 0;
+            border-top: 1pt solid black;
+            border-left: 1pt solid black;
+            border-right: 1pt solid black;
+        }
+        xtd { border-bottom: 1pt solid black; }
+        td { border: 1pt solid black; }
+    }
+    -->
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>nazwisko</th>
+            <th>imię</th>
+            <th>email</th>
+            <th>autobus</th>
+            <th>wpłacił</th>
+        </tr>
+        {% for user,pref in list %}
+        <tr>
+            <td>{{ user.last_name }} </td>
+            <td>{{ user.first_name }} </td>
+            <td>{{ user.email }} </td>
+            <td>{% if pref.bus %}✓{% endif %}</td>
+            <td>{% if pref.paid %}✓{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+

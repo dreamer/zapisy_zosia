@@ -179,3 +179,14 @@ def change_preferences(request):
         payment = count_payment(user)
     return render_to_response('change_preferences.html', locals())
 
+@login_required
+def users_status(request):
+    if not ( request.user.is_staff and request.user.is_active ):
+        raise Http404
+    # nie no, to jest źle...
+    # users = User.objects.all()
+    # prefs = UserPreferences.objects.all()
+    #list = zip(users,prefs)
+    list = []
+    return render_to_response('the_great_table.html', locals())
+

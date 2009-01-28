@@ -25,6 +25,7 @@ urlpatterns = patterns('',
         {'feed_dict': feeds}),
 
      # admin related
+     (r'^admin/table/$', registration.views.users_status),
      (r'^admin/(.*)', admin.site.root),
 
      # registration related
