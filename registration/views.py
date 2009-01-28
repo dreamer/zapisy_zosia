@@ -132,14 +132,32 @@ def change_preferences(request):
     title = "Change preferences"
     prefs = UserPreferences.objects.get(user=user)
     form = ChangePrefsForm()
+    user_paid = prefs.paid
     if request.POST:
         form = ChangePrefsForm(request.POST)
+        # bug with settings not updateble
+        # after user paid
+        if user_paid:
+            post = request.POST
+            rewritten_post = {}
+            for k in post.keys():
+                rewritten_post[k] = post[k]
+            for k in [ 'day_1', 'day_2', 'day_3',
+                       'breakfast_2', 'breakfast_3', 'breakfast_4',
+                       'dinner_1', 'dinner_3', 'dinner_2' ]:
+                if prefs.__dict__[k]:
+                    rewritten_post[k] = u'on'
+            rewritten_post['shirt_type'] = prefs.__dict__['shirt_type']
+            rewritten_post['shirt_size'] = prefs.__dict__['shirt_size']
+            form = ChangePrefsForm(rewritten_post)
         form.add_bad_org(prefs)
+        form.set_paid(user_paid)
         if form.is_valid():
             # save everything
-            prefs.org         = Organization.objects.get(
-                                    id=form.cleaned_data['organization_1'])
-            if not prefs.paid:
+            prefs.org = Organization.objects.get(id=form.cleaned_data['organization_1'])
+            if prefs.paid:
+                pass
+            else:
                 prefs.day_1       = form.cleaned_data['day_1']
                 prefs.day_2       = form.cleaned_data['day_2']
                 prefs.day_3       = form.cleaned_data['day_3']
@@ -149,15 +167,15 @@ def change_preferences(request):
                 prefs.dinner_1    = form.cleaned_data['dinner_1']
                 prefs.dinner_2    = form.cleaned_data['dinner_2']
                 prefs.dinner_3    = form.cleaned_data['dinner_3']
+                prefs.shirt_size  = form.cleaned_data['shirt_size']
+                prefs.shirt_type  = form.cleaned_data['shirt_type']
             prefs.bus         = form.cleaned_data['bus']
             prefs.vegetarian  = form.cleaned_data['vegetarian']
-            prefs.shirt_size  = form.cleaned_data['shirt_size']
-            prefs.shirt_type  = form.cleaned_data['shirt_type']
             prefs.save()
             payment = count_payment(user)
+
     else:
         form.initialize(prefs)
-        user_paid = prefs.paid
         payment = count_payment(user)
     return render_to_response('change_preferences.html', locals())
 

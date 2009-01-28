@@ -147,15 +147,19 @@ class ChangePrefsForm(forms.Form):
     shirt_type = forms.ChoiceField(choices=SHIRT_TYPES_CHOICES)
     bus        = forms.BooleanField(required=False)
 
+    paid = False
+    def set_paid(self,b): self.paid = b
+
     def clean_day_3(self):
+        day3 = self.cleaned_data.get('day_3')
         day1 = self.cleaned_data.get('day_1')
         day2 = self.cleaned_data.get('day_2')
-        day3 = self.cleaned_data.get('day_3')
-        if day1 or day2 or day3:
+        if day1 or day2 or day3 or self.paid:
             return day3
         else:
             raise forms.ValidationError(_("At least one day should be selected."))
 
     clean_dinner_3    = lambda_clean_meal('dinner',    (1,1), (2,2), (3,3), 3 )
     clean_breakfast_4 = lambda_clean_meal('breakfast', (2,1), (3,2), (4,3), 4 )
+
 
