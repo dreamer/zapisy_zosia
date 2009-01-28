@@ -6,7 +6,7 @@
 {% for post in blog_posts %}
     <h3>{{ post.title }}</h3>
     <div class="bp_author">by {{ post.author.get_full_name }}</div>
-    <span class="bp_date"><em>{{ post.pub_date|date:"l, F j, Y"  }}</em></span>
+    <span class="bp_date"><em>{{ post.pub_date|date:"l, j F Y"|lower }}</em></span>
     <div class="blog_post">{{ post.text|textile }}</div>
 {% endfor %}
 {% endblock %}

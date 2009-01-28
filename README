@@ -116,15 +116,20 @@ TASKS (Backlog)
   % system state switching / blocking registration
   % correct redirect on login_required
   - favikonka
+  - przesuń cennik w jedno wspólne miejsce
+  - humanize (!)
 
 * stuff for the last minute
   % bug z zapisywaniem zmian po akceptacji wpłaty
   % copyleft
   % usuń fake sponsorów
+  % przesuń cennik
+  % daty w blogu
+  % przesunąć info o przyjęciu wykładu, wyczyścić formularz...
   * mail przy potwierdzeniu wpłaty:
   - info o tym mailu dla usera
-  + daty w blogu (błędy w automatycznie przetłumaczonych)
   - koszt autokaru w koszcie zosi?
   - wyłącz debug
-  - przesuń cennik
+  - co z dodatkową opłatą?
+  - info o obniże zostawić jako niespodziankę po zosi?
 

@@ -3,6 +3,7 @@
 {% load markup %}
 
 {% block content %}
+
 {% if messages %}
     <ul class="messages">
         {% for msg in messages %}
@@ -22,6 +23,7 @@
     {% trans "None yet. You can be first!" %}<p />
 {% endif %}
 
+{% if not messages %}
 {% if lecture_proposition_form %}
 <h2>{% trans "Suggest your lecture" %}</h2>
     <form action="." method="POST">
@@ -81,6 +83,7 @@
     <p><input type="submit" value="{% trans "Suggest" %}"></p>
     </form>
 
+{% endif %}
 {% endif %}
 
 {% endblock content %}

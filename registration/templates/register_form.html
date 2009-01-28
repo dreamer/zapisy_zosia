@@ -215,15 +215,18 @@ form_onload()
     </fieldset>
     <fieldset><input type="submit" value="{% trans "register" %}" /></fieldset>
 </form>
-<br><br>
-<span class="cennik">cennik</span>
-<table>
-<tr><td>nocleg ze śniadaniem i obiadokolacją: </td><td>67 zł</td></tr>
-<tr><td>nocleg z obiadokolacją: </td><td>60 zł</td></tr>
-<tr><td>nocleg ze sniadaniem: </td><td>58 zł</td></tr>
-<tr><td>nocleg: </td><td>50 zł</td></tr>
-</table>
-W miarę przybywania sponsorów koszty pobytu mogą ulec obniżce.
 {% endblock content %}
 
+{% block right_column %}
+<span class="cennik">cennik</span>
+<table>
+<tr><td>nocleg ze śniadaniem i obiadokolacją:</td><td>67&nbsp;zł</td></tr>
+<tr><td>nocleg z obiadokolacją:</td><td>60&nbsp;zł</td></tr>
+<tr><td>nocleg ze sniadaniem:</td><td>58&nbsp;zł</td></tr>
+<tr><td>nocleg:</td><td>50&nbsp;zł</td></tr>
+</table>
+<p>
+W miarę przybywania sponsorów koszty pobytu mogą ulec obniżce.
+</p>
+{% endblock %}
 

@@ -18,12 +18,14 @@ def index(request):
     login_form = LoginForm()
     lectures = Lecture.objects.filter(accepted=True)
     if user.is_authenticated() and user.is_active:
-        lecture_proposition_form = NewLectureForm()
         if request.method == 'POST':
             lecture_proposition_form = NewLectureForm(request.POST)
             if lecture_proposition_form.is_valid():
                 form = lecture_proposition_form
                 Lecture.objects.create_lecture(form, request.user)
                 messages = [ _("thankyou") ]
+                lecture_proposition_form = NewLectureForm()
+        else:
+            lecture_proposition_form = NewLectureForm()
     return render_to_response('lectures.html', locals())
 
