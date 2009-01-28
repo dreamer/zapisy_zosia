@@ -1,6 +1,13 @@
 @charset "UTF-8";
 
 /**
+ * footer
+ */
+#footer {
+    font-size: 0.8em;
+    text-align: center;
+}
+/**
  * css changes related to zosia only
  * this generaly should be kept separately for purpose
  * of merging future versions of yaml

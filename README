@@ -119,10 +119,12 @@ TASKS (Backlog)
 
 * stuff for the last minute
   % bug z zapisywaniem zmian po akceptacji wpłaty
-  * mail przy potwierdzeniu wpłaty
+  % copyleft
+  % usuń fake sponsorów
+  * mail przy potwierdzeniu wpłaty:
+  - info o tym mailu dla usera
+  + daty w blogu (błędy w automatycznie przetłumaczonych)
   - koszt autokaru w koszcie zosi?
-  - copyleft
   - wyłącz debug
   - przesuń cennik
-  - usuń sponsorów
 
