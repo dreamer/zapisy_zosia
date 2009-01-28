@@ -41,8 +41,8 @@ TASKS (Backlog)
   % send email to complete registration
   % make sure, that you added all required preferences
   % display info about money and sample bank account info
-  - captcha
   % changing your registration info
+  - captcha
 
 + logging in
   % design
@@ -76,7 +76,7 @@ TASKS (Backlog)
 
 * translation
   % implement django translation system
-  + translate, translate, translate
+  % translate, translate, translate
   - implement language switching
 
 * testing / user testing
@@ -91,29 +91,38 @@ TASKS (Backlog)
   % switch from sqlite to mysql
   % switch from mysql (bastard) to postgres
   % remove serving static files through django
-  + deploy zapisy
+  % deploy zapisy
+  % domain
   + smtp account
   + update DEPLOYMENT section of this document
-  - support for memcached?
-  + domain
   * make sure, that all features are operational also outside of debug mode
   * prepare meaningfull, non-debug error pages (404, etc)
   * after final deployment, make sure that database user doesn't have too many priviledges
+  - support for memcached?
 
 - other cool/important stuff
-  + change admin templates
   % clickable logo
+  % remove duplicated code (css blocks in forms, unused blocks in templates)
+  % support for shirt types
+  % css fixes (layout)
+  % css fixes (colours)
+  + change admin templates
   + valid xhtml,css
   - correct mimetypes
   + select some license
-  % remove duplicated code (css blocks in forms, unused blocks in templates)
-  % support for shirt types
   * summary view for admins
-  % css fixes (layout)
-  % css fixes (colours)
   - rozjechany formularz w odzyskiwaniu hasła
   ** BACKUP
   % system state switching / blocking registration
   % correct redirect on login_required
   - favikonka
+
+* stuff for the last minute
+  % bug z zapisywaniem zmian po akceptacji wpłaty
+  * mail przy potwierdzeniu wpłaty
+  - koszt autokaru w koszcie zosi?
+  - copyleft
+  - wyłącz debug
+  - przesuń cennik
+  - usuń sponsorów
 
