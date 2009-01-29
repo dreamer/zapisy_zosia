@@ -8,6 +8,7 @@ from django.shortcuts import render_to_response
 
 from django.contrib.auth.decorators import login_required
 from common.forms import LoginForm
+from registration.helpers import *
 
 from models import *
 from forms import *
@@ -15,17 +16,18 @@ from forms import *
 def index(request):
     title = "Lectures"
     user = request.user
-    login_form = LoginForm()
     lectures = Lecture.objects.filter(accepted=True)
-    if user.is_authenticated() and user.is_active:
-        if request.method == 'POST':
-            lecture_proposition_form = NewLectureForm(request.POST)
-            if lecture_proposition_form.is_valid():
-                form = lecture_proposition_form
-                Lecture.objects.create_lecture(form, request.user)
-                messages = [ _("thankyou") ]
+    if not is_lecture_suggesting_disabled():
+        login_form = LoginForm()
+        if user.is_authenticated() and user.is_active:
+            if request.method == 'POST':
+                lecture_proposition_form = NewLectureForm(request.POST)
+                if lecture_proposition_form.is_valid():
+                    form = lecture_proposition_form
+                    Lecture.objects.create_lecture(form, request.user)
+                    messages = [ _("thankyou") ]
+                    lecture_proposition_form = NewLectureForm()
+            else:
                 lecture_proposition_form = NewLectureForm()
-        else:
-            lecture_proposition_form = NewLectureForm()
     return render_to_response('lectures.html', locals())
 
