@@ -116,7 +116,7 @@ TASKS (Backlog)
   % system state switching / blocking registration
   % correct redirect on login_required
   - favikonka
-  - przesuń cennik w jedno wspólne miejsce
+  % przesuń cennik w jedno wspólne miejsce
   - humanize (!)
 
 * stuff for the last minute
@@ -136,4 +136,5 @@ TASKS (Backlog)
   - hasło można zmienić na mniej niż 6 literowe
   - 150 miejsc :/ trzeba to jakoś uwzględnić (150 pierwszych wpłat)
   - podpisać maile?
+  - szkolenie dla adminów (obsługa panelu, textile, usuwanie obiektów, (grupy?))
 
