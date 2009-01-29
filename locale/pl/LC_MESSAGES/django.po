@@ -142,11 +142,11 @@ msgstr "Wybierz przynajmniej jeden nocleg."
 
 #: registration/models.py:20
 msgid "classic"
-msgstr "klasyczny"
+msgstr "męska"
 
 #: registration/models.py:21
 msgid "women"
-msgstr "damski"
+msgstr "damska"
 
 #: registration/views.py:68
 msgid "activation_mail_title"
@@ -206,22 +206,22 @@ msgstr "noclegi "
 #: registration/templates/change_preferences.html:109
 #: registration/templates/register_form.html:151
 msgid "night12"
-msgstr "5 / 6 marca"
+msgstr "5/6 marca"
 
 #: registration/templates/change_preferences.html:112
 #: registration/templates/register_form.html:154
 msgid "night23"
-msgstr "6 / 7 marca"
+msgstr "6/7 marca"
 
 #: registration/templates/change_preferences.html:115
 #: registration/templates/register_form.html:157
 msgid "night34"
-msgstr "7 / 8 marca"
+msgstr "7/8 marca"
 
 #: registration/templates/change_preferences.html:120
 #: registration/templates/register_form.html:162
 msgid "dinners"
-msgstr "obiady"
+msgstr "obiadokolacje"
 
 #: registration/templates/change_preferences.html:128
 #: registration/templates/register_form.html:170

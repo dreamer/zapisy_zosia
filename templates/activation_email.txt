@@ -6,3 +6,9 @@ kliknij w poniższy link:
 http://{{site_name}}/register/activate/{{uid}}-{{token}}/
 
 Termin wpłat upływa 14 stycznia 2009r.
+
+
+--
+Organizatorzy
+Zimowego Obozu Studentów Informatyki ZOSIA
+ksi@cs.uni.wroc.pl
