@@ -73,13 +73,18 @@ class UserPreferences(models.Model):
     def save(self):
         # at this moment object probably is different from one in
         # database - lets check if 'paid' field is different
-        old = UserPreferences.objects.get(id=self.id)
-        if self.paid and not old.paid:
-            t = loader.get_template('payment_registered_email.txt')
-            send_mail( u'Wpłata na ZOSIę została zaksięgowana.', 
-                         t.render(Context({})),
-                         'from@example.com',
-                         [ self.user.email ], 
-                         fail_silently=True )
+        try:
+            old = UserPreferences.objects.get(id=self.id)
+            if self.paid and not old.paid:
+                t = loader.get_template('payment_registered_email.txt')
+                send_mail( u'Wpłata na ZOSIę została zaksięgowana.', 
+                             t.render(Context({})),
+                             'from@example.com',
+                             [ self.user.email ], 
+                             fail_silently=True )
+        except Exception:
+            # oh, we're saving for the first time - it's ok
+            # move along, nothing to see here
+            pass
         super(UserPreferences, self).save() 
 
