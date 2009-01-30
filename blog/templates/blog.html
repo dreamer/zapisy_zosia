@@ -4,7 +4,7 @@
 
 {% block content %}
 {% for post in blog_posts %}
-    <h3>{{ post.title }}</h3>
+    <h2>{{ post.title }}</h2>
     <div class="bp_author">by {{ post.author.get_full_name }}</div>
     <span class="bp_date"><em>{{ post.pub_date|date:"l, j F Y"|lower }}</em></span>
     <div class="blog_post">{{ post.text|textile }}</div>
@@ -15,7 +15,6 @@
 {#      wydaje mi się, że ten blok nie powinien być wszucany do trans-stringów      #}
 {#      ułatwi to wrzucanie niektórych ważnych informacji (np linków do sponsorów), #}
 {#      w przyszłości to powinno być przesunięte do bazy. (dreamer_)                #}
-<h2>Informacje:</h2>
 <h4>Miejsce</h4>
 <p>
 <a href="http://www.przesieka.pl/markus/">Ośrodek Markus</a> w <a href="http://www.przesieka.pl/">Przesiece</a>
