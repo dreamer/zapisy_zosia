@@ -1,6 +1,11 @@
 {% extends "index.html"%}
 {% load i18n %}
 
+{% block css %}
+label { min-width:3em; }
+#submitbutton { margin-left:6.9em; }
+{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
     <h2>{% trans "loggedalready" %}</h2>
@@ -14,9 +19,34 @@
     {% endif %}
     <form action="/login/{% if get_redir %}?next={{ get_redir }}{% endif %}" method="post" id="login_form">
         <table>
-        {{ form.as_table }}
         </table>
-        <input type="submit" value="{% trans "loginbutton" %}" />
+        <fieldset>
+            <ol>
+            <li>
+            {% if form.email.errors %}
+            <ul class="errorlist">
+            {% for error in form.email.errors %}
+                <li>{{error|escape}}</li>
+            {% endfor %}
+            {% endif %}
+            </ul>
+            <label for="id_email">{% trans "email" %}</label>
+            {{ form.email }}
+            </li>
+            <li>
+            {% if form.email.errors %}
+            <ul class="errorlist">
+            {% for error in form.password.errors %}
+                <li>{{error|escape}}</li>
+            {% endfor %}
+            {% endif %}
+            </ul>
+            <label for="id_password">{% trans "password" %}</label>
+            {{ form.password }}
+            </li>
+            </ol>
+        </fieldset>
+        <input type="submit" value="{% trans "loginbutton" %}" id="submitbutton"/>
     </form>
 {% endif %}
 {% endblock %}
