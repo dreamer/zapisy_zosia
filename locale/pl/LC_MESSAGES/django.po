@@ -272,8 +272,7 @@ msgstr "Preferuję kuchnię wegetariańską (nie mylić z&nbsp;ichtiwegetariańs
 #: registration/templates/register_form.html:206
 msgid "bussies"
 msgstr ""
-"Gdyby organizator zapewniał autokar, skorzystałbym z&nbsp;takiej formy "
-"transportu."
+"Jestem zainteresowany zorganizowanym transportem autokarowym na trasie Wrocław - Przesieka - Wrocław"
 
 #: registration/templates/change_preferences.html:168
 #: registration/templates/register_form.html:209
