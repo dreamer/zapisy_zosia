@@ -11,6 +11,11 @@
         {% endfor %}
     </ul>
 {% endif %}
+{% if lecture_proposition_form.errors %}
+    <ul class="error_messages">
+        <li>{% trans "Repair errors below, please." %}</li>
+    </ul>
+{% endif %}
 
 <h2>{% trans "Lectures" %}</h2>
 {% if lectures %}

@@ -116,10 +116,10 @@ def count_payment(user):
     # ok, temporarily it is hardcoded, probably should
     # be moved somewhere else
     prefs = UserPreferences.objects.get(user=user)
-    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 50
+    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 51
     breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 8
     dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 10
-    bonus_payment       = 1 # other costs
+    bonus_payment       = 0 
     if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 1
     if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 1
     if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 1
