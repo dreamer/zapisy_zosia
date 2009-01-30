@@ -46,7 +46,7 @@ urlpatterns = patterns('',
      # apps main urls
      (r'^blog/$', blog.views.index),
      (r'^lectures/$', lectures.views.index),
-     (r'^rooms/$', rooms.views.index),
+     #(r'^rooms/$', rooms.views.index),
 
      # static media
      # note, that thid should be disabled for production code
