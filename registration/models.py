@@ -62,6 +62,7 @@ class UserPreferences(models.Model):
     bus         = models.BooleanField()
     vegetarian  = models.BooleanField()
     paid        = models.BooleanField()
+    paid_for_bus = models.BooleanField() # we need this after all :/
     shirt_size  = models.CharField(max_length=2, choices=SHIRT_SIZE_CHOICES)
     shirt_type  = models.CharField(max_length=1, choices=SHIRT_TYPES_CHOICES)
 

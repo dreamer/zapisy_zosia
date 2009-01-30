@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     # Example:
     # (r'^zapisy_zosia/', include('zapisy_zosia.foo.urls')),
 
+     (r'^$', blog.views.index),
+
      # rss feed
      (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
         {'feed_dict': feeds}),
