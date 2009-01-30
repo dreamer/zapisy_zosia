@@ -5,7 +5,7 @@ kliknij w poniższy link:
 
 http://{{site_name}}/register/activate/{{uid}}-{{token}}/
 
-Termin wpłat upływa 14 stycznia 2009r.
+Termin wpłat upływa 21 lutego 2009r.
 
 
 --
