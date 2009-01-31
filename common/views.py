@@ -28,7 +28,7 @@ def login_view(request):
                 email    = form.cleaned_data['email']
                 password = form.cleaned_data['password']
                 try:
-                    usr = User.objects.get(email=email)
+                    usr = User.objects.get(email=email.lower())
                     if usr.is_active:
                         usr = authenticate(username=email, password=password)
                         if usr: 

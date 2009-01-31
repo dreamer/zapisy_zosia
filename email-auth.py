@@ -16,10 +16,12 @@ email_re = re.compile(
 class EmailBackend(BasicBackend):
     def authenticate(self, username=None, password=None):
         user = None
+        print username
+        print password
         #If username is an email address, then try to pull it up
         if email_re.search(username):
             try:
-                user = User.objects.get(email=username)
+                user = User.objects.get(email=(username.lower()))
                 #print "(%s)" % user.password
             except User.DoesNotExist:
                 return None
