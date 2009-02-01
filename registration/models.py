@@ -67,7 +67,7 @@ class UserPreferences(models.Model):
     shirt_type  = models.CharField(max_length=1, choices=SHIRT_TYPES_CHOICES)
 
     # ? anonimowy - nie chce zeby jego imie/nazwisko/mail pojawialy sie na stronie
-
+    
     def __unicode__(self):
         return u"%s %s" % (self.user.first_name, self.user.last_name)
 

@@ -3,6 +3,7 @@ from models import *
 
 from views import count_payment
 class UserPreferencesAdmin(admin.ModelAdmin):
+    list_per_page = 200
     list_display = (
     'user',
     'total_cost',
@@ -15,7 +16,6 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'shirt',
     'org',
     )
-
     yes_icon = '<img src="/media/img/admin/icon-yes.gif" alt="Yes" />'
     no_icon  = '<img src="/media/img/admin/icon-no.gif" alt="No" />'
 
@@ -83,3 +83,10 @@ class OrganizationAdmin(admin.ModelAdmin):
     'accepted'
     )
 admin.site.register(Organization, OrganizationAdmin)
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser')
+    list_filter = ('is_staff', 'is_superuser', 'is_active')
+    list_per_page = 200
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
