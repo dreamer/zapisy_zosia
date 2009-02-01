@@ -194,3 +194,15 @@ def users_status(request):
     list = []
     return render_to_response('the_great_table.html', locals())
 
+def register_payment(request):
+    user = request.user
+    if not user.is_authenticated() or not user.is_staff or not user.is_active:
+        raise Http404
+    if not request.POST:
+        raise Http404
+    pid = request.POST['id']
+    prefs = UserPreferences.objects.get(id=pid)
+    prefs.paid = True
+    prefs.save()
+    return HttpResponse("ok")
+

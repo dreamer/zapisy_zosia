@@ -16,8 +16,25 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'shirt',
     'org',
     )
+
+    def anim_icon(self,id):
+        return '<img src="/static_media/images/macthrob-small.png" alt="loading" id="anim%s" style="display:none"/>'%id
     yes_icon = '<img src="/media/img/admin/icon-yes.gif" alt="Yes" />'
     no_icon  = '<img src="/media/img/admin/icon-no.gif" alt="No" />'
+    def onclick(self,id):
+        return """document.getElementById('anim%s').style.display='inline';
+        xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState  == 4) {
+                document.getElementById('anim%s').style.display='none';
+                if( xhr.status == 200) {
+                    window.location.reload();
+                }
+            }
+        };
+        xhr.open('POST', '/admin/register_payment/', true);
+        xhr.send('id=%s');
+        """ % (id, id, id)
 
     def total_cost(self, obj):
         r = self.no_icon
@@ -30,7 +47,8 @@ class UserPreferencesAdmin(admin.ModelAdmin):
         if obj.paid:
             return u"%s %s&nbsp;z\u0142" % ( self.yes_icon, count_payment(obj) )
         else: 
-            return u'<a href="">%s %s&nbsp;z\u0142</a>' % ( self.no_icon, count_payment(obj) )
+            return u'<a href="#" onclick="{%s}">%s %s&nbsp;z\u0142</a> %s' % (
+                    self.onclick(obj.id), self.no_icon, count_payment(obj), self.anim_icon(obj.id))
     ZOSIA_cost.allow_tags = True
 
     def bus_cost(self, obj):

@@ -27,7 +27,7 @@ urlpatterns = patterns('',
         {'feed_dict': feeds}),
 
      # admin related
-     (r'^admin/table/$', registration.views.users_status),
+     (r'^admin/register_payment/$', registration.views.register_payment),
      (r'^admin/(.*)', admin.site.root),
 
      # registration related
@@ -71,6 +71,5 @@ urlpatterns = patterns('',
      (r'^reset/done/$',
          'django.contrib.auth.views.password_reset_complete',
          { 'template_name':'password_reset_complete.html' }),
-     
 )
 
