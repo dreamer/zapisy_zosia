@@ -112,10 +112,14 @@ def thanks(request):
     return render_to_response('thanks.html', locals())
  
 def count_payment(user):
+    # hmm, we want to work for preferences, too
+    if user.__class__ == UserPreferences:
+        prefs = user
+    else:
+        prefs = UserPreferences.objects.get(user=user)
     # returns how much money user is going to pay
     # ok, temporarily it is hardcoded, probably should
     # be moved somewhere else
-    prefs = UserPreferences.objects.get(user=user)
     days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 51
     breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 8
     dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 10
