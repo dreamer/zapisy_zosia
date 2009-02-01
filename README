@@ -30,7 +30,7 @@ Textile is the least popular of bunch, so in case you don't find it in repositor
 if bash will complain to you, that command is not found then:
 1) blame your distribution
 2) install package setuptools (some distros may name it python-setuptools)
-   if not found again, go to step 1
+   if not found again, go to step 1 or...
 3) compile it yourself
 
 DEVELOPMENT
