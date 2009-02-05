@@ -19,8 +19,8 @@ class UserPreferencesAdmin(admin.ModelAdmin):
 
     def anim_icon(self,id):
         return '<img src="/static_media/images/macthrob-small.png" alt="loading" id="anim%s" style="display:none"/>'%id
-    yes_icon = '<img src="/media/img/admin/icon-yes.gif" alt="Yes" />'
-    no_icon  = '<img src="/media/img/admin/icon-no.gif" alt="No" />'
+    yes_icon = '<img src="/static_media/img/admin/icon-yes.gif" alt="Yes" />'
+    no_icon  = '<img src="/static_media/img/admin/icon-no.gif" alt="No" />'
     def onclick(self,id):
         return """document.getElementById('anim%s').style.display='inline';
         xhr = new XMLHttpRequest();
