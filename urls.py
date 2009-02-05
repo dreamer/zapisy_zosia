@@ -5,7 +5,7 @@ from django.contrib import admin
 import registration.views
 import blog.views
 import lectures.views
-import rooms.views
+import newrooms.views
 import common.views
 
 from blog.feeds import *
@@ -46,7 +46,7 @@ urlpatterns = patterns('',
      # apps main urls
      (r'^blog/$', blog.views.index),
      (r'^lectures/$', lectures.views.index),
-     (r'^rooms/$', rooms.views.index),
+     (r'^rooms/$', newrooms.views.index),
 
      # static media
      # note, that thid should be disabled for production code
