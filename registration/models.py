@@ -33,7 +33,7 @@ class Organization(models.Model):
 # converts organizations in database into
 # choices for option fields
 def getOrgChoices():
-    list = [ (org.id, org.name) 
+    list = [ (org.id, org.name)
            for org in Organization.objects.filter(accepted=True) ]
     list = list[:13]
     list.append( ('new', 'inna') )

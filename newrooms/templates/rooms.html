@@ -1,0 +1,147 @@
+{% extends "index.html" %}
+
+{% block css %}
+#roomz > tr:hover {
+    background-color: #efefef;
+}
+#roomz, #thead{
+    cursor: pointer;
+}
+{% endblock %}
+
+{% block javascript %}
+// namespace
+var Rooms = Rooms || {};
+
+Rooms.timeout = 1000; // ms
+
+// 
+Rooms.list;
+Rooms.ms;
+
+Rooms.x_onchange = function(x)
+{
+    return function() {
+        if(x.readyState  == 4)
+        {
+            if( x.status == 200) 
+            {
+                date = new Date();
+                ms = document.getElementById( 'ms' );
+                ms.innerHTML = (date.valueOf() - Rooms.ms)/1000;
+
+                Rooms.list = eval("("+x.responseText+")");
+                Rooms.update_table();
+                Rooms.ugly_sortable();
+
+                // let's play again soon
+                setTimeout(Rooms.update, Rooms.timeout);
+            }
+        }
+    }
+}
+
+Rooms.ugly_sortable = function()
+{
+    headrow = document.getElementById('thead').rows[0].cells;
+    headrow[0].sorttable_sortfunction = function(a,b) { 
+        if( a[1].innerHTML == b[1].innerHTML ) return 0; 
+        if( a[1].innerHTML < b[1].innerHTML ) return -1;
+        return 1;
+    }
+    for (var i=0; i<headrow.length; i++) {
+        headrow[i].resort();
+    }
+}
+
+Rooms.update_internal = function()
+{
+    date = new Date();
+    Rooms.ms = date.valueOf(); // we will use it later
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = Rooms.x_onchange(xhr);
+    xhr.open('POST', '/rooms/list.json', true);
+    xhr.send(null);
+}
+
+Rooms.modify_room = function(room_id)
+{
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if(xhr.readyState  == 4)
+        {
+            if( xhr.status == 200) {}
+        }
+    }
+    var post_data = 'rid='+room_id+';';
+    xhr.open('POST', '/rooms/modify/', true);
+    xhr.send(post_data);
+}
+
+Rooms.row_id = function(r) { return 'r'+r.id; }
+
+Rooms.status_img = function(s) {
+if( s==0 ) return '<img alt="a" src="/static_media/images/go-next.png" />';
+else
+if( s==1 ) return '<img alt="b" src="/static_media/images/locked16.png" />';
+else
+if( s==2 ) return '<img alt="c" src="/static_media/images/dialog-ok.png" />';
+}
+
+Rooms.update_table = function()
+{
+    for (i in Rooms.list )
+    {
+        var r = Rooms.list[i];
+        tr = document.getElementById( Rooms.row_id(r) );
+        html = '<td>'+Rooms.status_img(r.st)+'</td><td>'+r.id+'</td><td>'+r.nl+'</td><td>'+r.mx+'</td><td>00:31:30</td><td>bar</td>';
+        if(tr) 
+        { 
+            tr.innerHTML = html;
+        }
+        else
+        {
+            table = document.getElementById('roomz');
+            newtr = document.createElement('tr');
+            newtr.setAttribute('id', Rooms.row_id(r));
+            newtr.onclick = function (e) { /* alert(this.id); */ Rooms.modify_room(this.id); };
+            newtr.innerHTML = html;
+            table.appendChild(newtr);
+        }
+    }
+}
+
+Rooms.update = function()
+{
+    Rooms.update_internal();
+}
+
+Rooms.main = function()
+{
+    document.getElementById('pollt').innerHTML = Rooms.timeout/1000;
+    Rooms.update();
+}
+{% endblock %}
+
+{% block superextra %}
+<script src="/static_media/javascript/sorttable.js"></script>
+{% endblock %}
+
+{% block onload %}Rooms.main();{% endblock%}
+
+{% block content %}
+<img src="/static_media/images/face-smile-24.png" onclick="Rooms.update()"/><br/>
+polling every: <span id="pollt">0</span> s; response time: <span id="ms">0</span> s
+<table class="sortable">
+    <thead id="thead">
+    <tr>
+        <th>Status</abbr></th><th>Room &#8470;</th><th>Locators</th><th>Capacity</th><th>Unlock time</th><th>Bugs and Features</th>
+    </tr>
+    </thead>
+
+    <tbody id="roomz">
+    </tbody>
+
+</table>
+{% endblock %}
