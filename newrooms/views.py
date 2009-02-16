@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 import random
 from models import *
+from datetime import *
 
 # from models import *
 
@@ -24,6 +25,7 @@ def fill_rooms(request):
         room = NRoom( number = "%s"%n,
                       capacity = c,
                       password = "",
+                      short_unlock_time = datetime.now()
                     )
         room.save()
     for n in range(102,115): save_room(n,6)
@@ -42,14 +44,24 @@ def json_rooms_list(request):
 @login_required
 def modify_room(request):
     if not request.POST: raise Http404
-
+    # get correct room based on rid
     room_number = request.POST['rid'][1:]
-    r = NRoom.objects.get(number=room_number)
-    if r.password == '':
-        r.password = 'xx'
-    else:
-        r.password = ''
-    r.save()
-    return HttpResponse("ok")
-    #return HttpResponse("ok", mimetype="application/json")
+    room = NRoom.objects.get(number=room_number)
+    status = room.get_status()
+    json = ''
+    if status == 0: # for debug purposes
+        # case when room is empty
+        timeout = timedelta(0,120,0) # 2 minutes
+        room.short_unlock_time = datetime.now() + timeout
+        room.save()
+        json = '{"msg":"you locked"}'
+        # case when room is not empty
+        # ...
+    elif status == 1: # room is locked
+        # case when its long lock
+        # ...
+        # case when its short lock
+        json = '{"msg":"short_lock"}'
+
+    return HttpResponse(json, mimetype="application/json")
 

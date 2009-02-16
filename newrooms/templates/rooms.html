@@ -71,7 +71,11 @@ Rooms.modify_room = function(room_id)
     {
         if(xhr.readyState  == 4)
         {
-            if( xhr.status == 200) {}
+            if( xhr.status == 200)
+            {
+                var response = eval("("+xhr.responseText+")");
+                alert(response.msg);
+            }
         }
     }
     var post_data = 'rid='+room_id+';';
@@ -89,14 +93,19 @@ else
 if( s==2 ) return '<img alt="c" src="/static_media/images/dialog-ok.png" />';
 }
 
+Rooms.lock_time = function (lt) {
+    if( lt ) return lt;
+    else     return '-';
+}
+
 Rooms.update_table = function()
 {
     for (i in Rooms.list )
     {
         var r = Rooms.list[i];
         tr = document.getElementById( Rooms.row_id(r) );
-        html = '<td>'+Rooms.status_img(r.st)+'</td><td>'+r.id+'</td><td>'+r.nl+'</td><td>'+r.mx+'</td><td>00:31:30</td><td>bar</td>';
-        if(tr) 
+        html = '<td>'+Rooms.status_img(r.st)+'</td><td>'+r.id+'</td><td>'+r.nl+'</td><td>'+r.mx+'</td><td>'+Rooms.lock_time(r.lt)+'</td><td>-</td>';
+        if(tr)
         { 
             tr.innerHTML = html;
         }
