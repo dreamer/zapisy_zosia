@@ -137,14 +137,12 @@ def change_preferences(request):
     prefs = UserPreferences.objects.get(user=user)
     form = ChangePrefsForm()
     user_paid = prefs.paid
-    user_paid_for_bus = prefs.paid_for_bus
-    user_wants_bus = prefs.bus
     if request.POST:
-        raise Http404 # the most nooby way of blocking evar (dreamer_)
+        # raise Http404 # the most nooby way of blocking evar (dreamer_)
         form = ChangePrefsForm(request.POST)
         # bug with settings not updateble
         # after user paid
-        if user_paid:
+        if user_paid or True: # remove or True after zosia
             post = request.POST
             rewritten_post = {}
             for k in post.keys():
@@ -184,6 +182,8 @@ def change_preferences(request):
     else:
         form.initialize(prefs)
         payment = count_payment(user)
+    user_paid_for_bus = prefs.paid_for_bus
+    user_wants_bus = prefs.bus
     return render_to_response('change_preferences.html', locals())
 
 @login_required
