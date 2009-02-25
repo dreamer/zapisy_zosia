@@ -49,11 +49,11 @@ urlpatterns = patterns('',
      (r'^blog/$', blog.views.index),
      (r'^lectures/$', lectures.views.index),
 
-     (r'^rooms/$', newrooms.views.index),
-     (r'^rooms/list.json$', newrooms.views.json_rooms_list),
+     #(r'^rooms/$', newrooms.views.index),
+     #(r'^rooms/list.json$', newrooms.views.json_rooms_list),
 
-     (r'^rooms/fill/$', newrooms.views.fill_rooms), # temporary, convenience
-     (r'^rooms/modify/$', newrooms.views.modify_room), 
+     #(r'^rooms/fill/$', newrooms.views.fill_rooms), # temporary, convenience
+     #(r'^rooms/modify/$', newrooms.views.modify_room), 
 
 
      # static media
