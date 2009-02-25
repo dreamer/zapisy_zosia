@@ -24,7 +24,8 @@
 {% block content %}
 {% if user_paid %}
     <ul class="messages">
-        <li>{% trans "Paid was registered, see you soon!" %}</li>
+        {#        <li>{% trans "Paid was registered, see you soon!" %}</li> #}
+        <li>Otrzymaliśmy Twoją wpłatę za noclegi i posiłki.</li>
     </ul>
 {% else %}
 {% if payment and not user_paid %}
@@ -61,7 +62,7 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 
 {% if user_paid_for_bus %}
     <ul class="messages">
-        <li>Zarejestrowaliśmy również wpłatę za transport.</li>
+        <li>Zarejestrowaliśmy również wpłatę za transport. Do zobaczenia na ZOSI!</li>
     </ul>
 {% else %}
 {% if user_wants_bus and not user_paid_for_bus %}
@@ -77,7 +78,7 @@ kwota
 </pre>
 </td><td>
 <pre>93 1020 2368 0000 2102 0152 1640
-[ZOSIA09][bus] {{user.email}}
+[ZOSIA09] Autokar - {{user.first_name}} {{user.last_name}}
 Aleksandra Czernecka
 ul. Jagiełły 41c/10
 41-106 Siemianowice Śląskie
@@ -219,7 +220,16 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
     //-->
     </script> 
     {# {% endif %} #}
+    {% if user_paid and user_paid_for_bus %}
+    <script type="text/javascript">
+    <!--
+        document.getElementById('id_bus').disabled=true;
+        document.getElementById('id_organization_1').disabled=true;
+    //-->
+    </script> 
+    {% else %}
     <fieldset><input type="submit" value="{% trans "Save" %}" /></fieldset>
+    {% endif %}
 </form>
 {% endblock content %}
 
