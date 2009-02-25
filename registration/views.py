@@ -209,3 +209,14 @@ def register_payment(request):
     prefs.save()
     return HttpResponse("ok")
 
+def register_bus_payment(request):
+    user = request.user
+    if not user.is_authenticated() or not user.is_staff or not user.is_active:
+        raise Http404
+    if not request.POST:
+        raise Http404
+    pid = request.POST['id']
+    prefs = UserPreferences.objects.get(id=pid)
+    prefs.paid_for_bus = True
+    prefs.save()
+    return HttpResponse("ok")

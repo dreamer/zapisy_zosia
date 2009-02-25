@@ -36,12 +36,29 @@ class UserPreferencesAdmin(admin.ModelAdmin):
         xhr.open('POST', '/admin/register_payment/', true);
         xhr.send('id=%s');
         }""" % (obj, id, id, id)
+    def bus_onclick(self,obj):
+        id = obj.id
+        return """if(confirm('Do you want to register transport payment from %s?')) {
+        //document.getElementById('anim%s').style.display='inline';
+        xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState  == 4) {
+                //document.getElementById('anim%s').style.display='none';
+                if( xhr.status == 200) {
+                    window.location.reload();
+                }
+            }
+        };
+        xhr.open('POST', '/admin/register_bus_payment/', true);
+        xhr.send('id=%s');
+        }""" % (obj, id, id, id)
+
 
     def total_cost(self, obj):
         r = self.no_icon
         if obj.paid and (obj.paid_for_bus or not obj.bus):
             r = self.yes_icon
-        return u"%s %s&nbsp;z\u0142" % (r, (count_payment(obj)+0))
+        return u"%s %s&nbsp;z\u0142" % (r, (count_payment(obj)+40))
     total_cost.allow_tags = True
 
     def ZOSIA_cost(self, obj):
@@ -57,9 +74,9 @@ class UserPreferencesAdmin(admin.ModelAdmin):
         if not obj.bus:
             return "%s&nbsp;-" % self.no_icon
         elif obj.paid_for_bus:
-            return u"%s %s&nbsp;z\u0142" % ( self.yes_icon, "0" )
+            return u"%s %s&nbsp;z\u0142" % ( self.yes_icon, "40" )
         else: 
-            return u'<a href="">%s %s&nbsp;z\u0142</a>' % ( self.no_icon, "0" )
+            return u'<a href="#" onclick="{%s}">%s %s&nbsp;z\u0142</a>' % ( self.bus_onclick(obj), self.no_icon, "40" )
     bus_cost.allow_tags = True
 
     shirt_types = {}

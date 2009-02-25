@@ -78,7 +78,7 @@ class UserPreferences(models.Model):
             old = UserPreferences.objects.get(id=self.id)
             if self.paid and not old.paid:
                 t = loader.get_template('payment_registered_email.txt')
-                send_mail( u'Wpłata na ZOSIę została zaksięgowana.', 
+                send_mail( u'Wpłata została zaksięgowana.', 
                              t.render(Context({})),
                              'from@example.com',
                              [ self.user.email ], 
