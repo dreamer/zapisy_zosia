@@ -137,7 +137,10 @@ def change_preferences(request):
     prefs = UserPreferences.objects.get(user=user)
     form = ChangePrefsForm()
     user_paid = prefs.paid
+    user_paid_for_bus = prefs.paid_for_bus
+    user_wants_bus = prefs.bus
     if request.POST:
+        raise Http404 # the most nooby way of blocking evar (dreamer_)
         form = ChangePrefsForm(request.POST)
         # bug with settings not updateble
         # after user paid

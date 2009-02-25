@@ -57,9 +57,45 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 {% endif %}
 {% endif %}
 
+{# a teraz to samo, tylko dla wpłat na busy #}
+
+{% if user_paid_for_bus %}
+    <ul class="messages">
+        <li>Zarejestrowaliśmy również wpłatę za transport.</li>
+    </ul>
+{% else %}
+{% if user_wants_bus and not user_paid_for_bus %}
+<h2>Dane do przelewu za transport</h2>
+<table>
+<tr><td>
+<pre>rachunek odbiorcy
+tytuł przelewu
+imię, nazwisko odbiorcy
+adres 
+miejscowość
+kwota
+</pre>
+</td><td>
+<pre>93 1020 2368 0000 2102 0152 1640
+[ZOSIA09][bus] {{user.email}}
+Aleksandra Czernecka
+ul. Jagiełły 41c/10
+41-106 Siemianowice Śląskie
+40 zł
+</pre>
+</table>
+<p>
+Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
+</p>
+{% endif %}
+{% endif %}
+
+{# brr, to trzeba będzie naprawić... ale po zosi; nie lubię dostawać wymagań w dniu #}
+{# w którym trzeba je zaimplementować :/ #}
+
 <h2>{% trans "Preferences" %}</h2>
 
-<form action="." method="post" id="register_form">
+<form {# action="." method="post" #} id="register_form">
     <fieldset id="register_auth">
         <legend>{% trans "authentication" %}</legend>
         <ol>
@@ -172,17 +208,18 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             </li>
         </ol>
     </fieldset>
-    {% if user_paid %}
+    {# {% if user_paid %} #}
     <script type="text/javascript">
     <!--
     var ids = ['day_1', 'day_2', 'day_3',
                'breakfast_2', 'breakfast_3', 'breakfast_4',
-               'dinner_1', 'dinner_2', 'dinner_3', 'shirt_type', 'shirt_size' ]
+               'dinner_1', 'dinner_2', 'dinner_3', 'shirt_type', 'shirt_size', 
+               'vegetarian', 'bus', 'organization_1' ]
     for ( i in ids ) document.getElementById('id_'+ids[i]).disabled=true;
     //-->
     </script> 
-    {% endif %}
-    <fieldset><input type="submit" value="{% trans "Save" %}" /></fieldset>
+    {# {% endif %} #}
+    {# <fieldset><input type="submit" value="{% trans "Save" %}" /></fieldset>#}
 </form>
 {% endblock content %}
 
@@ -193,6 +230,7 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 <tr><td>nocleg z obiadokolacją:</td><td>61&nbsp;zł</td></tr>
 <tr><td>nocleg ze sniadaniem:</td><td>59&nbsp;zł</td></tr>
 <tr><td>nocleg:</td><td>51&nbsp;zł</td></tr>
+<tr><td>transport:</td><td>40&nbsp;zł</td></tr>
 </table>
-Koszt transportu zostanie ustalony wkrótce. Zainteresowani otrzymają propozycję pocztą elektroniczną.
+{# Koszt transportu zostanie ustalony wkrótce. Zainteresowani otrzymają propozycję pocztą elektroniczną. #}
 {% endblock %}
