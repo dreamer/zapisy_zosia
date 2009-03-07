@@ -61,10 +61,12 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'zapisy_zosia.urls'
@@ -85,7 +87,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.formtools',
     #'zapisy_zosia.rooms',
-    #'zapisy_zosia.newrooms',
+    'zapisy_zosia.newrooms',
     'zapisy_zosia.lectures',
     'zapisy_zosia.registration',
     'zapisy_zosia.blog',
@@ -103,3 +105,7 @@ EMAIL_HOST_USER = 'zosia2009.test@gmail.com'
 EMAIL_HOST_PASSWORD = 'zosiatest'
 EMAIL_USE_TLS = True
 
+CACHE_BACKEND = 'locmem:///'
+CACHE_MIDDLEWARE_SECONDS = 30
+
+SESSION_ENGINE = "django.contrib.sessions.backends.file"

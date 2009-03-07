@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% load i18n %}
+{% load cache %}
+{% cache 600 header_index_template %}
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>ZOSIA 2009</title>
@@ -15,6 +17,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS"
       href="/feeds/blog/"/>
 <script type="text/javascript">
+{% endcache %}
 {% block javascript %}{% endblock %}
 </script>
 <style type="text/css">
@@ -60,7 +63,6 @@
                 {% endif %}
             </div>
             <a href="/blog/"><img src="/static_media/images/logo_zosi_shadow.png" alt="ZOSIA" /></a>
-            {# <h1> {% block title %}{% trans title %}{% endblock %}</h1> // to było, ale nie jest #}
 			<span>Zimowy Obóz Studentów Informatyki A &#8226; Przesieka 2009</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
@@ -73,10 +75,10 @@
                     {% else %}
                     {% load time_block_helpers %}
                         {% if title %}{% registration_link title %}{% endif %}
-                        {# <li {% ifequal title "Registration" %}id="current"{% endifequal %}><a href="/register/">{% trans "Registration" %}</a></li> #}
+                   {# <li {% ifequal title "Registration" %}id="current"{% endifequal %}><a href="/register/">{% trans "Registration" %}</a></li> #}
                     {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
-                    {# <li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">{% trans "Rooms" %}</a></li> #}
+                    <li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">Zapisy na pokoje (beta)</a></li>
 				</ul>
 			</div>
 		</div>
@@ -115,6 +117,7 @@
 		<!-- end: #footer -->
 	</div>
 </div>
+<!-- TODO: move this out of the template
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -124,5 +127,6 @@ try {
 var pageTracker = _gat._getTracker("UA-170475-4");
 pageTracker._trackPageview();
 } catch(err) {}</script>
+-->
 </body>
 </html>

@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from datetime import datetime
 import random
 
+def is_rooming_disabled():
+    final_date = datetime(2009,3,4, 20,00) # 
+    return datetime.now() < final_date
+ 
 # feature tasks (microbacklog ;) )
 # - blocking datatimes
 # - unblocking at specified time
@@ -30,7 +34,7 @@ class RoomManager(models.Manager):
 
     cache = ""
     update_required = True
-
+    
     def to_json(self):
         if self.update_required:
             self.cache = [ x.to_json() for x in self.all() ]
@@ -46,7 +50,7 @@ class NRoom(models.Model):
     # unlock time for first locator
     short_unlock_time   = models.DateTimeField()
     #long unlock time
-    #long_unlock_time         = models.DateTimeField()
+    #long_unlock_time   = models.DateTimeField()
 
     # ok, this probably shouldn't be done this way, but proper one-to-many
     # relation requires changing user model which can't be done now
@@ -54,20 +58,24 @@ class NRoom(models.Model):
     # locators = models.ManyToManyField(User, through='RoomMembership')
     objects = RoomManager()
 
+    def get_no_locators(self):
+        return UserInRoom.objects.filter(room=self.id).count()
 
     def get_status(self):
-        no_locators = 0
+        if is_rooming_disabled(): return 3 # zapisy są zamknięte
+        no_locators = self.get_no_locators()
+
         # doesnt' matter what, if room is empty, it is unlocked
-        # if no_locators == 0
-        #    return 0 
+        if no_locators == 0:
+            return 0 
         if no_locators >= self.capacity:
             return 2 # room is full
 
         # short unlock time is still in future
         if self.short_locked():
             return 1
-        if self.password != "":
-            return 1 # password is set
+        #if self.password != "":
+        #    return 1 # password is set
         
         return 0     # default; it's ok to sign into room
 
@@ -81,7 +89,7 @@ class NRoom(models.Model):
         # lt - unlock time (optional)
         # features? (optional)
         #"""[{"id":"id","st":0,"nl":0,"mx":1}]"""
-        no_locators = 0
+        no_locators = self.get_no_locators()
         status= self.get_status()
         # this is soo wrong... (but works)
         optional = ''
@@ -99,9 +107,18 @@ class NRoom(models.Model):
         return ret
 
 
-    def save(self):
-        super(NRoom, self).save()
-        # set cached data in manager to be updated
-        self.__class__.objects.update_required = True
+    #def save(self):
+    #    super(NRoom, self).save()
+    #    # set cached data in manager to be updated
+    #    # self.__class__.objects.update_required = True
 
+    def __unicode__(self):
+        return u"%s" % self.number
+
+
+class UserInRoom(models.Model):
+    # user-room-ownership relation # it REALLY should be better implemented...
+    locator   = models.ForeignKey(User, unique=True)
+    room      = models.ForeignKey(NRoom)
+    ownership = models.BooleanField()
 

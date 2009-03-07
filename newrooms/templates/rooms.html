@@ -1,4 +1,6 @@
 {% extends "index.html" %}
+{% load cache %}
+{% cache 3600 rooms_template %}
 
 {% block css %}
 #roomz > tr:hover {
@@ -33,9 +35,6 @@ Rooms.x_onchange = function(x)
                 Rooms.list = eval("("+x.responseText+")");
                 Rooms.update_table();
                 Rooms.ugly_sortable();
-
-                // let's play again soon
-                setTimeout(Rooms.update, Rooms.timeout);
             }
         }
     }
@@ -71,10 +70,14 @@ Rooms.modify_room = function(room_id)
     {
         if(xhr.readyState  == 4)
         {
+	    // alert(xhr.status);
             if( xhr.status == 200)
             {
                 var response = eval("("+xhr.responseText+")");
-                alert(response.msg);
+                //alert(response.msg);
+                msg = response.locators + response.msg + response.form + '<br/>' + response.buttons
+                javascript:showDialog('Pokój '+response.room_number,msg,'prompt');
+                Rooms.update();
             }
         }
     }
@@ -91,9 +94,12 @@ else
 if( s==1 ) return '<img alt="b" src="/static_media/images/locked16.png" />';
 else
 if( s==2 ) return '<img alt="c" src="/static_media/images/dialog-ok.png" />';
+else
+if( s==3 ) return '<img alt="b" src="/static_media/images/locked16.png" />';
 }
 
-Rooms.lock_time = function (lt) {
+Rooms.lock_time = function (lt,nl) {
+    if( nl == 0 ) return '-';
     if( lt ) return lt;
     else     return '-';
 }
@@ -104,7 +110,7 @@ Rooms.update_table = function()
     {
         var r = Rooms.list[i];
         tr = document.getElementById( Rooms.row_id(r) );
-        html = '<td>'+Rooms.status_img(r.st)+'</td><td>'+r.id+'</td><td>'+r.nl+'</td><td>'+r.mx+'</td><td>'+Rooms.lock_time(r.lt)+'</td><td>-</td>';
+        html = '<td>'+Rooms.status_img(r.st)+'</td><td>'+r.id+'</td><td>'+r.nl+'</td><td>'+r.mx+'</td><td>'+Rooms.lock_time(r.lt,r.nl)+'</td>';
         if(tr)
         { 
             tr.innerHTML = html;
@@ -114,11 +120,76 @@ Rooms.update_table = function()
             table = document.getElementById('roomz');
             newtr = document.createElement('tr');
             newtr.setAttribute('id', Rooms.row_id(r));
-            newtr.onclick = function (e) { /* alert(this.id); */ Rooms.modify_room(this.id); };
+            newtr.onclick = function (e) { /* alert('id'+this.id);*/ Rooms.modify_room(this.id); };
             newtr.innerHTML = html;
             table.appendChild(newtr);
         }
     }
+}
+
+Rooms.closeRoom = function(key)
+{
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if(xhr.readyState  == 4)
+        {
+            if( xhr.status == 200)
+            {
+                hideDialog();
+                Rooms.update();
+            }
+        }
+    }
+    var post_data = 'key='+key+';';
+    xhr.open('POST', '/rooms/close/', true);
+    xhr.send(post_data);
+}
+
+Rooms.tryGetIn = function(rid)
+{
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if(xhr.readyState  == 4)
+        {
+            if( xhr.status == 200)
+            {
+                if( xhr.responseText == 'ok') {
+                    alert('ok');
+                    hideDialog();
+                    Rooms.update();
+                }
+                else {
+                    alert('fail');
+                }
+            }
+        }
+    }
+
+    input = document.getElementById('in_key');
+    var post_data = 'key='+input.value+';rid='+rid+';';
+    xhr.open('POST', '/rooms/trytogetin/', true);
+    xhr.send(post_data);
+}
+
+Rooms.hideDialog = function(key)
+{
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if(xhr.readyState  == 4)
+        {
+            if( xhr.status == 200)
+            {
+                hideDialog();
+                Rooms.update();
+            }
+        }
+    }
+    var post_data = 'key='+key+';';
+    xhr.open('POST', '/rooms/open/', true);
+    xhr.send(post_data);
 }
 
 Rooms.update = function()
@@ -126,31 +197,78 @@ Rooms.update = function()
     Rooms.update_internal();
 }
 
+Rooms.btn_enable = function()
+{
+    btn = document.getElementById("btn");
+    btn.disabled = false;
+    btn.innerHTML = '<img alt="refresh" src="/static_media/images/view-refresh.png"/>';
+}
+
+Rooms.btn_click = function()
+{
+    btn = document.getElementById("btn");
+    btn.disabled = true;
+    btn.innerHTML = '<img alt="refresh" src="/static_media/images/view-refresh-disabled.png"/>';
+    Rooms.update();
+    setTimeout(Rooms.btn_enable,1000);
+}
+
 Rooms.main = function()
 {
-    document.getElementById('pollt').innerHTML = Rooms.timeout/1000;
     Rooms.update();
+    Rooms.update(); // grr, quickfix for firefox problem :/
+    // shortcut.add("",function(){}); // maybe not
 }
 {% endblock %}
 
 {% block superextra %}
+<link href="/static_media/css/dialog_box.css" rel="stylesheet" type="text/css"/>
 <script src="/static_media/javascript/sorttable.js"></script>
+<script src="/static_media/javascript/dialog_box.js"></script>
 {% endblock %}
 
 {% block onload %}Rooms.main();{% endblock%}
 
-{% block content %}
-<img src="/static_media/images/face-smile-24.png" onclick="Rooms.update()"/><br/>
-polling every: <span id="pollt">0</span> s; response time: <span id="ms">0</span> s
-<table class="sortable">
+{% block content %}<br/>
+<!--[if IE]>
+<div><p>Oj, biedne dziecko, explorera używa. Aby zapisać się do pokoju potrzebujesz prawdziwej przeglądarki. Do wyboru, do koloru: <a href="http://www.opera.com/">Opera</a>, <a href="http://www.mozilla-europe.org/pl/firefox/">Firefox</a>, <a href="http://www.google.com/chrome">Chrome</a>, <a href="http://www.apple.com/pl/safari/">Safari</a>, <a href="http://flock.com/">Flock</a>, <a href="http://www.konqueror.org/features/browser.php">Konqueror</a>, <a href="http://projects.gnome.org/epiphany/">Epiphany</a>, <a href="http://caminobrowser.org/">Camino</a> i <a href="http://en.wikipedia.org/wiki/List_of_web_browsers">jeszcze trochę...</a></p>
+<p>Ewentualnie, jeśli bardzo Ci zależy to <a href="http://github.com/dreamer/zapisy_zosia/tree/master">sam to sobie napraw</a>.</p>
+</div>
+<![endif]-->
+{# <h1>TESTY ZAPISÓW NA POKOJE</h1> #}
+<button title="Odśwież tabelę" id="btn" onclick="Rooms.btn_click()" style="margin-bottom:0.2em;"><img alt="refresh" src="/static_media/images/view-refresh.png"/></button>
+<table class="sortable" style="">
     <thead id="thead">
     <tr>
-        <th>Status</abbr></th><th>Room &#8470;</th><th>Locators</th><th>Capacity</th><th>Unlock time</th><th>Bugs and Features</th>
+        <th>Status</abbr></th><th class="sorttable_sorted">Numer</th><th>Liczba lokatorów</th><th>Miejsca</th><th>Zablokowany do</th>
     </tr>
     </thead>
 
     <tbody id="roomz">
     </tbody>
 
+    <!--
+    -->
+
 </table>
 {% endblock %}
+
+{% block right_column %}
+<h3>Legenda</h3>
+Kliknij w pokój aby się zapisać lub wypisać.
+<table>
+    <tr><td><img alt="a" src="/static_media/images/go-next.png" /></td><td>oznacza pokój, do którego można się dopisać</td></tr>
+    <tr><td><img alt="b" src="/static_media/images/locked16.png" /></td><td>pokój jest zamknięty lub tymczasowo zabezpieczony kluczem</td></tr>
+    <tr><td><img alt="c" src="/static_media/images/dialog-ok.png" /></td><td>pokój jest pełny</td></tr>
+</table>
+<h3>Uwaga!</h3>
+<p>
+    Pierwszy lokator pokoju ma <strong>2&nbsp;minuty</strong> na podjęcie decyzji, czy chce go zamknąć. Po tym czasie pokój zostanie otwarty dla wszystkich chętnych.
+</p>
+<p>
+    Pokój zabezpieczony kluczem pozostaje zamknięty przez <strong>3&nbsp;godziny</strong>.
+</p>
+<p style="color:#aaa; position:absolute; bottom: 1em;">response time: <span id="ms">0</span> s</p>
+{% endblock %}
+
+{% endcache %}

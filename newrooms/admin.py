@@ -8,3 +8,8 @@ class NewroomsAdmin(admin.ModelAdmin):
         return ",".join([])
 
 admin.site.register(NRoom, NewroomsAdmin)
+
+class UserInRoomAdmin(admin.ModelAdmin):
+    list_display = ['locator','room']
+
+admin.site.register(UserInRoom, UserInRoomAdmin)
