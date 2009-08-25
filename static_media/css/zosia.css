@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+#wrapper {
+    background: url("../images/cloud.png") repeat-x bottom left fixed; 
+    position: absolute;
+    width: 100%;
+    min-height:100%;
+    height:auto !important;
+    height:100%;
+}
+
+/*
+#page_margins {
+    opacity:0.9;
+}
+*/
+
 /**
  * footer
  */
