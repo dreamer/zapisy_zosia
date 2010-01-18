@@ -2,10 +2,11 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% load i18n %}
 {% load cache %}
+{% load blurb_edit %}
 {% cache 600 header_index_template %}
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>ZOSIA 2009</title>
+    <title>ZOSIA 2010</title>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Language" content="pl" />
@@ -68,7 +69,7 @@ window.onload=function(){ AddFillerLink("col1_content","col3_content"); }
                 {% endif %}
             </div>
             <a href="/blog/"><img src="/static_media/images/logo_zosi_shadow.png" alt="ZOSIA" /></a>
-			<span>Zimowy Obóz Studentów Informatyki A &#8226; Przesieka 2009</span></div>
+			<span>Zimowy Obóz Studentów Informatyki A &#8226; Pokrzywna 2010</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
 			<!-- skiplink anchor: navigation -->
@@ -83,7 +84,7 @@ window.onload=function(){ AddFillerLink("col1_content","col3_content"); }
                    {# <li {% ifequal title "Registration" %}id="current"{% endifequal %}><a href="/register/">{% trans "Registration" %}</a></li> #}
                     {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
-                    <li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">Zapisy na pokoje (beta)</a></li>
+                    <li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">Zapisy na pokoje</a></li>
 				</ul>
 			</div>
 		</div>

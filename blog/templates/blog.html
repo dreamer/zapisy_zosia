@@ -3,6 +3,7 @@
 {% cache 120 blog_template %}
 
 {% load markup %}
+{% load blurb_edit %}
 
 {% block content %}
 {% for post in blog_posts %}
@@ -14,39 +15,42 @@
 {% endblock %}
 
 {% block right_column %}
+{# {% wiki_blurb blog_right_column %} #}
 {#      wydaje mi się, że ten blok nie powinien być wszucany do trans-stringów      #}
 {#      ułatwi to wrzucanie niektórych ważnych informacji (np linków do sponsorów), #}
 {#      w przyszłości to powinno być przesunięte do bazy. (dreamer_)                #}
 <h2>Informacje:</h2>
 <h4>Miejsce</h4>
 <p>
-<a href="http://www.przesieka.pl/markus/">Ośrodek Markus</a> w <a href="http://www.przesieka.pl/">Przesiece</a>
-<a href="http://www.zumi.pl/namapie.html?qt=markus&loc=Przesieka,+Centrum+miasta&Submit=Szukaj&long=15.650757&lat=50.810294&type=3&scale=2">Lokalizacja na zumi.pl</a>
+<a href="http://www.hotel-chrobry.pl/pl/">Kompleks hotelowy Chrobry</a> w 
+<a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=48-267+Pokrzywna,+Poland&sll=50.256864,17.697601&sspn=0.582116,1.41861&ie=UTF8&hq=&hnear=Pokrzywna,+Nysa+County,+Opole,+Poland&ll=50.283745,17.453327&spn=0.072724,0.242729&z=13&lci=com.panoramio.all,org.wikipedia.en">Pokrzywnej</a> (<a href="http://pl.wikipedia.org/wiki/Góry_Opawskie">Góry&nbsp;Opawskie</a>)
+
 </p>
 <p>
-<h4>Terminy</h4>
+<h4>Planowane terminy</h4>
 </p>
 <ul style="margin-left:0.2em">
-    <li>zakończenie zapisów<br/>21 luty 2009</li>
-    <li>koniec przyjmowania wpłat<br/>21 luty 2009</li>
-    <li>koniec przyjmowania wykładów<br/>2 marca 2009</li>
-    <li>zapisy na pokoje<br/>3 marca 2009</li>
-    <li>wyjazd<br/>5 marca 2009</li>
-    <li>powrót<br/>8 marca 2009</li>
+    <li>zapisy<br/>luty 2010</li>
+    <li>wyjazd<br/>4 marca 2010</li>
+    <li>powrót<br/>7 marca 2010</li>
 </ul>
 <h4>Kontakt</h4>
 <p>
 <a href="mailto:ksi@cs.uni.wroc.pl">ksi@cs.uni.wroc.pl</a>
 </p>
 <p>
-<a href="http://www.ii.uni.wroc.pl/cms/pl/main_page"><img src='http://mrc.yebood.com/zosia/ii1.png' alt='Instytut Informatyki UWr' title='Instytut Informatyki UWr' /></a>
-<a href="http://lilith.ii.uni.wroc.pl/ksi/"><img src='http://mrc.yebood.com/zosia/ksi1.png' alt='Koło Studentów Informatyki' title='Koło Studentów Informatyki UWr' /></a>
+<a href="http://www.ii.uni.wroc.pl/cms/pl/main_page"><img src='/static_media/images/ii1.png' alt='Instytut Informatyki UWr' title='Instytut Informatyki UWr' /></a>
+<a href="http://sites.google.com/a/cs.uni.wroc.pl/ksi/"><img src='/static_media/images/ksi1.png' alt='Koło Studentów Informatyki' title='Koło Studentów Informatyki UWr' /></a>
 </p>
 <br/>
+<h4>Patronat</h4>
+<p>
+<a href="http://www.wmi.uni.wroc.pl/">Wydział Matematyki i Informatyki Uniwersytetu Wrocławskiego</a>
+</p>
+
 <h4>Sponsorzy</h4>
 <p>
-<a href="http://www.power.com.pl/"><img src='/static_media/images/powermedia.png' alt='Power Media logo' title='Power Media' style='margin:0 0 0 1.3em'/></a>
-<img src='/static_media/images/mgm-logo.png' alt='MGM Consulting Group logo' title='MGM Consulting Group' style='margin:0.5em 0 0 0.1em' />
+To miejsce w sam raz dla Ciebie :)
 </p>
 {% endblock %}
 {% endcache %}

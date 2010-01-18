@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     'zapisy_zosia.registration',
     'zapisy_zosia.blog',
     'zapisy_zosia.common',
+    'zapisy_zosia.blurb',
 )
 
 AUTHENTICATION_BACKENDS = (
