@@ -43,6 +43,10 @@ to run developer server (port 8000):
 
 TRANSLATION
 
+update *.po files, and run
+$ django-admin compilemessages
+in project's root dir
+
 DEPLOYMENT
 1) go to settings.py and change DEBUG variable to False
 2) update registration dates - change final_date in methods in
