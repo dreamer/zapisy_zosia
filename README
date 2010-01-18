@@ -21,7 +21,7 @@ PREREQUISITIES
 you will of course need:
 - django (>=1.0) [looks like 1.1 works just fine :) ]
 - python (>=2.5, <3.0)
-- textile
+- textile (2.1.3 works fine; called python-textile in Fedora)
 
 Textile is the least popular of bunch, so in case you don't find it in repository:
 
