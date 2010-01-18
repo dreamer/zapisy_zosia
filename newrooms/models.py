@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 from datetime import datetime
 import random
 
+#FIXME
 def is_rooming_disabled():
-    final_date = datetime(2009,3,4, 20,00) # 
+    final_date = datetime(2010,3,4, 20,00) # 
     return datetime.now() < final_date
  
 # feature tasks (microbacklog ;) )
