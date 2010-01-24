@@ -124,17 +124,8 @@ form_onload()
                    {% trans "organization" %} <span>{% trans "(required)" %}</span>
                 </label>
                 {{ form.organization_1 }}
-                <span id="id_add_org_1" class="hidden">
-                    {{ form.organization_2 }}
-                </span>
+                <div id="id_add_org_1" class="hidden">{{ form.organization_2 }}</div>
             </li>
-            <!--
-            <label></label>
-                <label class="for_hidden" onclick='add_select_form()'>
-                    <span>select another one</span>
-                </label>
-            </li>
-            -->
         </ol>
     </fieldset>
     <fieldset id="register_nights">

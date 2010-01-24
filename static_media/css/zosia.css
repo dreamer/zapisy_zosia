@@ -171,3 +171,12 @@ label.for_hidden span {
 }
 #login_form input {}
 
+/**
+ * fixes
+ */
+
+#register_auth li, #register_personal li
+{
+	height: 2em;
+}
+
