@@ -52,3 +52,9 @@ DEPLOYMENT
 2) update registration dates - change final_date in methods in
    registration/helpers.py. Don't forget to restart server after this!
 
+----------------------------------------------------------------------------
+
+Q: How to change, how much does this Zosia cost (breakfasts/dinners/night) ?
+A: look @ function count_payment(user) in registration/views.py
+
+
