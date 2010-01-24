@@ -117,16 +117,17 @@ def count_payment(user):
         prefs = user
     else:
         prefs = UserPreferences.objects.get(user=user)
+
     # returns how much money user is going to pay
     # ok, temporarily it is hardcoded, probably should
     # be moved somewhere else
-    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 51
-    breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 8
-    dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 10
-    bonus_payment       = 0 
-    if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 1
-    if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 1
-    if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 1
+    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 41
+    breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 10 
+    dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 15
+    bonus_payment       = 0
+    if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 5
+    if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 5
+    if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 5
     return days_payment + breakfasts_payment + dinners_payment + bonus_payment
 
 
@@ -142,7 +143,7 @@ def change_preferences(request):
         form = ChangePrefsForm(request.POST)
         # bug with settings not updateble
         # after user paid
-        if user_paid or True: # remove or True after zosia
+        if user_paid: # remove or True after zosia
             post = request.POST
             rewritten_post = {}
             for k in post.keys():
