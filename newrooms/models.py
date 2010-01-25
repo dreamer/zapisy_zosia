@@ -2,13 +2,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from common.helpers import *
 import random
 
-#FIXME
-def is_rooming_disabled():
-    final_date = datetime(2010,3,4, 20,00) # 
-    return datetime.now() < final_date
- 
 # feature tasks (microbacklog ;) )
 # - blocking datatimes
 # - unblocking at specified time

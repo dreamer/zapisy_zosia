@@ -8,6 +8,7 @@ from django.shortcuts import render_to_response
 
 from django.contrib.auth.decorators import login_required
 from common.forms import LoginForm
+from common.helpers import *
 from registration.helpers import *
 
 from models import *
@@ -17,7 +18,7 @@ def index(request):
     title = "Lectures"
     user = request.user
     lectures = Lecture.objects.filter(accepted=True)
-    if not is_lecture_suggesting_disabled():
+    if is_lecture_suggesting_enabled():
         login_form = LoginForm()
         if user.is_authenticated() and user.is_active:
             if request.method == 'POST':

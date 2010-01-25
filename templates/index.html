@@ -79,15 +79,16 @@ window.onload=function(){ AddFillerLink("col1_content","col3_content"); }
 			<div id="nav_main">
 				<ul>
                     <li {% ifequal title "Blog" %}id="current"{% endifequal %}><a href="/blog/">{% trans "Blog" %}</a></li>
+                    {% load time_block_helpers %}
                     {% if user.is_authenticated %}
                     <li {% ifequal title "Change preferences" %}id="current"{% endifequal %}><a href="/change_preferences/">{% trans "Change preferences" %}</a></li>
                     {% else %}
-                    {% load time_block_helpers %}
-                        {% if title %}{% registration_link title %}{% endif %}
-                   {# <li {% ifequal title "Registration" %}id="current"{% endifequal %}><a href="/register/">{% trans "Registration" %}</a></li> #}
+						{% if title %}{% registration_link title %}{% endif %} {# see registration/templatetags #}
                     {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
-                    <li {% ifequal title "Rooms" %}id="current"{% endifequal %}><a href="/rooms/">Zapisy na pokoje</a></li>
+                    {% if user.is_authenticated %}
+                       {% if title %}{% rooming_link title %}{% endif %} {# see registration/templatetags #}
+                    {% endif %}
 				</ul>
 			</div>
 		</div>

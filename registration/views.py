@@ -15,7 +15,7 @@ from django.template import Context, loader
 from django.contrib.sites.models import RequestSite
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
-from helpers import *
+from common.helpers import *
 
 
 def activate_user(request, uidb36=None, token=None):
