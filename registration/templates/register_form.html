@@ -202,6 +202,9 @@ form_onload()
             <li class="nasty_choices_li">
             <label for="id_shirt_type">{% trans "shirt_type" %}</label> {{ form.shirt_type}} 
             </li>
+            <li>
+            {% trans "Rejestrując się na obóz, akceptuję jego " %}<a href="/register/regulations/">{% trans "regulamin" %}</a>.
+            </li>
         </ol>
     </fieldset>
     <fieldset><input type="submit" value="{% trans "register" %}" /></fieldset>

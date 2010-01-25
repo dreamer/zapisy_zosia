@@ -105,6 +105,11 @@ def register(request):
     return render_to_response('register_form.html', locals())
 
 
+def regulations(request):
+    # Setting title makes "Registration" link visible on the panel.
+    title = "Registration" 
+    return render_to_response('regulations.html', locals())
+
 def thanks(request):
     user = request.user
     title = "Registration"

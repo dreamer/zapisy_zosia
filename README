@@ -48,9 +48,26 @@ $ django-admin compilemessages
 in project's root dir
 
 DEPLOYMENT
-1) go to settings.py and change DEBUG variable to False
-2) update registration dates - change final_date in methods in
-   registration/helpers.py. Don't forget to restart server after this!
+1) clear the database, if it exists. It's a matter of a sequence of consecutive
+'DROP TABLE <table name> CASCADE;' in the psql shell.
+2) make sure there is no zapisy_zosia directory in the deployment directory.
+3) given that you have git installed on the deployment machine, simply type
+git clone <repository_url>
+where current repository is http://github.com/dreamer_/zapisy_zosia.git
+If you don't have git installed, you have to checkout the source code
+and put it in the deployment directory some other way.
+4) type python manage.py syncdb
+5  change the text of email messages - that is, the content of the txt files
+in the main templates/ directory.
+6) go to settings.py and change DEBUG variable to False
+7) update registration dates - change final_date in methods in
+   registration/helpers.py.
+8) Update Apache's (or other web server) configuration so that it runs
+this DJango app.
+9) If you own a domain that you want to point to this application,
+configure the domain records and update Apache's configuration so
+that it recognizes the redirection.
+8) Restart server!
 
 ----------------------------------------------------------------------------
 
