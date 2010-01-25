@@ -33,7 +33,7 @@ if bash will complain to you, that command is not found then:
 1) blame your distribution
 2) install package setuptools (some distros may name it python-setuptools)
    if not found again, go to step 1 or...
-3) compile it yourself
+3) compile it yourself (http://pypi.python.org/pypi/textile)
 
 DEVELOPMENT
 
