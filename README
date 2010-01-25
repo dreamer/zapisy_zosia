@@ -16,6 +16,8 @@ Smiley images in static_media/images are part of GNOME project, thus under GPLv2
 
 logo_zosi.svg was created by Adrian Dziubek
 
+sorttable.js was written Stuart Langridge, published under X11 license.
+
 PREREQUISITIES
 
 you will of course need:
@@ -48,25 +50,25 @@ $ django-admin compilemessages
 in project's root dir
 
 DEPLOYMENT
+
 1) clear the database, if it exists. It's a matter of a sequence of consecutive
-'DROP TABLE <table name> CASCADE;' in the psql shell.
+   'DROP TABLE <table name> CASCADE;' in the psql shell.
 2) make sure there is no zapisy_zosia directory in the deployment directory.
 3) given that you have git installed on the deployment machine, simply type
-git clone <repository_url>
-where current repository is http://github.com/dreamer_/zapisy_zosia.git
-If you don't have git installed, you have to checkout the source code
-and put it in the deployment directory some other way.
-4) type python manage.py syncdb
-5  change the text of email messages - that is, the content of the txt files
-in the main templates/ directory.
-6) go to settings.py and change DEBUG variable to False
-7) update registration dates - change final_date in methods in
-   registration/helpers.py.
-8) Update Apache's (or other web server) configuration so that it runs
-this DJango app.
-9) If you own a domain that you want to point to this application,
-configure the domain records and update Apache's configuration so
-that it recognizes the redirection.
+   $ git clone <repository_url>
+   where current repository is http://github.com/dreamer_/zapisy_zosia.git
+   If you don't have git installed, you have to checkout the source code and put
+   it in the deployment directory some other way.
+4) $ python manage.py syncdb
+5) Change the text of email messages - that is, the content of the txt files in
+   the zapisy_zosia/templates directory.
+6) Go to settings.py and change DEBUG variable to False
+7) update all dates - change dates in functions in common/helpers.py.
+8) Update Apache's (or other web server) configuration so that it runs this
+   Django app.
+9) If you own a domain that you want to point to this application, configure the
+   domain records and update Apache's configuration so that it recognizes the
+   redirection.
 8) Restart server!
 
 ----------------------------------------------------------------------------
