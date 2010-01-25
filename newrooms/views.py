@@ -10,14 +10,18 @@ from django.http import HttpResponseRedirect
 import random
 from models import *
 from datetime import *
+from common.helpers import *
 
 # from models import *
 
 @login_required
 def index(request):
-    user = request.user
-    title = "Rooms"
-    return render_to_response('rooms.html',locals())
+	user = request.user
+	title = "Rooms"
+	if is_rooming_enabled():
+ 	   return render_to_response('rooms.html',locals())
+	else:
+		return render_to_response('rooming_disabled.html',locals())
 
 
 def fill_rooms(request):

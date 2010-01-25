@@ -63,7 +63,8 @@ urlpatterns = patterns('',
      (r'^lectures/$', lectures.views.index),
 
      # static media
-     # note, that thid should be disabled for production code
+     # note, that this should be disabled for production code
+	 # (may be disabled outside of django, though)
      (r'^static_media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.getcwd()+os.sep+'static_media', 'show_indexes': True}),
 
