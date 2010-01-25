@@ -9,7 +9,6 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from common.forms import LoginForm
 from common.helpers import *
-from registration.helpers import *
 
 from models import *
 from forms import *
