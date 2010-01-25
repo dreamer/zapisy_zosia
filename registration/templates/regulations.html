@@ -1,5 +1,12 @@
 {% extends "index.html" %}
 {% load i18n %}
+{% block css %}
+ol ol
+{
+	list-style-type: lower-roman;
+}
+{% endblock css %}
+
 
 {% block content %}
 <h2>{% trans "Regulamin obozu" %}</h2>
@@ -17,7 +24,7 @@ przy ul. Joliot-Curie 15, 50-383 Wrocław.
 te osoby zarejestrowane w serwisie internetowym obozu, które uiściły 
 odpowiednią opłatę wyliczoną indywidualnie dla każdego uczestnika.
 </li>
-<li>Obóz rozpoczyna się w dniu 4 marca 2010 i kończy w dniu 07 marca 2010,
+<li>Obóz rozpoczyna się w dniu 4 marca 2010 i kończy w dniu 7 marca 2010,
 jednakże czas pobytu każdego z uczestników jest zależny od jego preferencji 
 zadeklarowanych w systemie internetowym.
 </li>
