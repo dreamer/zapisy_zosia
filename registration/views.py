@@ -15,6 +15,7 @@ from django.template import Context, loader
 from django.contrib.sites.models import RequestSite
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
 from common.helpers import *
 
 
@@ -135,7 +136,7 @@ def count_payment(user):
     if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 5
     return days_payment + breakfasts_payment + dinners_payment + bonus_payment
 
-
+@never_cache
 @login_required
 def change_preferences(request):
     user = request.user
