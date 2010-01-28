@@ -19,6 +19,9 @@
 .nasty_choices_li label { float: left; }
 .nasty_choices_li select { width: 7em; }
 }
+
+<!-- This is introduced due to the bug #24. -->
+.float_right { float: right; }
 {% endblock css %}
 
 {% block javascript %}
@@ -53,7 +56,7 @@ form_onload()
         <ol>
             <li>
                 {% if form.email.errors %}
-                <ul class="errorlist">
+                <ul class="errorlist float_right">
                 {% for error in form.email.errors %}
                     <li>{{error|escape}}</li>
                 {% endfor %}
@@ -64,7 +67,7 @@ form_onload()
             </li>
             <li>
                 {% if form.password.errors %}
-                <ul class="errorlist">
+                <ul class="errorlist float_right">
                 {% for error in form.password.errors %}
                     <li>{{error|escape}}</li>
                 {% endfor %}
@@ -75,7 +78,7 @@ form_onload()
             </li>
             <li>
                 {% if form.password2.errors %}
-                <ul class="errorlist">
+                <ul class="errorlist float_right">
                 {% for error in form.password2.errors %}
                     <li>{{error|escape}}</li>
                 {% endfor %}
@@ -91,7 +94,7 @@ form_onload()
         <ol>
             <li>
                 {% if form.name.errors %}
-                <ul class="errorlist">
+                <ul class="errorlist float_right">
                 {% for error in form.name.errors %}
                     <li>{{error|escape}}</li>
                 {% endfor %}
@@ -102,7 +105,7 @@ form_onload()
             </li>
             <li>
                 {% if form.surname.errors %}
-                <ul class="errorlist">
+                <ul class="errorlist float_right">
                 {% for error in form.surname.errors %}
                     <li>{{error|escape}}</li>
                 {% endfor %}
@@ -114,7 +117,7 @@ form_onload()
             <li>
                 {# bw careful with errors here - if there are more than 1 orgs#}
                 {% if form.organization_1.errors %}
-                <ul class="errorlist">
+                <ul class="errorlist float_right">
                 {% for error in form.organization_1.errors %}
                     <li>{{error|escape}}</li>
                 {% endfor %}
@@ -132,7 +135,7 @@ form_onload()
         <legend>{% trans "nights" %}</legend>
         <ol>
             {% if form.day_3.errors %}
-            <ul class="errorlist">
+            <ul class="errorlist float_right">
             {% for error in form.day_3.errors %}
                 <li>{{error|escape}}</li>
             {% endfor %}
@@ -153,7 +156,7 @@ form_onload()
         <legend>{% trans "dinners" %}</legend>
         <ol>
             {% if form.dinner_3.errors %}
-            <ul class="errorlist">
+            <ul class="errorlist float_right">
             {% for error in form.dinner_3.errors %}<li>{{error|escape}}</li>{% endfor %}
             </ul>
             {% endif %}
@@ -172,7 +175,7 @@ form_onload()
         <legend>{% trans "breakfasts" %}</legend>
         <ol>
             {% if form.breakfast_4.errors %}
-            <ul class="errorlist">
+            <ul class="errorlist float_right">
             {% for error in form.breakfast_4.errors %}<li>{{error|escape}}</li>{% endfor %}
             </ul>
             {% endif %}
@@ -215,9 +218,9 @@ form_onload()
 <span class="cennik">Cennik</span>
 
 <table>
-<tr><td>nocleg ze śniadaniem i obiadokolacją:</td><td>60&nbsp;zł</td></tr>
-<tr><td>nocleg z obiadokolacją:</td><td>55&nbsp;zł</td></tr>
-<tr><td>nocleg ze śniadaniem:</td><td>50&nbsp;zł</td></tr>
+<tr><td>nocleg ze śniadaniem i obiadokolacją:</td><td>61&nbsp;zł</td></tr>
+<tr><td>nocleg z obiadokolacją:</td><td>56&nbsp;zł</td></tr>
+<tr><td>nocleg ze śniadaniem:</td><td>51&nbsp;zł</td></tr>
 <tr><td>nocleg:</td><td>41&nbsp;zł</td></tr>
 </table>
 

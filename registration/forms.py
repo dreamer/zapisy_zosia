@@ -67,7 +67,10 @@ class RegisterForm(forms.Form):
 
     def validate_nonempty(self,x):
         x = self.cleaned_data.get(x, '').strip()
-        x = x.replace(' ','') # remove spaces
+        # FIXME(Karol Stosiek): I comment the line below due to the fact that
+        # it concatenates composite names. We should indicate an error
+        # if someone fill a field with space characters included.
+        # x = x.replace(' ','') # remove spaces
         # TODO: regex here!
         # [a-ż]+(-[a-ż]+)* for surnames ? ;)
         if len(x) == 0:
