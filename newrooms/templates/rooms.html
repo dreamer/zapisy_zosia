@@ -24,13 +24,13 @@ Rooms.ms;
 Rooms.x_onchange = function(x)
 {
     return function() {
-        if(x.readyState  == 4)
+        if(x.readyState == 4)
         {
             if( x.status == 200) 
             {
                 date = new Date();
                 ms = document.getElementById( 'ms' );
-                ms.innerHTML = (date.valueOf() - Rooms.ms)/1000;
+				if(ms) ms.innerHTML = (date.valueOf() - Rooms.ms)/1000;
 
                 Rooms.list = eval("("+x.responseText+")");
                 Rooms.update_table();
