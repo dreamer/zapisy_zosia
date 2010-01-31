@@ -76,4 +76,15 @@ DEPLOYMENT
 Q: How to change, how much does this Zosia cost (breakfasts/dinners/night) ?
 A: look @ function count_payment(user) in registration/views.py
 
+Q: How can I change dates for my zosia deployment? It's not 2010 any more!
+A: look @ common/helpers.py but remember, that in final deployment, changing
+   these dates needs server restart
+
+Q: Where is my CSS on admin pages?! I just deployed zosia and my admin page
+   is unusable!!!
+A: Ops! system expects them to be in /static_media/css/ directory, but for
+   release deployment this may not work out of the box; try linking
+   correct files in filesystem, e.g.:
+   base.css -> /usr/share/python-support/python-django/django/contrib/admin/media/css/base.css
+   
 
