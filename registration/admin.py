@@ -22,7 +22,7 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     yes_icon = '<img src="/static_media/images/icon-yes.gif" alt="Yes" />'
     no_icon  = '<img src="/static_media/images/icon-no.gif" alt="No" />'
     def onclick(self,id,obj):
-        return """if(confirm('Do you want to register payment from %s?')) {
+        return u"""if(confirm('Do you want to register payment from %s?')) {
         document.getElementById('anim%s').style.display='inline';
         xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -38,7 +38,7 @@ class UserPreferencesAdmin(admin.ModelAdmin):
         }""" % (obj, id, id, id)
     def bus_onclick(self,obj):
         id = obj.id
-        return """if(confirm('Do you want to register transport payment from %s?')) {
+        return u"""if(confirm('Do you want to register transport payment from %s?')) {
         //document.getElementById('anim%s').style.display='inline';
         xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
