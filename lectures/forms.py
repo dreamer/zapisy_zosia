@@ -7,6 +7,7 @@ class NewLectureForm(forms.Form):
     duration = forms.IntegerField( min_value=5, max_value=240 )
     abstract = forms.CharField( widget=forms.Textarea(),
                                 required=True, max_length=512 )
+    sprezentujpl_email = forms.EmailField()
     info = forms.CharField( widget=forms.Textarea(),
                                 required=False, max_length=2048 )
-
+ 

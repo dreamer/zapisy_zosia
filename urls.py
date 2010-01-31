@@ -40,7 +40,8 @@ urlpatterns = patterns('',
 
      # admin related
      (r'^admin/register_payment/$', registration.views.register_payment),
-     (r'^admin/register_bus_payment/$', registration.views.register_bus_payment),
+     # TODO(Karol): we disable separate transportation payment for this edition.
+     # (r'^admin/register_bus_payment/$', registration.views.register_bus_payment),
      (r'^admin/(.*)', admin.site.root),
 
      # registration related

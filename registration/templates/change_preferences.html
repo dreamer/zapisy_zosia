@@ -59,7 +59,8 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 {% endif %}
 
 {# a teraz to samo, tylko dla wpłat na busy #}
-
+{# a w tym roku laczymy wplaty za obie rzeczy w jedna - Karol #}
+{% comment %}
 {% if user_paid_for_bus %}
     <ul class="messages">
         <li>Zarejestrowaliśmy również wpłatę za transport. Do zobaczenia na ZOSI!</li>
@@ -91,6 +92,7 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 </p>
 {% endif %}
 {% endif %}
+{% endcomment %}
 
 {# brr, to trzeba będzie naprawić... ale po zosi; nie lubię dostawać wymagań w dniu #}
 {# w którym trzeba je zaimplementować :/ #}
@@ -242,7 +244,6 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 <tr><td>nocleg z obiadokolacją:</td><td>56&nbsp;zł</td></tr>
 <tr><td>nocleg ze sniadaniem:</td><td>51&nbsp;zł</td></tr>
 <tr><td>nocleg:</td><td>41&nbsp;zł</td></tr>
-
+<tr><td>transport:</td><td>50&nbsp;zł</td></tr>
 </table>
-Koszt transportu zostanie ustalony wkrótce. Zainteresowani otrzymają propozycję pocztą elektroniczną.
 {% endblock %}

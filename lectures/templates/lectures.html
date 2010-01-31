@@ -73,6 +73,19 @@
     <legend>{% trans "Additional information" %}</legend>
         <ol>
             <li>
+            Podanie poniższych informacji jest nieobowiązkowe. Jeśli jednak chcesz otrzymać upominek od naszego sponsora, zarejestruj się w serwisie <a href="http://sprezentuj.pl">sprezentuj.pl</a> i dodaj do swojej listy prezentów upominek (o wartości do 80zł), który chciał(a)byś otrzymać.
+            </li>
+            <li>
+                {% if lecture_proposition_form.sprezentujpl_email.errors %}
+                <ul class="errorlist">
+                {% for error in lecture_proposition_form.sprezentujpl_email.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            <label for="id_email">Login <a href="http://sprezentuj.pl">sprezentuj.pl</a></label>
+            {{ lecture_proposition_form.sprezentujpl_email }}
+            <li>
                 {% if lecture_proposition_form.info.errors %}
                 <ul class="errorlist">
                 {% for error in lecture_proposition_form.info.errors %}

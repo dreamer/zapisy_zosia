@@ -13,6 +13,7 @@ class LectureManager(models.Manager):
                               title     = data['title'],
                               duration  = data['duration'],
                               abstract  = data['abstract'],
+                              sprezentujpl_email = data['sprezentujpl_email'],
                               info      = data['info'],
                               date_time = datetime.now(),
                               accepted  = False
@@ -30,6 +31,7 @@ class Lecture(models.Model):
     author    = models.ForeignKey(User)
     date_time = models.DateTimeField()
     accepted  = models.BooleanField()
+    sprezentujpl_email = models.EmailField()
 
     objects = LectureManager()
 

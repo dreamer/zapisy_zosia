@@ -130,11 +130,13 @@ def count_payment(user):
     days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 41
     breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 10 
     dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 15
+    transport_payment   = 0;
+    if prefs.bus: transport_payment += 50;
     bonus_payment       = 0
     if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 5
     if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 5
     if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 5
-    return days_payment + breakfasts_payment + dinners_payment + bonus_payment
+    return days_payment + breakfasts_payment + dinners_payment + bonus_payment + transport_payment
 
 @never_cache
 @login_required
@@ -189,7 +191,6 @@ def change_preferences(request):
     else:
         form.initialize(prefs)
         payment = count_payment(user)
-    user_paid_for_bus = prefs.paid_for_bus
     user_wants_bus = prefs.bus
     return render_to_response('change_preferences.html', locals())
 
@@ -216,6 +217,8 @@ def register_payment(request):
     prefs.save()
     return HttpResponse("ok")
 
+# TODO(Karol): remove after successful verification.
+"""
 def register_bus_payment(request):
     user = request.user
     if not user.is_authenticated() or not user.is_staff or not user.is_active:
@@ -227,3 +230,4 @@ def register_bus_payment(request):
     prefs.paid_for_bus = True
     prefs.save()
     return HttpResponse("ok")
+"""
