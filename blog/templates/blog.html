@@ -14,6 +14,12 @@
 {% endfor %}
 {% endblock %}
 
+{% block css %}
+.sponsor_logo {
+  margin: 20px;
+}
+{% endblock css %}
+
 {% block right_column %}
 {# {% wiki_blurb blog_right_column %} #}
 {#      wydaje mi się, że ten blok nie powinien być wszucany do trans-stringów      #}
@@ -55,7 +61,12 @@
 
 <h4>Sponsorzy</h4>
 <p>
-To miejsce w sam raz dla Ciebie :)
+<div class="sponsor_logo">
+<a href="http://sprezentuj.pl"><img src='/static_media/images/logo_sprezentuj.pl_175x120.png' alt='Sprezentuj.pl' title='Sprezentuj.pl' /></a>
+</div>
+<div class="sponsor_logo">
+<a href="http://nasza-klasa.pl"><img src='/static_media/images/logo_naszaklasa_175x88px.png' alt='Nasza Klasa - miejsce spotkań' title='Nasza Klasa - miejsce spotkań' /></a>
+</div>
 </p>
 {% endblock %}
 {% endcache %}
