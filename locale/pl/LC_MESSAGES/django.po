@@ -16,6 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: common/forms.py:16
+msgid "Password too short"
+msgstr "Hasło powinno mieć przynajmniej 6 znaków długości"
+
 #: common/templates/bye.html:5
 msgid "bye"
 msgstr "Wylogowałeś się."
