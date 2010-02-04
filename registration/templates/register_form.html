@@ -114,6 +114,10 @@ form_onload()
                 <label for="id_surname">{% trans "surname" %} <span>{% trans "(required)" %}</span></label>
                 {{ form.surname }}
             </li>
+	    <li>
+	        <label><span/></label>
+		<comment>{% trans "adding organizations only at registration" %}</comment>
+	    </li>
             <li>
                 {# bw careful with errors here - if there are more than 1 orgs#}
                 {% if form.organization_1.errors %}

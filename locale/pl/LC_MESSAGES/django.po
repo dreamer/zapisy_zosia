@@ -206,8 +206,12 @@ msgstr "imię"
 msgid "surname"
 msgstr "nazwisko"
 
+#: registration/templates/register_form.html:119
+msgid "adding organizations only at registration"
+msgstr "Dodanie nowej organizacji jest możliwe tylko podczas rejestracji."
+
 #: registration/templates/change_preferences.html:93
-#: registration/templates/register_form.html:124
+#: registration/templates/register_form.html:131
 msgid "organization"
 msgstr "organizacja"
 

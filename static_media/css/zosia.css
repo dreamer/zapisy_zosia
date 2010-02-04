@@ -109,6 +109,11 @@ fieldset label {
     display: inline-block;
     width: 15em;
 }
+comment {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #E34234;
+}
 label span {
     font-style: italic;
     font-size: 0.8em;
