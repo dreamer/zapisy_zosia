@@ -185,3 +185,7 @@ label.for_hidden span {
 	height: 2em;
 }
 
+input[type=checkbox]
+{
+	margin:2px
+}

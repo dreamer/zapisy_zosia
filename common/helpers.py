@@ -6,7 +6,7 @@ from datetime import datetime
 def is_registration_enabled():
 	# this is the only place that should be changed
 	start_date = datetime(2010,2,1, 1,05)
-	final_date = datetime(2010,2,22, 1,05)
+	final_date = datetime(2011,2,22, 1,05)
 	assert start_date < final_date
 	return datetime.now() > start_date and datetime.now() < final_date
 
@@ -18,7 +18,7 @@ def is_registration_disabled():
 def is_lecture_suggesting_enabled():
 	# this is the only place that should be changed
 	start_date = datetime(2010,2,1, 1,05)
-	final_date = datetime(2010,3,2, 1,05)
+	final_date = datetime(2011,3,2, 1,05)
 	assert start_date < final_date
 	return datetime.now() > start_date and datetime.now() < final_date
 
@@ -29,7 +29,7 @@ def is_lecture_suggesting_disabled():
 
 def is_rooming_enabled():
 	start_date = datetime(2010,2,27, 20,00)
-	final_date = datetime(2010,3,1, 20,00)
+	final_date = datetime(2011,3,1, 20,00)
 	assert start_date < final_date
 	return datetime.now() > start_date and datetime.now() < final_date
 

@@ -18,9 +18,21 @@
 }
 .nasty_choices_li label { float: left; }
 .nasty_choices_li select { width: 7em; }
+
+input[type=text],
+input[type=email],
+input[type=password] {
+	width: 15em;
 }
 
-<!-- This is introduced due to the bug #24. -->
+input[type=password]:valid,
+input[type=email]:valid,
+#id_name:valid,
+#id_surname:valid {
+	outline: 1px #03de03 solid;
+}
+
+{# This is introduced due to the bug #24. #}
 .float_right { float: right; }
 {% endblock css %}
 
@@ -62,8 +74,14 @@ form_onload()
                 {% endfor %}
                 </ul>
                 {% endif %}
-            <label for="id_email">e-mail <span>{% trans "(required)" %}</span></label>
-            {{ form.email }}
+				<label for="id_email">e-mail <span>{% trans "(required)" %}</span></label>
+{# In following forms we would love to use build-in form input fields       #}
+{# e.g. form.email form.password, etc. But currently django doesn't support #}
+{# generating html5 fields, therefore we will write html inputs until it    #}
+{# does :) This way we have client-side validation basically for free.      #}
+{#                                                                          #}
+{# TODO replace these back to form.field as soon as django will support it  #}
+				<input type="email" name="email" id="id_email" required /> {# form.email #}
             </li>
             <li>
                 {% if form.password.errors %}
@@ -74,7 +92,7 @@ form_onload()
                 </ul>
                 {% endif %}
                 <label for="id_password">{% trans "password" %} <span>{% trans "(required)" %}</span></label>
-                {{ form.password }}
+				<input type="password" name="password" id="id_password" required pattern="[A-z\d]{6,}" /> {# form.password #}
             </li>
             <li>
                 {% if form.password2.errors %}
@@ -85,7 +103,7 @@ form_onload()
                 </ul>
                 {% endif %}
                 <label for="id_password2">{% trans "repeatepas" %} <span>{% trans "(required)" %}</span></label>
-                {{ form.password2 }}
+				<input type="password" name="password2" id="id_password2" required pattern="[A-z\d]{6,}" /> {# form.password2 #}
             </li>
         </ol>
     </fieldset>
@@ -101,7 +119,7 @@ form_onload()
                 </ul>
                 {% endif %}
                 <label for="id_name">{% trans "name" %} <span>{% trans "(required)" %}</span></label>
-                {{ form.name }}
+				<input type="text" name="name" id="id_name" required pattern="[^\d\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\]\;\:\'\,\<\.\>\/\?]+" /> {# form.name #}
             </li>
             <li>
                 {% if form.surname.errors %}
@@ -112,7 +130,7 @@ form_onload()
                 </ul>
                 {% endif %}
                 <label for="id_surname">{% trans "surname" %} <span>{% trans "(required)" %}</span></label>
-                {{ form.surname }}
+				<input type="text" name="surname" id="id_surname" required pattern="[^\d\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\]\;\:\'\,\<\.\>\/\?]+" /> {# form.surname #}
             </li>
 	    <li>
 	        <label><span/></label>
