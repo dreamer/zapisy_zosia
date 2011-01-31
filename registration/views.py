@@ -127,15 +127,15 @@ def count_payment(user):
     # returns how much money user is going to pay
     # ok, temporarily it is hardcoded, probably should
     # be moved somewhere else
-    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 41
-    breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 10 
-    dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 15
+    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 40
+    breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 15 
+    dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 20
     transport_payment   = 0;
     if prefs.bus: transport_payment += 50;
-    bonus_payment       = 0
-    if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 5
-    if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 5
-    if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 5
+    bonus_payment       = 15
+    if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 10
+    if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 10
+    if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 10
     return days_payment + breakfasts_payment + dinners_payment + bonus_payment + transport_payment
 
 @never_cache
