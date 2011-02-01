@@ -83,19 +83,19 @@
                 <label for="id_info">{% trans "Your suggestions, requests and comments intended for organizers and a lot more, what you always wanted to say these philistinic bastards with purulent knees" %}</label>
                 {{ lecture_proposition_form.info }}
             </li>
-            <li>
-            <p>
-            Nasz partner - portal <a href="http://sprezentuj.pl">Sprezentuj.pl</a> - przygotował dla prelegentów specjalne upominki. Sprezentuj.pl to jednak tylko trafione prezenty - więc by sprostać zadaniu, prosimy w imieniu sponsora o utworzenie konta w serwisie <a href="http://sprezentuj.pl">Sprezentuj.pl</a> i dodanie do swojej listy prezentów upominku (o wartości do 80zł), który chciał(a)byś otrzymać. Na koniec prosimy o podanie nazwy użytkownika serwisu <a href="http://sprezentuj.pl">Sprezentuj.pl</a> poniżej, a prezenty będą czekały!</p> 
-                {% if lecture_proposition_form.sprezentujpl_email.errors %}
-                <ul class="errorlist">
-                {% for error in lecture_proposition_form.sprezentujpl_email.errors %}
-                    <li>{{error|escape}}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-            <label for="id_email">Login <a href="http://sprezentuj.pl">sprezentuj.pl</a></label>
-            {{ lecture_proposition_form.sprezentujpl_email }}
-            </li>
+{#            <li> #}
+{#            <p> #}
+{#            Nasz partner - portal <a href="http://sprezentuj.pl">Sprezentuj.pl</a> - przygotował dla prelegentów specjalne upominki. Sprezentuj.pl to jednak tylko trafione prezenty - więc by sprostać zadaniu, prosimy w imieniu sponsora o utworzenie konta w serwisie <a href="http://sprezentuj.pl">Sprezentuj.pl</a> i dodanie do swojej listy prezentów upominku (o wartości do 80zł), który chciał(a)byś otrzymać. Na koniec prosimy o podanie nazwy użytkownika serwisu <a href="http://sprezentuj.pl">Sprezentuj.pl</a> poniżej, a prezenty będą czekały!</p> #}
+{#                {% if lecture_proposition_form.sprezentujpl_email.errors %} #}
+{#                <ul class="errorlist"> #}
+{#                {% for error in lecture_proposition_form.sprezentujpl_email.errors %} #}
+{#                    <li>{{error|escape}}</li> #}
+{#                {% endfor %} #}
+{#                </ul> #}
+{#                {% endif %} #}
+{#            <label for="id_email">Login <a href="http://sprezentuj.pl">sprezentuj.pl</a></label> #}
+{#            {{ lecture_proposition_form.sprezentujpl_email }} #}
+{#            </li> #}
          </ol>
     </fieldset>
     <p><input type="submit" value="{% trans "Suggest" %}" /></p>

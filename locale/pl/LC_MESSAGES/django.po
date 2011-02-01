@@ -290,7 +290,7 @@ msgstr "Preferuję kuchnię wegetariańską (nie mylić z&nbsp;ichtiwegetariańs
 msgid "bussies"
 msgstr ""
 "Jestem zainteresowany zorganizowanym transportem autokarowym na trasie "
-"Wrocław - Pokrzywna - Wrocław"
+"Wrocław - Michałowice - Wrocław"
 
 #: registration/templates/change_preferences.html:168
 #: registration/templates/register_form.html:209
