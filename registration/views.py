@@ -131,7 +131,7 @@ def count_payment(user):
     breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 15 
     dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 20
     transport_payment   = 0;
-    if prefs.bus: transport_payment += 50;
+    if prefs.bus: transport_payment += 45;
     bonus_payment       = 15
     if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 10
     if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 10
