@@ -67,6 +67,12 @@ class UserPreferences(models.Model):
     shirt_size  = models.CharField(max_length=2, choices=SHIRT_SIZE_CHOICES)
     shirt_type  = models.CharField(max_length=1, choices=SHIRT_TYPES_CHOICES)
 
+    # used for opening rooms faster per-user;
+    # e.g. 5 means room registration will open 5 minutes before global datetime
+    # e.g. -5 means room registration will open 5 minutes after global datetime
+    # FIXME needs actual implementation, so far it's only a stub field
+    minutes_early = models.IntegerField()
+
     # ? anonimowy - nie chce zeby jego imie/nazwisko/mail pojawialy sie na stronie
     
     def __unicode__(self):

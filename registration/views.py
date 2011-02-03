@@ -99,6 +99,7 @@ def register(request):
             prefs.vegetarian  = form.cleaned_data['vegetarian']
             prefs.shirt_size  = form.cleaned_data['shirt_size']
             prefs.shirt_type  = form.cleaned_data['shirt_type']
+            prefs.minutes_early = 0
             prefs.save()
             return HttpResponseRedirect('/register/thanks/')
     else:
