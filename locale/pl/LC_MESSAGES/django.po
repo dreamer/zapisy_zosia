@@ -283,7 +283,7 @@ msgstr "pozostałe"
 #: registration/templates/change_preferences.html:162
 #: registration/templates/register_form.html:203
 msgid "veggies"
-msgstr "Preferuję kuchnię wegetariańską (nie mylić z&nbsp;ichtiwegetariańską)."
+msgstr "Preferuję kuchnię wegetariańską."
 
 #: registration/templates/change_preferences.html:165
 #: registration/templates/register_form.html:206
