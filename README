@@ -5,7 +5,7 @@ LEGAL STUFF
 can do whatever you want with this stuff. If we meet some day, and you think
 this stuff is worth it, you can buy me a beer (or pizza) in return. Patryk Obara
 
-----------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 A little bit of code was copied and slightly modified from Django itself;
 all of it is in templates so any file in */template/ dir is under BSD.
@@ -18,6 +18,11 @@ logo_zosi.svg was created by Adrian Dziubek
 
 sorttable.js was written Stuart Langridge, published under X11 license.
 
+-------------------------------------------------------------------------------
+
+Every command example below is assumed to be run with zapisy_zosia as current
+directory unless explicitly stated otherwise.
+
 PREREQUISITIES
 
 you will of course need:
@@ -27,7 +32,7 @@ you will of course need:
 
 Textile is the least popular of bunch, so in case you don't find it in repository:
 
-[foo@bar ~]$ sudo easy_install textile
+$ sudo easy_install textile
 
 if bash will complain to you, that command is not found then:
 1) blame your distribution
@@ -38,38 +43,92 @@ if bash will complain to you, that command is not found then:
 DEVELOPMENT
 
 to create database:
-[foo@bar zapisy_zosia]$ python manage.py syncdb
+$ python manage.py syncdb
 
 to run developer server (port 8000):
-[foo@bar zapisy_zosia]$ python manage.py runserver
+$ python manage.py runserver
 
 TRANSLATION
 
 update *.po files, and run
 $ django-admin compilemessages
-in project's root dir
 
-DEPLOYMENT
 
-1) clear the database, if it exists. It's a matter of a sequence of consecutive
-   'DROP TABLE <table name> CASCADE;' in the psql shell.
-2) make sure there is no zapisy_zosia directory in the deployment directory.
-3) given that you have git installed on the deployment machine, simply type
-   $ git clone <repository_url>
-   where current repository is http://github.com/dreamer_/zapisy_zosia.git
-   If you don't have git installed, you have to checkout the source code and put
-   it in the deployment directory some other way.
+CHANGES REQUIRED BEFORE DEPLOYING ZAPISY FOR NEW ZOSIA
+
+* Change the text of email messages - that is, the content of the txt files in
+  the zapisy_zosia/templates directory.
+* Update all dates - change dates in functions in common/helpers.py
+* Update costs: function count_payment(user) in registration/views.py
+* Update rest of templates: including place, dates, costs, bank account,
+  sponsors, links, etc
+
+
+FIRST DEPLOYMENT
+
+1) Following will create zapisy_zosia directory and put all files inside:
+   $ git clone http://github.com/dreamer_/zapisy_zosia.git
+
+   Cloning using git is recommended; if you don't want to use git, you can
+   simply unpack tarball with files wherever you want (it will block you from
+   upgrading in future, so, beware).
+
+2) Update settings.py file with correct database name/pass, mailer address/pass
+ 
+3) In settings.py change DEBUG variable to False
+
 4) $ python manage.py syncdb
-5) Change the text of email messages - that is, the content of the txt files in
-   the zapisy_zosia/templates directory.
-6) Go to settings.py and change DEBUG variable to False
-7) update all dates - change dates in functions in common/helpers.py.
-8) Update Apache's (or other web server) configuration so that it runs this
-   Django app.
-9) If you own a domain that you want to point to this application, configure the
+
+5) Update web server configuration so that it runs this Django project.
+
+6) If you own a domain that you want to point to this application, configure the
    domain records and update Apache's configuration so that it recognizes the
    redirection.
-8) Restart server!
+
+7) Restart server!
+
+
+UPDATING ALREADY DEPLOYED VERSION
+
+0) If zosia was not touched since last year, you may want to clean db a bit;
+   easiest way to achieve it is to go to admin panel and remove all users.
+   Just remember:
+   - Don't remove yourself!
+   - Create backup of blogposts and lectures from previous year - removing
+     authors will remove their blog notes or lectures.
+   - Remove old organizations from organization list - leave only those
+     few that matters (KSI and II for example).
+   - Remove all rooms, too.
+
+1) Make sure there are no local changes in repository:
+   $ git diff
+   If there are no changes, then go to step (2), otherwise (perhaps settings.py
+   file changed?) commit all changes:
+   $ git commit -a -m "Local deployment changes"
+
+2) Following incantation will get latest version from origin repo and reapply
+   changes required by local deployment (such as settings.py file):
+   $ git pull --rebase
+
+3) In case incantation from step (2) failed, resolve carefully all conflicts.
+
+4) If pulled changes were in:
+   - templates only: they will be picked up automatically, you're ready to go
+   - model: you have to manually ALTER tables in database
+     tip: $ python manage.py sqlall <appname>
+   - code/translations: you need server restart, contact administrator
+
+5) Follow step (6) or (7) from FIRST DEPLOYMENT section, if they are required
+
+
+Usually, this procedure could be shortened to:
+$ git pull --rebase
+# <server restart>
+But follow steps 1-4 closely, to make sure you didn't miss anything.
+
+Oh, one more thing:
+REMEMBER, never push from deployment repository!
+
 
 ----------------------------------------------------------------------------
 
