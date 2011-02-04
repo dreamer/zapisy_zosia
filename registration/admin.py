@@ -16,6 +16,7 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'shirt',
     'org',
     )
+    search_fields = ('user__first_name', 'user__last_name')
 
     def anim_icon(self,id):
         return '<img src="/static_media/images/macthrob-small.png" alt="loading" id="anim%s" style="display:none"/>'%id
@@ -115,6 +116,7 @@ admin.site.register(UserPreferences, UserPreferencesAdmin)
 
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = (
+    'id',
     'name',
     'accepted'
     )
