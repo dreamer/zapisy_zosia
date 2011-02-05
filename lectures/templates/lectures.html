@@ -2,6 +2,19 @@
 {% load i18n %}
 {% load markup %}
 
+{% block css %}
+
+.lecture p {
+	text-indent: 1.5em;
+	text-align: justify;
+	text-justify: inter-word;
+	text-align-last: left;
+	max-width: 45em;
+}
+strong.lecture_author + p { text-indent: 0; }
+
+{% endblock css %}
+
 {% block content %}
 
 {% if messages %}
@@ -18,11 +31,14 @@
 {% endif %}
 
 <h2>{% trans "Lectures suggested" %}</h2>
+
 {% if lectures %}
 {% for lecture in lectures %}
-    <h3>{{ lecture.title }}</h3>
-    <strong>{{ lecture.author }}</strong>
-    {{ lecture.abstract|textile }}
+	<article class="lecture">
+		<h3>{{ lecture.title }}</h3>
+		<strong class="lecture_author">{{ lecture.author }}</strong>
+		{{ lecture.abstract|textile }}
+	</article>
 {% endfor %}
 {% else %}
     {% trans "None yet. You can be first!" %}<p />
