@@ -130,7 +130,7 @@ msgid ""
 "knees"
 msgstr ""
 "Uwagi, prośby i wszelkie komentarze dotyczące wykładu, którymi chciałbyś się "
-"podzielić z organizatorami."
+"podzielić z organizatorami oraz ew. proponowany czas trwania wykładu z uzasadnieniem."
 
 #: lectures/templates/lectures.html:88
 msgid "Suggest"
