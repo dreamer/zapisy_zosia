@@ -31,7 +31,14 @@
 /**
  * blog posts related:
  */
-.blog_post { margin: 0.5em 5em 2em 1em; }
+.blog_post {
+	margin: 0.5em 1em 2em 1em;
+	text-align: justify;
+	text-justify: inter-word;
+	text-align-last: left;
+	max-width: 50em;
+}
+
 .bp_author {
     color: #999;
     margin-left: 1em;
