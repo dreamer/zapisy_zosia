@@ -4,14 +4,18 @@
 
 {% block css %}
 
-.lecture p {
+.lecture p, #lecture_abstract {
 	text-indent: 1.5em;
 	text-align: justify;
 	text-justify: inter-word;
 	text-align-last: left;
 	max-width: 45em;
 }
+.lecture_abstract { padding-bottom: 10px; }
 strong.lecture_author + p { text-indent: 0; }
+#lecture_author { margin-bottom: 2px;}
+#lecture_abstract { margin-bottom: 5px;text-indent: 0;}
+#lecture_time { margin-bottom: 1em;}
 
 {% endblock css %}
 
@@ -29,6 +33,20 @@ strong.lecture_author + p { text-indent: 0; }
         <li>{% trans "Repair errors below, please." %}</li>
     </ul>
 {% endif %}
+
+<h2>{% trans "Invited talks" %}</h2>
+
+<article class="lecture_special">
+	<h3>Sztuczna inteligencja w praktyce</h3>
+	<div id="lecture_author"><strong>Cezary Dołęga, firma <a href="http://www.neurosoft.pl/?lang=pl">Neurosoft</a>, Dyrektor ds. Badań i Rozwoju </strong></div>
+<div id="lecture_abstract">
+Sztuczna Inteligencja to pojęcie opisujące bardzo różnorodne techniki informatyczne. 
+Co dokładnie oznacza to pojęcie? W jakich dziedzinach życia sztuczna inteligencja ma praktyczne zastosowanie?
+Jakie projekty realizuje Neurosoft? Jakie problemy napotykamy w implementacjach? Czy maszyny
+kiedykolwiek zaczną samodzielnie myśleć – sztuczna świadomość?</div>
+<div id="lecture_time"><strong> Na wykład zapraszamy w sobotę o 17:30 </strong></div>
+</article>
+
 
 <h2>{% trans "Lectures suggested" %}</h2>
 

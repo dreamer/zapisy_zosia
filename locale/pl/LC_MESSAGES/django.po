@@ -84,6 +84,10 @@ msgid "Repair errors below, please."
 msgstr "Prosimy o poprawienie wskazanych błędów."
 
 #: lectures/templates/lectures.html:20
+msgid "Invited talks"
+msgstr "Wykłady zaproszone"
+
+#: lectures/templates/lectures.html:20
 msgid "Lectures suggested"
 msgstr "Zaproponowane wykłady"
 
