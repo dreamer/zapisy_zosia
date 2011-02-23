@@ -11,12 +11,15 @@
 	text-align-last: left;
 	max-width: 45em;
 }
-.lecture_abstract { padding-bottom: 10px; }
 strong.lecture_author + p { text-indent: 0; }
 #lecture_author { margin-bottom: 2px;}
 #lecture_abstract { margin-bottom: 5px;text-indent: 0;}
 #lecture_time { margin-bottom: 1em;}
-
+#note {
+    color: #444444;
+    font-family: 'Lucida Grande','Trebuchet MS',Verdana,Helvetica,Arial,sans-serif;
+    font-size: 11px;
+}
 {% endblock css %}
 
 {% block content %}
@@ -35,6 +38,14 @@ strong.lecture_author + p { text-indent: 0; }
 {% endif %}
 
 <h2>{% trans "Invited talks" %}</h2>
+
+<article class="lecture_special">
+	<h3>Przychodzi baba do fryzjera i mówi: Proszę pół trwałej<span id="note"> &nbsp &nbsp<strong>Wykład inauguracyjny</strong></span></h3>
+	<div id="lecture_author"><strong>Maciej Piróg, absolwent Instytutu Informatyki, doktorant Oxford University</strong></div>
+<div id="lecture_abstract">
+Będzie o tym, jak najnowsze trendy w paryskim fryzjerstwie pozwalają nam zaoszczędzić trochę czasu i pieniędzy na destrukcyjnych aktualizacjach mienia publicznego, a to dlatego, że robienie nawet najbrzydszych rzeczy po kryjomu jest w porządku, dopóki nikt się o tym nie dowie. No i będzie coś, co naprawdę pobudza wyobraźnię, czyli (odwrotna) funkcja Ackermanna.</div>
+<div id="lecture_time"><strong> Na wykład zapraszamy w czwartek o 21:30 </strong></div>
+</article>
 
 <article class="lecture_special">
 	<h3>Sztuczna inteligencja w praktyce</h3>
