@@ -15,8 +15,10 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'vegetarian',
     'shirt',
     'org',
+    'minutes_early'
     )
     search_fields = ('user__first_name', 'user__last_name')
+    list_editable = ('minutes_early',)
 
     def anim_icon(self,id):
         return '<img src="/static_media/images/macthrob-small.png" alt="loading" id="anim%s" style="display:none"/>'%id
