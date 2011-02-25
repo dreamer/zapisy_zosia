@@ -35,7 +35,7 @@ class Organization(models.Model):
 def getOrgChoices():
     list = [ (org.id, org.name)
            for org in Organization.objects.filter(accepted=True) ]
-    list = list[:13]
+    list = list[:20]
     list.append( ('new', 'inna') )
     return tuple(list)
 
