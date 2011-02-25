@@ -200,6 +200,11 @@ msgstr "zmień"
 msgid "personal"
 msgstr "dane osobowe"
 
+#: registration/templates/change_preferences.html:77
+#: registration/templates/register_form.html:90
+msgid "room openning hour"
+msgstr "otwarcie zapisów na pokoje"
+
 #: registration/templates/change_preferences.html:80
 #: registration/templates/register_form.html:100
 msgid "name"

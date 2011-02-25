@@ -100,7 +100,6 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 <h2>{% trans "Preferences" %}</h2>
 
 <form action="." method="post" id="register_form">
-    <fieldset id="register_auth">
         <legend>{% trans "authentication" %}</legend>
         <ol>
             <li>
@@ -119,6 +118,10 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             <li>
             <label>{% trans "name" %}, {% trans "surname" %}</label>
                 {{ user.first_name }} {{ user.last_name }}
+            </li>
+            <li>
+            <label>{% trans "room openning hour" %}</label>
+                {{ user_openning_hour }} 
             </li>
             <li>
                 {# bw careful with errors here - if there are more than 1 orgs#}

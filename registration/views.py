@@ -18,6 +18,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from common.helpers import *
 
+from datetime import datetime, timedelta
+
 
 def activate_user(request, uidb36=None, token=None):
     assert uidb36 is not None and token is not None
@@ -147,6 +149,7 @@ def change_preferences(request):
     prefs = UserPreferences.objects.get(user=user)
     form = ChangePrefsForm()
     user_paid = prefs.paid
+    user_openning_hour = datetime(2011,2,26,20,00) - timedelta(minutes=prefs.minutes_early) # for sure to change
     if request.POST:
         # raise Http404 # the most nooby way of blocking evar (dreamer_)
         form = ChangePrefsForm(request.POST)
