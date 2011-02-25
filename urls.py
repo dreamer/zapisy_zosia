@@ -25,7 +25,7 @@ urlpatterns = patterns('',
      (r'^rooms/$', newrooms.views.index),
      (r'^rooms/list.json$', newrooms.views.json_rooms_list),
 
-     (r'^rooms/fill/$', newrooms.views.fill_rooms), # temporary, convenience
+     #(r'^rooms/fill/$', newrooms.views.fill_rooms),
      (r'^rooms/modify/$', newrooms.views.modify_room), 
      (r'^rooms/open/$', newrooms.views.open_room), 
      (r'^rooms/close/$', newrooms.views.close_room), 

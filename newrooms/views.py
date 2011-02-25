@@ -34,7 +34,7 @@ def fill_rooms(request):
                     )
         room.save()
 
-    for n in [1,2,3]
+    for n in [1,2,3]:
         save_room(n,'A',4)
     save_room(101,'A',3)
     save_room(102,'A',4)
