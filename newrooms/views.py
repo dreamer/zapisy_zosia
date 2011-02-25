@@ -26,22 +26,71 @@ def index(request):
 
 def fill_rooms(request):
     # maybe update this for serious usage?
-    def save_room(n,c):
-        room = NRoom( number = "%s"%n,
+    def save_room(n,b,c):
+        room = NRoom( number = "%s %s"%(b,n),
                       capacity = c,
                       password = "",
                       short_unlock_time = datetime.now()
                     )
         room.save()
-    save_room(100,3)
-    for n in range(101,115): save_room(n,6)
-    save_room(200,2)
-    for n in [202,203,205,207,208,209,210,211,212,213,214]:
-        save_room(n,4)
-    for n in [201,204,206,215]:
-        save_room(n,5)
-    save_room(301,4)
-    for n in range(306,315): save_room(n,2)
+
+    for n in [1,2,3]
+        save_room(n,'A',4)
+    save_room(101,'A',3)
+    save_room(102,'A',4)
+    save_room(103,'A',4)
+    save_room(104,'A',2)
+    save_room(105,'A',4)
+    save_room(106,'A',4)
+    save_room(107,'A',3)
+    save_room(108,'A',2)
+    save_room(109,'A',2)
+    save_room('półpiętro','A',1)
+    save_room(201,'A',2)
+    save_room(202,'A',2)
+    save_room(203,'A',3)
+    save_room(204,'A',3)
+    save_room(205,'A',2)
+    save_room(206,'A',4)
+    save_room(208,'A',3)
+    save_room('apartament','A',6)
+
+    save_room(1,'B',3)
+    save_room(2,'B',2)
+    save_room(3,'B',2)
+    save_room(4,'B',2)
+    save_room(5,'B',2)
+    save_room(6,'B',2)
+    save_room(7,'B',2)
+    save_room(8,'B',2)
+    save_room(9,'B',2)
+    save_room(10,'B',4)
+    save_room(11,'B',2)
+    save_room(12,'B',1)
+    save_room(101,'B',4)
+    save_room(102,'B',2)
+    save_room(103,'B',2)
+    save_room(104,'B',2)
+    save_room(105,'B',2)
+    save_room(106,'B',2)
+    save_room(107,'B',4)
+    save_room(108,'B',4)
+    save_room(109,'B',2)
+    save_room(110,'B',4)
+    save_room(111,'B',2)
+    save_room(112,'B',1)
+    save_room(201,'B',4)
+    save_room(202,'B',2)
+    save_room(203,'B',3)
+    save_room(204,'B',2)
+    save_room(205,'B',2)
+    save_room(206,'B',2)
+    save_room(207,'B',2)
+    save_room(208,'B',2)
+    save_room(209,'B',2)
+    save_room(210,'B',2)
+    save_room(211,'B',4)
+
     return HttpResponse("ok")
 
 
