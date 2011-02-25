@@ -121,10 +121,6 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
                 {{ user.first_name }} {{ user.last_name }}
             </li>
             <li>
-            <label>{% trans "room openning hour" %}</label>
-                {{ user_openning_hour }} 
-            </li>
-            <li>
                 {# bw careful with errors here - if there are more than 1 orgs#}
                 {% if form.organization_1.errors %}
                 <ul class="errorlist">
@@ -138,6 +134,15 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
                 </label>
                 {{ form.organization_1 }}
             </li>
+            <li>
+            <label>{% trans "room openning hour" %}</label>
+                {{ user_openning_hour }} 
+            </li>
+            <li>
+            <label>{% trans "bus hour" %}</label> {{ form.bus_hour}} 
+            </li>
+
+
         </ol>
     </fieldset>
     <fieldset id="register_nights">

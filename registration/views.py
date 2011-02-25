@@ -170,6 +170,7 @@ def change_preferences(request):
             form = ChangePrefsForm(rewritten_post)
         form.add_bad_org(prefs)
         form.set_paid(user_paid)
+        form.set_bus_hour(prefs.bus_hour)
         if form.is_valid():
             # save everything
             prefs.org = Organization.objects.get(id=form.cleaned_data['organization_1'])
@@ -188,6 +189,7 @@ def change_preferences(request):
                 prefs.shirt_size  = form.cleaned_data['shirt_size']
                 prefs.shirt_type  = form.cleaned_data['shirt_type']
             prefs.bus         = form.cleaned_data['bus']
+            prefs.bus_hour    = form.cleaned_data['bus_hour']
             prefs.vegetarian  = form.cleaned_data['vegetarian']
             prefs.save()
             payment = count_payment(user)

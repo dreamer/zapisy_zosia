@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from django import forms 
-from models import SHIRT_SIZE_CHOICES, SHIRT_TYPES_CHOICES
+from models import SHIRT_SIZE_CHOICES, SHIRT_TYPES_CHOICES, BUS_HOUR_CHOICES
 from models import getOrgChoices as organization_choices
 from django.utils.translation import ugettext as _
 
@@ -149,9 +149,12 @@ class ChangePrefsForm(forms.Form):
     shirt_size = forms.ChoiceField(choices=SHIRT_SIZE_CHOICES)
     shirt_type = forms.ChoiceField(choices=SHIRT_TYPES_CHOICES)
     bus        = forms.BooleanField(required=False)
+    bus_hour   = forms.ChoiceField(choices=BUS_HOUR_CHOICES)
 
     paid = False
     def set_paid(self,b): self.paid = b
+
+    def set_bus_hour(self,hour): self.bus_hour = hour
 
     def clean_day_3(self):
         day3 = self.cleaned_data.get('day_3')

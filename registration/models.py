@@ -23,6 +23,13 @@ SHIRT_TYPES_CHOICES = (
     ('f', _('women')),
 )
 
+BUS_HOUR_CHOICES = (
+    ('',''),
+    ('16:00', '16:00'),
+    ('18:00', '18:00'),
+    ('obojętne', 'obojętne')
+)
+
 class Organization(models.Model):
     name     = models.CharField(max_length=64)
     accepted = models.BooleanField()
@@ -72,6 +79,10 @@ class UserPreferences(models.Model):
     # e.g. -5 means room registration will open 5 minutes after global datetime
     # FIXME needs actual implementation, so far it's only a stub field
     minutes_early = models.IntegerField()
+
+
+    # used to differ from times on which buses leave 
+    bus_hour = models.CharField(max_length=10, choices=BUS_HOUR_CHOICES, null=True, default=None)
 
     # ? anonimowy - nie chce zeby jego imie/nazwisko/mail pojawialy sie na stronie
     
