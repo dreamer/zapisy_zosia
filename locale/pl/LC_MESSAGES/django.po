@@ -391,7 +391,7 @@ msgstr "Blog"
 
 #: templates/index.html:71
 msgid "Change preferences"
-msgstr "Zmień ustawienia"
+msgstr "Zmień preferencje"
 
 #: templates/index.html:77
 msgid "Lectures"
