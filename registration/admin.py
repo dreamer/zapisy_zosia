@@ -18,6 +18,7 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'minutes_early'
     )
     search_fields = ('user__first_name', 'user__last_name')
+    list_filter = ('bus_hour',)
     list_editable = ('minutes_early',)
 
     def anim_icon(self,id):
