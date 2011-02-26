@@ -7,20 +7,27 @@ from django.template.loader import get_template
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from registration.models import UserPreferences
 import random
 from models import *
 from datetime import *
 from common.helpers import *
 
 # from models import *
+def has_user_opened_records(user):
+       prefs = UserPreferences.objects.get(user=user)
+       user_openning_hour = datetime(2011,2,26,20,00) - timedelta(minutes=prefs.minutes_early)
+       return (user_openning_hour < datetime.now() and True or False) 
 
 @login_required
 def index(request):
 	user = request.user
 	title = "Rooms"
-	if is_rooming_enabled():
+	if is_rooming_enabled() and has_user_opened_records(user):
  	   return render_to_response('rooms.html',locals())
 	else:
+                prefs = UserPreferences.objects.get(user=user)
+                user_openning_hour = datetime(2011,2,26,20,00) - timedelta(minutes=prefs.minutes_early)                
 		return render_to_response('rooming_disabled.html',locals())
 
 
