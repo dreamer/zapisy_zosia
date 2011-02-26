@@ -128,6 +128,7 @@ def get_room_locators(room):
 @login_required
 def trytogetin_room(request):
     if not request.POST: raise Http404
+    if not has_user_opened_records(request.user): return HttpResponse('fail')
     room = NRoom.objects.get(id=int(request.POST['rid']))
     if room.password == request.POST['key']:
         get_in_room(request.user, room)
@@ -137,6 +138,7 @@ def trytogetin_room(request):
 @login_required
 def open_room(request):
     if not request.POST: raise Http404
+    if not has_user_opened_records(request.user): return HttpResponse('fail')
     occupation = UserInRoom.objects.get(locator=request.user)
     if occupation.ownership:
         room = occupation.room
@@ -148,6 +150,7 @@ def open_room(request):
 @login_required
 def close_room(request):
     if not request.POST: raise Http404
+    if not has_user_opened_records(request.user): return HttpResponse('fail')
     occupation = UserInRoom.objects.get(locator=request.user)
     if occupation.ownership:
         room = occupation.room

@@ -29,15 +29,16 @@ def is_lecture_suggesting_disabled():
 
 
 def is_rooming_enabled():
-	start_date = datetime(2011,2,26, 20,00)
-	final_date = datetime(2011,3,1, 20,00)
+	start_date = datetime(2011,2,26, 15,00)
+	final_date = datetime(2011,3,1, 15,00)
 	assert start_date < final_date
 	return datetime.now() > start_date and datetime.now() < final_date
 
+
 def has_user_opened_records(user):
-       prefs = UserPreferences.objects.get(user=user)
-       user_openning_hour = datetime(2011,2,26,20,00) - timedelta(minutes=prefs.minutes_early)
-       return (user_openning_hour <= datetime.now() and True or False) 
+    prefs = UserPreferences.objects.get(user=user)
+    user_openning_hour = datetime(2011,2,26, 20,00) - timedelta(minutes=prefs.minutes_early)
+    return user_openning_hour <= datetime.now()
 
 
 def is_rooming_disabled():
