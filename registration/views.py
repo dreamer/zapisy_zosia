@@ -170,7 +170,7 @@ def change_preferences(request):
             form = ChangePrefsForm(rewritten_post)
         form.add_bad_org(prefs)
         form.set_paid(user_paid)
-        form.set_bus_hour(prefs.bus_hour)
+        form.ser_bus_hour(prefs.bus_hour)
         if form.is_valid():
             # save everything
             prefs.org = Organization.objects.get(id=form.cleaned_data['organization_1'])

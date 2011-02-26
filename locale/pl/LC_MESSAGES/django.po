@@ -224,6 +224,11 @@ msgstr "Dodanie nowej organizacji jest możliwe tylko podczas rejestracji."
 msgid "organization"
 msgstr "organizacja"
 
+#: registration/templates/change_preferences.html:93
+#: registration/templates/register_form.html:131
+msgid "bus hour"
+msgstr "godzina autobusu"
+
 #: registration/templates/change_preferences.html:100
 #: registration/templates/register_form.html:141
 msgid "nights"

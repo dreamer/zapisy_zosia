@@ -232,6 +232,13 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
     //-->
     </script> 
     {% endif %}
+
+	{% if not prefs.bus %} 
+    <script type="text/javascript">
+        document.getElementById('id_bus_hour').disabled=true;
+    </script> 
+    {% endif %}
+
     {% if user_paid and user_paid_for_bus %}
     <script type="text/javascript">
     <!--

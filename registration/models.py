@@ -24,10 +24,10 @@ SHIRT_TYPES_CHOICES = (
 )
 
 BUS_HOUR_CHOICES = (
-    ('',''),
+    ('brak',''),
     ('16:00', '16:00'),
     ('18:00', '18:00'),
-    ('obojętne', 'obojętne')
+    ('obojętne', 'obojętne'),
 )
 
 class Organization(models.Model):
