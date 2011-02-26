@@ -7,6 +7,7 @@ from django.template.loader import get_template
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from registration.models import UserPreferences
 import random
 from models import *
 from datetime import *
