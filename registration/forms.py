@@ -154,6 +154,7 @@ class ChangePrefsForm(forms.Form):
     paid = False
     def set_paid(self,b): self.paid = b
     def set_bus_hour(self,hour): self.bus_hour = hour
+
     def clean_day_3(self):
         day3 = self.cleaned_data.get('day_3')
         day1 = self.cleaned_data.get('day_1')

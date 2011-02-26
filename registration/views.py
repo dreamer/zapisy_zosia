@@ -162,7 +162,7 @@ def change_preferences(request):
                 rewritten_post[k] = post[k]
             for k in [ 'day_1', 'day_2', 'day_3',
                        'breakfast_2', 'breakfast_3', 'breakfast_4',
-                       'dinner_1', 'dinner_3', 'dinner_2' ]:
+                       'dinner_1', 'dinner_3', 'dinner_2', 'bus', 'vegetarian' ]:
                 if prefs.__dict__[k]:
                     rewritten_post[k] = u'on'
             rewritten_post['shirt_type'] = prefs.__dict__['shirt_type']
@@ -170,7 +170,7 @@ def change_preferences(request):
             form = ChangePrefsForm(rewritten_post)
         form.add_bad_org(prefs)
         form.set_paid(user_paid)
-        form.ser_bus_hour(prefs.bus_hour)
+        form.set_bus_hour(prefs.bus_hour)
         if form.is_valid():
             # save everything
             prefs.org = Organization.objects.get(id=form.cleaned_data['organization_1'])
