@@ -16,8 +16,8 @@ def registration_link(x):
 
 #FIXME move this helper to its own module
 @register.simple_tag
-def rooming_link(x):
-    if is_rooming_disabled(): return ""
+def rooming_link(user,x):
+    if not has_user_opened_records(user): return ""
     p = '<li>'
     if x=="Rooms": p = '<li id="current">'
     return p+'<a href="/rooms/">%s</a></li>' % "Zapisy na pokoje"

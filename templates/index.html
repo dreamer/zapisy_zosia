@@ -85,7 +85,7 @@ window.onload=function(){ AddFillerLink("col1_content","col3_content"); }
                     {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
                     {% if user.is_authenticated %}
-                       {% if title %}{% rooming_link title %}{% endif %} {# see registration/templatetags #}
+                           {% if title %}{% rooming_link user title %}{% endif %} {# see registration/templatetags #}
                     {% endif %}
 				</ul>
 			</div>
