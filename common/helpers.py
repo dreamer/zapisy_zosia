@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
-from datetime import datetime
+from datetime import datetime, timedelta
+from registration.models import UserPreferences
 
 # TODO: this module should be replaced by calls to database
 
@@ -32,6 +33,11 @@ def is_rooming_enabled():
 	final_date = datetime(2011,3,1, 20,00)
 	assert start_date < final_date
 	return datetime.now() > start_date and datetime.now() < final_date
+
+def has_user_opened_records(user):
+       prefs = UserPreferences.objects.get(user=user)
+       user_openning_hour = datetime(2011,2,26,20,00) - timedelta(minutes=prefs.minutes_early)
+       return (user_openning_hour <= datetime.now() and True or False) 
 
 
 def is_rooming_disabled():
