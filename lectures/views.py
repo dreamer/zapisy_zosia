@@ -34,5 +34,6 @@ def index(request):
 
 def program(request):
     title = "Program"
+    user = request.user
     return render_to_response('program.html', locals())
 
