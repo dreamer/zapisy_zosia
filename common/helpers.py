@@ -29,8 +29,8 @@ def is_lecture_suggesting_disabled():
 
 
 def is_rooming_enabled():
-	start_date = datetime(2011,2,26, 15,00)
-	final_date = datetime(2011,3,1, 15,00)
+	start_date = datetime(2011,2,26, 20,00)
+	final_date = datetime(2011,2,28, 23,00)
 	assert start_date < final_date
 	return datetime.now() > start_date and datetime.now() < final_date
 
