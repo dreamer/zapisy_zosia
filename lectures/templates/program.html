@@ -1,0 +1,206 @@
+{% extends "index.html"%}
+{% load i18n %}
+{% load markup %}
+
+{% block css %}
+
+.lecture p, #lecture_abstract {
+	text-indent: 1.5em;
+	text-align: justify;
+	text-justify: inter-word;
+	text-align-last: left;
+	max-width: 45em;
+}
+strong.lecture_author + p { text-indent: 0; }
+#lecture_author { margin-bottom: 2px;}
+#lecture_abstract { margin-bottom: 5px;text-indent: 0;}
+#lecture_time { margin-bottom: 1em;}
+#note {
+    color: #444444;
+    font-family: 'Lucida Grande','Trebuchet MS',Verdana,Helvetica,Arial,sans-serif;
+    font-size: 11px;
+}
+
+table tr td.blank { width: 10px; }
+{% endblock css %}
+
+{% block content %}
+
+<h2>{% trans "Program" %}</h2>
+
+<h3>Czwartek</h3>
+
+<table>
+  <tr>
+    <td>21:00-22:00</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>21:00-21:25</td>
+    <td>Oficjalne rozpoczęcie</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>21:30-22:00</td>
+    <td><strong>Maciej Piróg</strong>, <i>Przychodzi baba do fryzjera i mówi: Proszę pół trwałej</i></td>
+  </tr>
+  <tr>
+    <td>22:30-23:45</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>22:30-22:45</td>
+    <td><strong>Marcin Włodarczak</strong>, <i>Wirtualizacja zasobów IT</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>22:45-23:15</td>
+    <td><strong>Przemysław Pietrzkiewicz</strong>, <i>Algorytmy wizyjne dla mas</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>23:15-23:45</td>
+    <td><strong>Krzysztof Sakwerda</strong>, <i>Proof Carrying Code - a co to takiego?</i></td>
+  </tr>
+</table> 
+
+<h3>Piątek</h3>
+
+<table>
+  <tr>
+    <td>8:30-10:30</td>
+    <td>śniadanie</td>
+  </tr>
+  <tr>
+    <td>16:30-19:00</td>
+    <td>obiadokolacja</td>
+  </tr>
+  <tr><td></td></tr>  <tr><td></td></tr>
+  <tr>
+    <td>16:45-18:30</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>16:45-17:30</td>
+    <td><strong>Paweł Sadowski</strong>, <i>Zarządzanie obciążeniem serwerów klastrze webowym.</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>17:30-18:30</td>
+    <td><strong>Marek Ziółkowski</strong>, <i>Jak się programuje w NK</i></td>
+  </tr>
+  <tr>
+    <td>19:00-20:15</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>19:00-19:30</td>
+    <td><strong>Dariusz Jackowski</strong>, <i>Prezentacja osiągnieć EMI</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>19:30-20:15</td>
+    <td><strong>Filip Sieczkowski</strong>, <i>Weryfikacja zaawansowanych struktur danych w HOSL</i></td>
+  </tr>
+  <tr>
+    <td>20:45-22:05</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>20:45-21:15</td>
+    <td><strong>Patryk Obara</strong></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>21:15-21:45</td>
+    <td><strong>Marek Materzok</strong>, <i>Wyklikaj sobie dowód</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>21:45-22:05</td>
+    <td><strong>Piotr Wasilewski</strong>, <i>Wordpress dla freelancera</i></td>
+  </tr>
+  <tr>
+    <td>22:30-23:40</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>22:30-22:55</td>
+    <td><strong>Paweł Hałdrzyński</strong>, <i>Co za dużo to niezdrowo</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>22:55-22:40</td>
+    <td><strong>Janusz Dziemidowicz</strong>, <i>OpenSocial w nk.pl</i></td>
+  </tr>
+</table> 
+
+<h3>Sobota</h3>
+
+<table>
+  <tr>
+    <td>8:30-10:30</td>
+    <td>śniadanie</td>
+  </tr>
+  <tr>
+    <td>16:30-19:00</td>
+    <td>obiadokolacja</td>
+  </tr>
+  <tr><td></td></tr>  <tr><td></td></tr>
+  <tr>
+    <td>17:30-18:30</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>17:30-18:30</td>
+    <td><strong>Cezary Dołęga</strong>, <a href="http://www.neurosoft.pl/?lang=pl">Neurosoft</a>, <i>Sztuczna inteligencja w praktyce</i></td>
+  </tr>
+  <tr>
+    <td>19:00-20:15</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>19:00-19:30</td>
+    <td><strong>Maciej Kotowicz</strong>, <i>Typowy bughunting</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>19:30-20:15</td>
+    <td><strong>Paweł Rohleder, Tomasz Urbański</strong>, <a href="http://www.techland.pl/">Techland</a>, <i>Tworzenie gier to nie zabawa</i></td>
+  </tr>
+  <tr>
+    <td>20:45-22:05</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>20:45-21:45</td>
+    <td><strong>Hans de Nivelle</strong>, <i><a href="http://cade23.ii.uni.wroc.pl/">CADE 23</a> in Wroclaw</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>21:45-22:05</td>
+    <td><strong>Jerzy Marcinkowski</strong></td>
+  </tr>
+  <tr>
+    <td>22:30-23:35</td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>22:30-22:50</td>
+    <td><strong>Jakub Michaliszyn</strong>, <i>Za kulisami nauki</i></td>
+  </tr>
+  <tr>
+    <td class="blank"></td>
+    <td>22:50-22:35</td>
+    <td><strong>Paweł Nowoświat</strong>, <i>Skrzydlaci zabójcy</i></td>
+  </tr>
+</table> 
+
+<h3>Niedziela</h3>
+<table> 
+  <tr>
+    <td>8:30-10:30</td>
+    <td>śniadanie</td>
+  </tr>
+</table> 
+{% endblock content %}

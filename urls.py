@@ -62,6 +62,7 @@ urlpatterns = patterns('',
 
      # apps main urls
      (r'^lectures/$', lectures.views.index),
+     (r'^program/$', lectures.views.program),
 
      # static media
      # note, that this should be disabled for production code
