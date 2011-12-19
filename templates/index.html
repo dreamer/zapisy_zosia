@@ -5,7 +5,7 @@
 {% cache 60 header_index_template %}
 <html lang="pl">
 <head>
-    <title>ZOSIA 2011</title>
+    <title>ZOSIA 2012</title>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Language" content="pl" />
@@ -71,7 +71,7 @@ window.onload=function(){ AddFillerLink("col1_content","col3_content"); }
                 {% endif %}
             </div>
             <a href="/blog/"><img src="/static_media/images/logo_zosi_shadow.png" alt="ZOSIA" /></a>
-			<span>Zimowy Obóz Studentów Informatyki A &#8226; Piechowice – Michałowice 2011</span></div>
+			<span>Zimowy Obóz Studentów Informatyki A &#8226; Przesieka 2012</span></div>
 		<!-- begin: main navigation #nav -->
 		<div id="nav"> <a id="navigation" name="navigation"></a>
 			<!-- skiplink anchor: navigation -->
@@ -85,7 +85,7 @@ window.onload=function(){ AddFillerLink("col1_content","col3_content"); }
 						{% if title %}{% registration_link title %}{% endif %} {# see registration/templatetags #}
                     {% endif %}
                     <li {% ifequal title "Lectures" %}id="current"{% endifequal %}><a href="/lectures/">{% trans "Lectures" %}</a></li>
-                    <li {% ifequal title "Program" %}id="current"{% endifequal %}><a href="/program/">{% trans "Program" %}</a></li>
+					{# <li {% ifequal title "Program" %}id="current"{% endifequal %}><a href="/program/">{% trans "Program" %}</a></li> #}
                     {% if user.is_authenticated %}
                            {% if title %}{% rooming_link user title %}{% endif %} {# see registration/templatetags #}
                     {% endif %}

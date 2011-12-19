@@ -19,7 +19,7 @@ def is_registration_disabled():
 def is_lecture_suggesting_enabled():
 	# this is the only place that should be changed
 	start_date = datetime(2011,1,30, 1,05)
-	final_date = datetime(2011,2,25, 1,05)
+	final_date = datetime(2012,2,19, 1,05)
 	assert start_date < final_date
 	return datetime.now() > start_date and datetime.now() < final_date
 

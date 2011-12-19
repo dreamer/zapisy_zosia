@@ -237,17 +237,17 @@ msgstr "noclegi "
 #: registration/templates/change_preferences.html:110
 #: registration/templates/register_form.html:151
 msgid "night12"
-msgstr "3/4 marca"
+msgstr "23/24 lutego"
 
 #: registration/templates/change_preferences.html:113
 #: registration/templates/register_form.html:154
 msgid "night23"
-msgstr "4/5 marca"
+msgstr "24/25 lutego"
 
 #: registration/templates/change_preferences.html:116
 #: registration/templates/register_form.html:157
 msgid "night34"
-msgstr "5/6 marca"
+msgstr "25/26 lutego"
 
 #: registration/templates/change_preferences.html:121
 #: registration/templates/register_form.html:162
@@ -257,17 +257,17 @@ msgstr "obiadokolacje"
 #: registration/templates/change_preferences.html:129
 #: registration/templates/register_form.html:170
 msgid "dinner1"
-msgstr "3 marca"
+msgstr "23 lutego"
 
 #: registration/templates/change_preferences.html:132
 #: registration/templates/register_form.html:173
 msgid "dinner2"
-msgstr "4 marca"
+msgstr "24 lutego"
 
 #: registration/templates/change_preferences.html:135
 #: registration/templates/register_form.html:176
 msgid "dinner3"
-msgstr "5 marca"
+msgstr "25 lutego"
 
 #: registration/templates/change_preferences.html:140
 #: registration/templates/register_form.html:181
@@ -277,17 +277,17 @@ msgstr "śniadania"
 #: registration/templates/change_preferences.html:148
 #: registration/templates/register_form.html:189
 msgid "breakfast2"
-msgstr "4 marca"
+msgstr "24 lutego"
 
 #: registration/templates/change_preferences.html:151
 #: registration/templates/register_form.html:192
 msgid "breakfast3"
-msgstr "5 marca"
+msgstr "25 lutego"
 
 #: registration/templates/change_preferences.html:154
 #: registration/templates/register_form.html:195
 msgid "breakfast4"
-msgstr "6 marca"
+msgstr "26 lutego"
 
 #: registration/templates/change_preferences.html:159
 #: registration/templates/register_form.html:200
@@ -304,7 +304,7 @@ msgstr "Preferuję kuchnię wegetariańską."
 msgid "bussies"
 msgstr ""
 "Jestem zainteresowany zorganizowanym transportem autokarowym na trasie "
-"Wrocław - Michałowice - Wrocław"
+"Wrocław - Przesieka - Wrocław"
 
 #: registration/templates/change_preferences.html:168
 #: registration/templates/register_form.html:209
