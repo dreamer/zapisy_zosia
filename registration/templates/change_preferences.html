@@ -40,11 +40,11 @@ miejscowość
 kwota
 </pre>
 </td><td>
-<pre>12 1140 2017 0000 4402 0724 4975
-[ZOSIA11] {{user.first_name}} {{user.last_name}}
-Małgorzata Joanna Jurkiewicz 
-ul. Mewia 38
-51-418 Wrocław
+<pre>{{ account_number }}
+[ZOSIA{{ year }}] {{user.first_name}} {{user.last_name}}
+{{ account_data_1 }}
+{{ account_data_2 }}
+{{ account_data_3 }}
 {{ payment }} zł
 </pre>
 </table>
@@ -136,7 +136,7 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             </li>
             <li>
             <label>{% trans "room openning hour" %}</label>
-                {{ user_openning_hour }} 
+                {{ user_openning_hour|date:"D, d E Y, H:i" }}
             </li>
             <li>
             <label>{% trans "bus hour" %}</label> {{ form.bus_hour}} 
@@ -254,12 +254,15 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
 
 {% block right_column %}
 <span class="cennik">Cennik</span>
+
 <table>
-<tr><td>nocleg:</td><td>40&nbsp;zł</td></tr>
-<tr><td>nocleg ze śniadaniem:</td><td>55&nbsp;zł</td></tr>
-<tr><td>nocleg z obiadokolacją:</td><td>60&nbsp;zł</td></tr>
-<tr><td>nocleg ze śniadaniem i obiadokolacją:</td><td>65&nbsp;zł</td></tr>
-<tr><td>opłata organizacyjna:</td><td>15&nbsp;zł</td></tr>
-<tr><td>transport:</td><td>45&nbsp;zł</td></tr>
+<tr><td>nocleg:</td><td>{{ price_overnight }}&nbsp;zł</td></tr>
+<tr><td>nocleg ze śniadaniem:</td><td>{{ price_overnight_breakfast }}&nbsp;zł</td></tr>
+<tr><td>nocleg z obiadokolacją:</td><td>{{ price_overnight_dinner }}&nbsp;zł</td></tr>
+<tr><td>nocleg ze śniadaniem i obiadokolacją:</td><td>{{ price_overnight_full }}&nbsp;zł</td></tr>
+{% if price_organization %}
+    <tr><td>opłata organizacyjna:</td><td>{{ price_organization }}&nbsp;zł</td></tr>
+{% endif %}
+<tr><td>transport:</td><td>{{ price_transport }}&nbsp;zł</td></tr>
 </table>
 {% endblock %}

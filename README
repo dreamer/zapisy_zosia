@@ -133,11 +133,12 @@ REMEMBER, never push from deployment repository!
 ----------------------------------------------------------------------------
 
 Q: How to change, how much does this Zosia cost (breakfasts/dinners/night) ?
-A: look @ function count_payment(user) in registration/views.py
+A: Change values in your zosia definition (admin panel) if there is something different in payment rules,
+   change model, registatration form and look @ function count_payment(user) in registration/views.py
 
 Q: How can I change dates for my zosia deployment? It's not 2010 any more!
-A: look @ common/helpers.py but remember, that in final deployment, changing
-   these dates needs server restart
+A: Change values in your zosia definition (admin panel) and change file locale/pl/LC_MESSAGES/django.po,
+   templates/index.html if needed
 
 Q: Where is my CSS on admin pages?! I just deployed zosia and my admin page
    is unusable!!!

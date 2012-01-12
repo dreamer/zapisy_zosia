@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from forms import *
 from models import UserPreferences, Organization
+from common.models import ZosiaDefinition
 from common.forms import LoginForm
 from django.core.mail import send_mail
 from django.contrib.auth.tokens import default_token_generator as token_generator
@@ -42,6 +43,18 @@ def register(request):
 
     user = request.user
     title = "Registration"
+
+    try:
+        definition = ZosiaDefinition.objects.get(active_definition=True)
+    except Exception:
+        raise Http404
+
+    price_overnight             = definition.price_overnight
+    price_overnight_breakfast   = definition.price_overnight_breakfast
+    price_overnight_dinner      = definition.price_overnight_dinner
+    price_overnight_full        = definition.price_overnight_full
+    price_organization          = definition.price_organization
+    price_transport             = definition.price_transport
     # login_form = LoginForm()
 
     #if user.is_authenticated:
@@ -63,10 +76,15 @@ def register(request):
                 user.is_active = False
                 # send activation mail
                 t = loader.get_template("activation_email.txt")
+                try:
+                    definition = ZosiaDefinition.objects.get(active_definition=True)
+                except Exception:
+                    raise Http404
                 c = {
                     'site_name': RequestSite(request),
                     'uid': int_to_base36(user.id),
                     'token': token_generator.make_token(user),
+                    'payment_deadline': definition.payment_deadline,
                 }
                 send_mail( _('activation_mail_title'), 
                             t.render(Context(c)),
@@ -111,7 +129,13 @@ def register(request):
 
 def regulations(request):
     # Setting title makes "Registration" link visible on the panel.
-    title = "Registration" 
+    title = "Registration"
+    try:
+        definition = ZosiaDefinition.objects.get(active_definition=True)
+    except Exception:
+        raise Http404
+    zosia_start = definition.zosia_start
+    zosia_final = definition.zosia_final
     return render_to_response('regulations.html', locals())
 
 def thanks(request):
@@ -121,25 +145,60 @@ def thanks(request):
     return render_to_response('thanks.html', locals())
  
 def count_payment(user):
+    # returns how much money user is going to pay
     # hmm, we want to work for preferences, too
     if user.__class__ == UserPreferences:
         prefs = user
     else:
         prefs = UserPreferences.objects.get(user=user)
 
-    # returns how much money user is going to pay
-    # ok, temporarily it is hardcoded, probably should
-    # be moved somewhere else
-    days_payment        = (prefs.day_1       + prefs.day_2       + prefs.day_3)       * 40
-    breakfasts_payment  = (prefs.breakfast_2 + prefs.breakfast_3 + prefs.breakfast_4) * 15 
-    dinners_payment     = (prefs.dinner_1    + prefs.dinner_2    + prefs.dinner_3)    * 20
-    transport_payment   = 0;
-    if prefs.bus: transport_payment += 45;
-    bonus_payment       = 15
-    if prefs.day_1 and prefs.breakfast_2 and prefs.dinner_1: bonus_payment -= 10
-    if prefs.day_2 and prefs.breakfast_3 and prefs.dinner_2: bonus_payment -= 10
-    if prefs.day_3 and prefs.breakfast_4 and prefs.dinner_3: bonus_payment -= 10
-    return days_payment + breakfasts_payment + dinners_payment + bonus_payment + transport_payment
+    try:
+        definition = ZosiaDefinition.objects.get(active_definition=True)
+    except Exception:
+        raise Http404
+    payment = 0
+
+    # payments: overnight stays + board
+    if prefs.day_1 and prefs.dinner_1 and prefs.breakfast_2:
+        payment += definition.price_overnight_full
+    else:
+        if prefs.day_1:
+            if prefs.dinner_1:
+                payment += definition.price_overnight_dinner
+            elif prefs.breakfast_2:
+                payment += definition.price_overnight_breakfast
+            else:
+                payment += definition.price_overnight
+
+    if prefs.day_2 and prefs.dinner_2 and prefs.breakfast_3:
+        payment += definition.price_overnight_full
+    else:
+        if prefs.day_2:
+            if prefs.dinner_2:
+                payment += definition.price_overnight_dinner
+            elif prefs.breakfast_3:
+                payment += definition.price_overnight_breakfast
+            else:
+                payment += definition.price_overnight
+
+    if prefs.day_3 and prefs.dinner_3 and prefs.breakfast_4:
+        payment += definition.price_overnight_full
+    else:
+        if prefs.day_3:
+            if prefs.dinner_3:
+                payment += definition.price_overnight_dinner
+            elif prefs.breakfast_4:
+                payment += definition.price_overnight_breakfast
+            else:
+                payment += definition.price_overnight
+
+    # payment: transport
+    if prefs.bus:
+        payment += definition.price_transport
+
+    # payment: organization fee
+    payment += definition.price_organization
+    return payment
 
 @never_cache
 @login_required
@@ -149,7 +208,23 @@ def change_preferences(request):
     prefs = UserPreferences.objects.get(user=user)
     form = ChangePrefsForm()
     user_paid = prefs.paid
-    user_openning_hour = datetime(2011,2,26,20,00) - timedelta(minutes=prefs.minutes_early) # for sure to change
+    try:
+        definition = ZosiaDefinition.objects.get(active_definition=True)
+    except Exception:
+        raise Http404
+    user_openning_hour = definition.rooming_start - timedelta(minutes=prefs.minutes_early) # for sure to change
+
+    price_overnight             = definition.price_overnight
+    price_overnight_breakfast   = definition.price_overnight_breakfast
+    price_overnight_dinner      = definition.price_overnight_dinner
+    price_overnight_full        = definition.price_overnight_full
+    price_organization          = definition.price_organization
+    price_transport             = definition.price_transport
+    account_number              = definition.account_number
+    account_data_1              = definition.account_data_1
+    account_data_2              = definition.account_data_2
+    account_data_3              = definition.account_data_3
+    year                        = definition.zosia_final.year
     if request.POST:
         # raise Http404 # the most nooby way of blocking evar (dreamer_)
         form = ChangePrefsForm(request.POST)

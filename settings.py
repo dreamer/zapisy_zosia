@@ -102,8 +102,8 @@ AUTHENTICATION_BACKENDS = (
 # well, it's temporary, of course...
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '25'
-EMAIL_HOST_USER = 'zosia2009.test@gmail.com' # it doesn't exist afaik
-EMAIL_HOST_PASSWORD = 'zosiatest'
+EMAIL_HOST_USER = 'niczor@gmail.com' # it doesn't exist afaik
+EMAIL_HOST_PASSWORD = 'akwarium'
 EMAIL_USE_TLS = True
 
 CACHE_BACKEND = 'locmem:///'

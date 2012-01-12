@@ -240,12 +240,14 @@ form_onload()
 <span class="cennik">Cennik</span>
 
 <table>
-<tr><td>nocleg:</td><td>40&nbsp;zł</td></tr>
-<tr><td>nocleg ze śniadaniem:</td><td>55&nbsp;zł</td></tr>
-<tr><td>nocleg z obiadokolacją:</td><td>60&nbsp;zł</td></tr>
-<tr><td>nocleg ze śniadaniem i obiadokolacją:</td><td>65&nbsp;zł</td></tr>
-<tr><td>opłata organizacyjna:</td><td>15&nbsp;zł</td></tr>
-<tr><td>transport:</td><td>45&nbsp;zł</td></tr>
+<tr><td>nocleg:</td><td>{{ price_overnight }}&nbsp;zł</td></tr>
+<tr><td>nocleg ze śniadaniem:</td><td>{{ price_overnight_breakfast }}&nbsp;zł</td></tr>
+<tr><td>nocleg z obiadokolacją:</td><td>{{ price_overnight_dinner }}&nbsp;zł</td></tr>
+<tr><td>nocleg ze śniadaniem i obiadokolacją:</td><td>{{ price_overnight_full }}&nbsp;zł</td></tr>
+{% if price_organization %}
+    <tr><td>opłata organizacyjna:</td><td>{{ price_organization }}&nbsp;zł</td></tr>
+{% endif %}
+<tr><td>transport:</td><td>{{ price_transport }}&nbsp;zł</td></tr>
 </table>
 
 {% endblock %}

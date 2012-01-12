@@ -5,7 +5,7 @@ kliknij w poniższy link:
 
 http://{{site_name}}/register/activate/{{uid}}-{{token}}/
 
-Przypominamy, że termin wpłat upływa 24 lutego 2011r.
+Przypominamy, że termin wpłat upływa {{payment_deadline|date:"d M Y"}}.
 
 
 --

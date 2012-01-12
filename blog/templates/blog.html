@@ -28,18 +28,18 @@
 <h2>Informacje:</h2>
 <h4>Miejsce</h4>
 <p>
-<a href="http://www.przesieka.pl/markus/">Rezydencja Markus</a> w
-<a href="http://g.co/maps/gb3p2">Przesiece</a>
+<a href="{{ hotel_url }}">{{ hotel }}</a> w
+<a href="{{ city_url }}">{{ city }}</a>
 </p>
 <p>
 <h4>Planowane terminy</h4>
 </p>
 <ul style="margin-left:0.2em">
-	<li>zapisy i wpłaty<br/>daty zostaną ogłoszone w styczniu</li>
-    <li>zgłaszanie wykładów<br/>do 19 lutego 2012, 23:59</li>
-    <li>zapisy na pokoje<br/>od 18 lutego 2012, 18:00</li>
-    <li>wyjazd<br/>23 lutego 2012</li>
-    <li>powrót<br/>26 lutego 2012</li>
+	<li>zapisy i wpłaty<br/>od {{ registration_start|date:"d E Y" }}<br/>do {{ registration_final|date:"d E Y, H:i" }}</li>
+    <li>zgłaszanie wykładów<br/>do {{ lectures_suggesting_final|date:"d E Y, H:i" }}</li>
+    <li>zapisy na pokoje<br/>od {{ rooming_start|date:"d E Y" }}<br/>do {{ rooming_final|date:"d E Y, H:i" }}</li>
+    <li>wyjazd<br/>{{ zosia_start|date:"d E Y" }}</li>
+    <li>powrót<br/>{{ zosia_final|date:"d E Y" }}</li>
 </ul>
 <h4>Kontakt</h4>
 <p>
