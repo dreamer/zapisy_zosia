@@ -1,5 +1,6 @@
 Z radością informujemy, że zaksięgowana została Twoja wpłata
 na konto systemu zapisów na ZOSIę.
+Twój termin otwarcia zapisów na pokoje to: {{ rooming_time|date:"j F Y, H:i"}}.
 
 --
 Organizatorzy

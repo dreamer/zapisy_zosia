@@ -55,6 +55,10 @@ def register(request):
     price_overnight_full        = definition.price_overnight_full
     price_organization          = definition.price_organization
     price_transport             = definition.price_transport
+    date_1, date_2, date_3, date_4 = definition.zosia_start, (definition.zosia_start + timedelta(days=1)),\
+                                                 (definition.zosia_start + timedelta(days=2)),\
+                                                 (definition.zosia_start + timedelta(days=3))
+    city                        = definition.city
     # login_form = LoginForm()
 
     #if user.is_authenticated:
@@ -212,7 +216,7 @@ def change_preferences(request):
         definition = ZosiaDefinition.objects.get(active_definition=True)
     except Exception:
         raise Http404
-    user_openning_hour = definition.rooming_start - timedelta(minutes=prefs.minutes_early) # for sure to change
+    user_opening_hour = definition.rooming_start - timedelta(minutes=prefs.minutes_early) # for sure to change
 
     price_overnight             = definition.price_overnight
     price_overnight_breakfast   = definition.price_overnight_breakfast
@@ -224,7 +228,11 @@ def change_preferences(request):
     account_data_1              = definition.account_data_1
     account_data_2              = definition.account_data_2
     account_data_3              = definition.account_data_3
-    year                        = definition.zosia_final.year
+    year                        = definition.zosia_start.year
+    date_1, date_2, date_3, date_4 = definition.zosia_start, (definition.zosia_start + timedelta(days=1)),\
+                                                 (definition.zosia_start + timedelta(days=2)),\
+                                                 (definition.zosia_start + timedelta(days=3))
+    city                        = definition.city
     if request.POST:
         # raise Http404 # the most nooby way of blocking evar (dreamer_)
         form = ChangePrefsForm(request.POST)

@@ -137,8 +137,7 @@ A: Change values in your zosia definition (admin panel) if there is something di
    change model, registatration form and look @ function count_payment(user) in registration/views.py
 
 Q: How can I change dates for my zosia deployment? It's not 2010 any more!
-A: Change values in your zosia definition (admin panel) and change file locale/pl/LC_MESSAGES/django.po,
-   templates/index.html if needed
+A: Change values in your zosia definition (admin panel) and change templates/index.html if needed
 
 Q: Where is my CSS on admin pages?! I just deployed zosia and my admin page
    is unusable!!!

@@ -2,7 +2,7 @@
 # Django settings for zapisy_zosia project.
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -102,8 +102,8 @@ AUTHENTICATION_BACKENDS = (
 # well, it's temporary, of course...
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '25'
-EMAIL_HOST_USER = 'niczor@gmail.com' # it doesn't exist afaik
-EMAIL_HOST_PASSWORD = 'akwarium'
+EMAIL_HOST_USER = 'zosia.xxxx@gmail.com' # it doesn't exist afaik
+EMAIL_HOST_PASSWORD = 'haselko'
 EMAIL_USE_TLS = True
 
 CACHE_BACKEND = 'locmem:///'

@@ -55,7 +55,7 @@ def has_user_opened_records(user):
     except Exception:
         raise Http404
     prefs = UserPreferences.objects.get(user=user)
-    user_openning_hour = definition.registration_start - timedelta(minutes=prefs.minutes_early)
+    user_openning_hour = definition.rooming_start - timedelta(minutes=prefs.minutes_early)
     return user_openning_hour <= datetime.now()
 
 

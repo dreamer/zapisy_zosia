@@ -27,7 +27,8 @@ class ZosiaDefinition(models.Model):
     account_data_2              = models.CharField(max_length=40)
     account_data_3              = models.CharField(max_length=40)
     # place
-    city                        = models.CharField(max_length=20, verbose_name="miasto w celowniku")
+    city                        = models.CharField(max_length=20)
+    city_c                      = models.CharField(max_length=20, verbose_name="miasto w celowniku")
     city_url                    = models.URLField()
     hotel                       = models.CharField(max_length=30)
     hotel_url                   = models.URLField()

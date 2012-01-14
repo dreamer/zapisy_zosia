@@ -33,7 +33,7 @@ def index(request):
     rooming_final               = definition.rooming_final
     zosia_start                 = definition.zosia_start
     zosia_final                 = definition.zosia_final
-    city                        = definition.city
+    city                        = definition.city_c
     city_url                    = definition.city_url
     hotel                       = definition.hotel
     hotel_url                   = definition.hotel_url

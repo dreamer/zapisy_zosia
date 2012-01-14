@@ -136,7 +136,7 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             </li>
             <li>
             <label>{% trans "room openning hour" %}</label>
-                {{ user_openning_hour|date:"D, d E Y, H:i" }}
+                {{ user_opening_hour|date:"D, d E Y, H:i" }}
             </li>
             <li>
             <label>{% trans "bus hour" %}</label> {{ form.bus_hour}} 
@@ -194,7 +194,7 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             </ul>
             {% endif %}
             <li>
-            {{ form.breakfast_2 }} <label for="id_breakfast_2">{% trans "breakfast2" %}</label>
+            {{ form.breakfast_2 }} <label for="id_breakfast_2">{{ date_2_day }} {{ date_1 }}</label>
             </li>
             <li>
             {{ form.breakfast_3 }} <label for="id_breakfast_3">{% trans "breakfast3" %}</label>

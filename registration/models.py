@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from django.core.mail import send_mail
 from django.template import Context, loader
+from common.models import ZosiaDefinition
+from datetime import timedelta
 
 # this is small hack to make user
 # more meaningfull (we're using email as
@@ -16,6 +18,8 @@ SHIRT_SIZE_CHOICES = (
     ('M', 'M'),
     ('L', 'L'),
     ('XL', 'XL'),
+    ('XXL', 'XXL'),
+    ('XXXL', 'XXXL'),
 )
 
 SHIRT_TYPES_CHOICES = (
@@ -94,10 +98,12 @@ class UserPreferences(models.Model):
         # database - lets check if 'paid' field is different
         try:
             old = UserPreferences.objects.get(id=self.id)
+            definition = ZosiaDefinition.objects.get(active_definition=True)
+            rooming_time = definition.rooming_start
             if self.paid and not old.paid:
                 t = loader.get_template('payment_registered_email.txt')
                 send_mail( u'Wpłata została zaksięgowana.', 
-                             t.render(Context({})),
+                             t.render(Context({'rooming_time': rooming_time - timedelta(minutes=self.minutes_early)})),
                              'from@example.com',
                              [ self.user.email ], 
                              fail_silently=True )
