@@ -138,9 +138,12 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             <label>{% trans "room openning hour" %}</label>
                 {{ user_opening_hour|date:"D, d F Y, H:i" }}
             </li>
+
+{% comment %}
             <li>
             <label>{% trans "bus hour" %}</label> {{ form.bus_hour}} 
             </li>
+{% endcomment %}
 
 
         </ol>

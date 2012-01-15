@@ -149,7 +149,7 @@ class ChangePrefsForm(forms.Form):
     shirt_size = forms.ChoiceField(choices=SHIRT_SIZE_CHOICES)
     shirt_type = forms.ChoiceField(choices=SHIRT_TYPES_CHOICES)
     bus        = forms.BooleanField(required=False)
-    bus_hour   = forms.ChoiceField(choices=BUS_HOUR_CHOICES)
+    #bus_hour   = forms.ChoiceField(choices=BUS_HOUR_CHOICES)
 
     paid = False
     def set_paid(self,b): self.paid = b
