@@ -75,7 +75,7 @@ class UserPreferences(models.Model):
     paid        = models.BooleanField()
     # TODO(karol): remove after successfull verification that rest works.
     # paid_for_bus = models.BooleanField() # we need this after all :/
-    shirt_size  = models.CharField(max_length=2, choices=SHIRT_SIZE_CHOICES)
+    shirt_size  = models.CharField(max_length=5, choices=SHIRT_SIZE_CHOICES)
     shirt_type  = models.CharField(max_length=1, choices=SHIRT_TYPES_CHOICES)
 
     # used for opening rooms faster per-user;

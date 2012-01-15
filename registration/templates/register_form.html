@@ -164,25 +164,25 @@ form_onload()
             </ul>
             {% endif %}
             <li>
-            {{ form.day_1 }} <label for="id_day_1">{% if date_1.month == date_2.month %}
+            {{ form.day_1 }} <label for="id_day_1">{% ifequal date_1.month date_2.month %}
                 {{ date_1|date:"j" }}/{{ date_2|date:"j F" }}
             {% else %}
                 {{ date_1|date:"j F" }} / {{ date_2|date:"j F" }}
-            {% endif %} </label>
+            {% endifequal %} </label>
             </li>
             <li>
-            {{ form.day_2 }} <label for="id_day_2">{% if date_2.month == date_3.month %}
+            {{ form.day_2 }} <label for="id_day_2">{% ifequal date_2.month date_3.month %}
                 {{ date_2|date:"j" }}/{{ date_3|date:"j F" }}
             {% else %}
                 {{ date_2|date:"j F" }} / {{ date_3|date:"j F" }}
-            {% endif %} </label>
+            {% endifequal %} </label>
             </li>
             <li>
-            {{ form.day_3 }} <label for="id_day_3">{% if date_3.month == date_4.month %}
+            {{ form.day_3 }} <label for="id_day_3">{% ifequal date_3.month date_4.month %}
                 {{ date_3|date:"j" }}/{{ date_4|date:"j F" }}
             {% else %}
                 {{ date_3|date:"j F" }} / {{ date_4|date:"j F" }}
-            {% endif %} </label>
+            {% endifequal %} </label>
             </li>
         </ol>
     </fieldset>
