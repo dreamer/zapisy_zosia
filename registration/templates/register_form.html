@@ -92,7 +92,7 @@ form_onload()
                 </ul>
                 {% endif %}
                 <label for="id_password">{% trans "password" %} <span>{% trans "(required)" %}</span></label>
-				<input type="password" name="password" id="id_password" required pattern="[A-z\d]{6,}" /> {# form.password #}
+				<input type="password" name="password" id="id_password" required pattern=".{6,}" /> {# form.password #}
             </li>
             <li>
                 {% if form.password2.errors %}
@@ -103,7 +103,7 @@ form_onload()
                 </ul>
                 {% endif %}
                 <label for="id_password2">{% trans "repeatepas" %} <span>{% trans "(required)" %}</span></label>
-				<input type="password" name="password2" id="id_password2" required pattern="[A-z\d]{6,}" /> {# form.password2 #}
+				<input type="password" name="password2" id="id_password2" required pattern=".{6,}" /> {# form.password2 #}
             </li>
         </ol>
     </fieldset>
