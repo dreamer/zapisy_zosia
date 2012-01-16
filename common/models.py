@@ -22,7 +22,7 @@ class ZosiaDefinition(models.Model):
     price_transport             = models.IntegerField()
     price_organization          = models.IntegerField()
     # bank account
-    account_number              = models.CharField(max_length=30)
+    account_number              = models.CharField(max_length=32)
     account_data_1              = models.CharField(max_length=40)
     account_data_2              = models.CharField(max_length=40)
     account_data_3              = models.CharField(max_length=40)
