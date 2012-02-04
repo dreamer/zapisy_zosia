@@ -113,10 +113,23 @@ class RegisterForm(forms.Form):
 # grrr, this REALLY should not be copied'n'pasted but
 # correct form class hierarchy should be developed
 # no time :(
-class ChangePrefsForm(forms.Form):
+class ChangePrefsForm(RegisterForm):
+    disabled_fields = ['day_1', 'day_2', 'day_3',
+                   'breakfast_2', 'breakfast_3', 'breakfast_4',
+                   'dinner_1', 'dinner_2', 'dinner_3', 'shirt_type', 'shirt_size',
+                   'vegetarian', 'bus' ]
+
     def __init__(self, *args, **kwargs) :
         super(forms.Form, self) .__init__(*args, **kwargs)
-        self.fields['organization_1'].choices = organization_choices()[:-1]
+        self.fields['organization_1'].choices = self.fields['organization_1'].choices[:-1]
+
+        for field in self.disabled_fields:
+            self.disabled_field(field)
+
+    def disabled_field(self, name):
+        widget = self.fields[name].widget
+        widget.attrs['readonly'] = True
+        widget.attrs['disabled'] = True
 
     def add_bad_org(self,prefs):
         if not prefs.org.accepted:
@@ -131,40 +144,19 @@ class ChangePrefsForm(forms.Form):
         self.add_bad_org(prefs)
         self.fields['organization_1'].initial = prefs.org.id
 
-    organization_1 = forms.ChoiceField(choices=organization_choices())
+        if not prefs.bus:
+            self.disabled_field('bus_hour')
 
-    day_1 = forms.BooleanField(required=False)
-    day_2 = forms.BooleanField(required=False)
-    day_3 = forms.BooleanField(required=False)
+        if prefs.paid:
+            self.disabled_field('bus')
+            self.disabled_field('organization_1')
 
-    breakfast_2 = forms.BooleanField(required=False)
-    breakfast_3 = forms.BooleanField(required=False)
-    breakfast_4 = forms.BooleanField(required=False)
-
-    dinner_1 = forms.BooleanField(required=False)
-    dinner_2 = forms.BooleanField(required=False)
-    dinner_3 = forms.BooleanField(required=False)
-
-    vegetarian = forms.BooleanField(required=False)
-    shirt_size = forms.ChoiceField(choices=SHIRT_SIZE_CHOICES)
-    shirt_type = forms.ChoiceField(choices=SHIRT_TYPES_CHOICES)
-    bus        = forms.BooleanField(required=False)
-    #bus_hour   = forms.ChoiceField(choices=BUS_HOUR_CHOICES)
+    bus_hour   = forms.ChoiceField(choices=BUS_HOUR_CHOICES)
 
     paid = False
     def set_paid(self,b): self.paid = b
     def set_bus_hour(self,hour): self.bus_hour = hour
 
-    def clean_day_3(self):
-        day3 = self.cleaned_data.get('day_3')
-        day1 = self.cleaned_data.get('day_1')
-        day2 = self.cleaned_data.get('day_2')
-        if day1 or day2 or day3 or self.paid:
-            return day3
-        else:
-            raise forms.ValidationError(_("At least one day should be selected."))
 
-    clean_dinner_3    = lambda_clean_meal('dinner',    (1,1), (2,2), (3,3), 3 )
-    clean_breakfast_4 = lambda_clean_meal('breakfast', (2,1), (3,2), (4,3), 4 )
 
 
