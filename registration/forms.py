@@ -130,7 +130,7 @@ class ChangePrefsForm(ModelForm):
         self.fields['org'].choices = organization_choices()[:-1]
 
         if self.instance and not self.instance.org.accepted:
-            self.fields['organization_1'].choices.append( (self.instance.org.id, self.instance.org.name) )
+            self.fields['org'].choices.append( (self.instance.org.id, self.instance.org.name) )
 
         for field in self.disabled_fields:
             self.disable_field(field)
