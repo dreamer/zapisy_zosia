@@ -1,9 +1,11 @@
 # -*- coding: UTF-8 -*-
 
-from django import forms 
+from django import forms
+from django.forms.models import ModelForm
 from models import SHIRT_SIZE_CHOICES, SHIRT_TYPES_CHOICES, BUS_HOUR_CHOICES
 from models import getOrgChoices as organization_choices
 from django.utils.translation import ugettext as _
+from registration.models import UserPreferences
 
 
 def lambda_clean_meal(meal,p1,p2,p3,z):
@@ -113,55 +115,34 @@ class RegisterForm(forms.Form):
 # grrr, this REALLY should not be copied'n'pasted but
 # correct form class hierarchy should be developed
 # no time :(
-class ChangePrefsForm(RegisterForm):
+class ChangePrefsForm(ModelForm):
+    class Meta:
+        model = UserPreferences
+        exclude = ('paid', 'minutes_early', 'user')
+
     disabled_fields = ['day_1', 'day_2', 'day_3',
                    'breakfast_2', 'breakfast_3', 'breakfast_4',
                    'dinner_1', 'dinner_2', 'dinner_3', 'shirt_type', 'shirt_size',
                    'vegetarian', 'bus' ]
 
     def __init__(self, *args, **kwargs) :
-        super(forms.Form, self) .__init__(*args, **kwargs)
-        self.fields['organization_1'].choices = self.fields['organization_1'].choices[:-1]
-        self.fields['email'] = None
-        self.fields['password'] = None
-        self.fields['password2'] = None
+        super(ChangePrefsForm, self) .__init__(*args, **kwargs)
+        self.fields['org'].choices = organization_choices()[:-1]
 
-        self.fields['name'] = None
-        self.fields['surname'] = None
+        if self.instance and not self.instance.org.accepted:
+            self.fields['organization_1'].choices.append( (self.instance.org.id, self.instance.org.name) )
 
         for field in self.disabled_fields:
-            self.disabled_field(field)
+            self.disable_field(field)
 
-    def disabled_field(self, name):
+        if self.instance and not self.instance.bus:
+            self.disable_field('bus_hour')
+
+        if self.instance and self.instance.paid:
+            self.disable_field('bus')
+            self.disable_field('org')
+
+
+    def disable_field(self, name):
         widget = self.fields[name].widget
         widget.attrs['readonly'] = True
-
-    def add_bad_org(self,prefs):
-        if not prefs.org.accepted:
-            self.fields['organization_1'].choices.append( (prefs.org.id,prefs.org.name) )
-
-    def initialize(self,prefs):
-        # change values depending on given user preferences
-        for key in prefs.__dict__.keys():
-            if self.fields.has_key(key):
-                self.fields[key].initial = prefs.__dict__[key]
-        # organization selection
-        self.add_bad_org(prefs)
-        self.fields['organization_1'].initial = prefs.org.id
-
-        if not prefs.bus:
-            self.disabled_field('bus_hour')
-
-        if prefs.paid:
-            self.disabled_field('bus')
-            self.disabled_field('organization_1')
-
-    bus_hour   = forms.ChoiceField(choices=BUS_HOUR_CHOICES)
-
-    paid = False
-    def set_paid(self,b): self.paid = b
-    def set_bus_hour(self,hour): self.bus_hour = hour
-
-
-
-

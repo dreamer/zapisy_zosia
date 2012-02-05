@@ -90,10 +90,10 @@ def register(request):
                     'token': token_generator.make_token(user),
                     'payment_deadline': definition.payment_deadline,
                 }
-                send_mail( _('activation_mail_title'), 
+                send_mail( _('activation_mail_title'),
                             t.render(Context(c)),
                            'from@example.com',
-                            [ user.email ], 
+                            [ user.email ],
                             fail_silently=True )
                 user.save()
             #saving organization
@@ -210,7 +210,7 @@ def change_preferences(request):
     user = request.user
     title = "Change preferences"
     prefs = UserPreferences.objects.get(user=user)
-    form = ChangePrefsForm()
+    form = ChangePrefsForm(instance=prefs)
     user_paid = prefs.paid
     try:
         definition = ZosiaDefinition.objects.get(active_definition=True)
@@ -233,9 +233,9 @@ def change_preferences(request):
                                                  (definition.zosia_start + timedelta(days=2)),\
                                                  (definition.zosia_start + timedelta(days=3))
     city                        = definition.city
+
     if request.POST:
         # raise Http404 # the most nooby way of blocking evar (dreamer_)
-        form = ChangePrefsForm(request.POST)
         # bug with settings not updateble
         # after user paid
         if user_paid: # remove or True after zosia
@@ -250,35 +250,16 @@ def change_preferences(request):
                     rewritten_post[k] = u'on'
             rewritten_post['shirt_type'] = prefs.__dict__['shirt_type']
             rewritten_post['shirt_size'] = prefs.__dict__['shirt_size']
-            form = ChangePrefsForm(rewritten_post)
-        form.add_bad_org(prefs)
-        form.set_paid(user_paid)
-        form.set_bus_hour(prefs.bus_hour)
+            form = ChangePrefsForm(rewritten_post, instance=prefs)
+        else:
+            form = ChangePrefsForm(request.POST, instance=prefs)
         if form.is_valid():
             # save everything
-            prefs.org = Organization.objects.get(id=form.cleaned_data['organization_1'])
-            if prefs.paid:
-                pass
-            else:
-                prefs.day_1       = form.cleaned_data['day_1']
-                prefs.day_2       = form.cleaned_data['day_2']
-                prefs.day_3       = form.cleaned_data['day_3']
-                prefs.breakfast_2 = form.cleaned_data['breakfast_2']
-                prefs.breakfast_3 = form.cleaned_data['breakfast_3']
-                prefs.breakfast_4 = form.cleaned_data['breakfast_4']
-                prefs.dinner_1    = form.cleaned_data['dinner_1']
-                prefs.dinner_2    = form.cleaned_data['dinner_2']
-                prefs.dinner_3    = form.cleaned_data['dinner_3']
-                prefs.shirt_size  = form.cleaned_data['shirt_size']
-                prefs.shirt_type  = form.cleaned_data['shirt_type']
-            prefs.bus         = form.cleaned_data['bus']
-            prefs.bus_hour    = form.cleaned_data['bus_hour']
-            prefs.vegetarian  = form.cleaned_data['vegetarian']
-            prefs.save()
+            prefs = form.save()
             payment = count_payment(user)
 
     else:
-        form.initialize(prefs)
+        form = ChangePrefsForm(instance=prefs)
         payment = count_payment(user)
     user_wants_bus = prefs.bus
     return render_to_response('change_preferences.html', locals())

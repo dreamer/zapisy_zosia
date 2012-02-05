@@ -31,7 +31,7 @@ BUS_HOUR_CHOICES = (
     ('brak',''),
     ('16:00', '16:00'),
     ('18:00', '18:00'),
-    ('obojętne', 'obojętne'),
+    ('obojetne', 'obojętne'),
 )
 
 class Organization(models.Model):
@@ -102,10 +102,10 @@ class UserPreferences(models.Model):
             rooming_time = definition.rooming_start
             if self.paid and not old.paid:
                 t = loader.get_template('payment_registered_email.txt')
-                send_mail( u'Wpłata została zaksięgowana.', 
+                send_mail( u'Wpłata została zaksięgowana.',
                              t.render(Context({'rooming_time': rooming_time - timedelta(minutes=self.minutes_early)})),
                              'from@example.com',
-                             [ self.user.email ], 
+                             [ self.user.email ],
                              fail_silently=True )
         except Exception:
             # oh, we're saving for the first time - it's ok
