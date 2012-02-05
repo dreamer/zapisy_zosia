@@ -122,6 +122,12 @@ class ChangePrefsForm(RegisterForm):
     def __init__(self, *args, **kwargs) :
         super(forms.Form, self) .__init__(*args, **kwargs)
         self.fields['organization_1'].choices = self.fields['organization_1'].choices[:-1]
+        self.fields['email'] = None
+        self.fields['password'] = None
+        self.fields['password2'] = None
+
+        self.fields['name'] = None
+        self.fields['surname'] = None
 
         for field in self.disabled_fields:
             self.disabled_field(field)
@@ -129,7 +135,6 @@ class ChangePrefsForm(RegisterForm):
     def disabled_field(self, name):
         widget = self.fields[name].widget
         widget.attrs['readonly'] = True
-        widget.attrs['disabled'] = True
 
     def add_bad_org(self,prefs):
         if not prefs.org.accepted:
