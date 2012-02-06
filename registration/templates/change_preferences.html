@@ -226,7 +226,13 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             {{ form.vegetarian }}  <label for="id_vegetarian">{% trans "veggies" %}</label>
             </li>
             <li>
-            {{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label>
+            {% if free_seats %}{{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label>{% else %}
+                <div style="display:none">{{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label></div>
+                <div class="messages"><div style="height: auto; background-image: none;">
+                    Wszystkie dosŧępne miejsca w autokarach na ZOSIĘ zostały już zarezerwowane. :(
+                    Jeżeli jesteś zainteresowany transportem autokarowym - skontaktuj się bezpośrednio z organizatorami..</div>
+                </div>
+            {% endif %}
             </li>
             <li class="nasty_choices_li">
             <label for="id_shirt_size">{% trans "shirties" %}</label> {{ form.shirt_size}}  

@@ -64,6 +64,8 @@ def register(request):
     #if user.is_authenticated:
     #    return HttpResponseRedirect('/blog/')
 
+    free_seats = UserPreferences.get_free_seats()
+
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -92,7 +94,7 @@ def register(request):
                 }
                 send_mail( _('activation_mail_title'),
                             t.render(Context(c)),
-                           'from@example.com',
+                           'ksi@uni.wroc.pl',
                             [ user.email ],
                             fail_silently=True )
                 user.save()
@@ -119,7 +121,10 @@ def register(request):
             prefs.dinner_1    = form.cleaned_data['dinner_1']
             prefs.dinner_2    = form.cleaned_data['dinner_2']
             prefs.dinner_3    = form.cleaned_data['dinner_3']
-            prefs.bus         = form.cleaned_data['bus']
+            if not free_seats:
+                prefs.bus         = False
+            else:
+                prefs.bus         = form.cleaned_data['bus']
             prefs.vegetarian  = form.cleaned_data['vegetarian']
             prefs.shirt_size  = form.cleaned_data['shirt_size']
             prefs.shirt_type  = form.cleaned_data['shirt_type']
@@ -210,8 +215,8 @@ def change_preferences(request):
     user = request.user
     title = "Change preferences"
     prefs = UserPreferences.objects.get(user=user)
-    form = ChangePrefsForm(instance=prefs)
     user_paid = prefs.paid
+    free_seats = UserPreferences.get_free_seats() or prefs.bus
     try:
         definition = ZosiaDefinition.objects.get(active_definition=True)
     except Exception:

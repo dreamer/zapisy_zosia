@@ -129,6 +129,21 @@ class ChangePrefsForm(ModelForm):
         super(ChangePrefsForm, self) .__init__(*args, **kwargs)
         self.fields['org'].choices = organization_choices()[:-1]
 
+
+        free_seats       = UserPreferences.get_free_seats()
+        free_first_time  = UserPreferences.get_first_time()
+        free_second_time = UserPreferences.get_second_time()
+
+        if 'instance' in kwargs:
+            free_first_time  = free_first_time  or kwargs['instance'].bus_hour == BUS_HOUR_CHOICES[1][0]
+            free_second_time = free_second_time or kwargs['instance'].bus_hour == BUS_HOUR_CHOICES[2][0]
+
+        if not free_first_time:
+            self.fields['bus_hour'].choices.remove( BUS_HOUR_CHOICES[1]  )
+
+        if not free_second_time:
+            self.fields['bus_hour'].choices.remove( BUS_HOUR_CHOICES[2]  )
+
         if self.instance and not self.instance.org.accepted:
             self.fields['org'].choices.append( (self.instance.org.id, self.instance.org.name) )
 
@@ -136,6 +151,10 @@ class ChangePrefsForm(ModelForm):
             self.disable_field(field)
 
         if self.instance and not self.instance.bus:
+            self.disable_field('bus_hour')
+
+        if not free_seats:
+            self.disable_field('bus')
             self.disable_field('bus_hour')
 
         if self.instance and self.instance.paid:

@@ -34,6 +34,9 @@ BUS_HOUR_CHOICES = (
     ('obojetne', 'obojętne'),
 )
 
+BUS_FIRST_SIZE = 48
+BUS_SECOND_SIZE = 48
+
 class Organization(models.Model):
     name     = models.CharField(max_length=64)
     accepted = models.BooleanField()
@@ -113,3 +116,15 @@ class UserPreferences(models.Model):
             pass
         super(UserPreferences, self).save() 
 
+
+    @staticmethod
+    def get_free_seats():
+        return (BUS_SECOND_SIZE+BUS_FIRST_SIZE - UserPreferences.objects.filter(bus=True).count()) > 0
+
+    @staticmethod
+    def get_first_time():
+        return  (BUS_FIRST_SIZE - UserPreferences.objects.filter(bus=True, bus_hour=BUS_HOUR_CHOICES[1][0]).count()) > 0
+
+    @staticmethod
+    def get_second_time():
+        return  (BUS_SECOND_SIZE - UserPreferences.objects.filter(bus=True, bus_hour=BUS_HOUR_CHOICES[2][0]).count()) > 0
