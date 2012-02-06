@@ -1,4 +1,4 @@
-{% extends "index.html"%}
+{% extends "index.html" %}
 {% load cache %}
 {% cache 120 blog_template %}
 
@@ -6,18 +6,18 @@
 {% load blurb_edit %}
 
 {% block content %}
-{% for post in blog_posts %}
-    <h2>{{ post.title }}</h2>
-    <div class="bp_author">by {{ post.author.get_full_name }}</div>
-    <span class="bp_date"><em>{{ post.pub_date|date:"l, j F Y"|lower }}</em></span>
-    <div class="blog_post">{{ post.text|textile }}</div>
-{% endfor %}
+    {% for post in blog_posts %}
+        <h2>{{ post.title }}</h2>
+        <div class="bp_author">by {{ post.author.get_full_name }}</div>
+        <span class="bp_date"><em>{{ post.pub_date|date:"l, j F Y"|lower }}</em></span>
+        <div class="blog_post">{{ post.text|textile }}</div>
+    {% endfor %}
 {% endblock %}
 
 {% block css %}
-.sponsor_logo {
-  margin: 20px;
-}
+    .sponsor_logo {
+    margin: 20px;
+    }
 {% endblock css %}
 
 {% block right_column %}
@@ -26,62 +26,51 @@
 {#      ułatwi to wrzucanie niektórych ważnych informacji (np linków do sponsorów), #}
 {#      w przyszłości to powinno być przesunięte do bazy. (dreamer_)                #}
 <h2>Informacje:</h2>
+
+<h4>Organizator</h4>
+<p>
+    <a href="http://www.uni.wroc.pl/"><img src='/static_media/images/logo_uwr.jpg' alt='Uniwersytet Wrocławski'
+                                           title='Uniwersytet Wrocławski'/></a>
+    <a href="http://sites.google.com/a/cs.uni.wroc.pl/ksi/"><img src='/static_media/images/logo_ksi.png'
+                                                                 alt='Koło Studentów Informatyki'
+                                                                 title='Koło Studentów Informatyki UWr'/></a>
+    <a href="mailto:ksi@uni.wroc.pl">ksi@uni.wroc.pl</a>
+</p>
 <h4>Miejsce</h4>
 <p>
-<a href="{{ hotel_url }}">{{ hotel }}</a> w
-<a href="{{ city_url }}">{{ city }}</a>
+    <a href="{{ hotel_url }}">{{ hotel }}</a> w
+    <a href="{{ city_url }}">{{ city }}</a>
 </p>
 <p>
 <h4>Planowane terminy</h4>
-</p>
 <ul style="margin-left:0.2em">
-	<li>zapisy i wpłaty<br/>od {{ registration_start|date:"j F Y" }}<br/>do {{ registration_final|date:"j F Y, H:i" }}</li>
+    <li>zapisy i wpłaty<br/>od {{ registration_start|date:"j F Y" }}<br/>do {{ registration_final|date:"j F Y, H:i" }}
+    </li>
     <li>zgłaszanie wykładów<br/>do {{ lectures_suggesting_final|date:"j F Y, H:i" }}</li>
     <li>zapisy na pokoje<br/>od {{ rooming_start|date:"j F Y" }}<br/>do {{ rooming_final|date:"j F Y, H:i" }}</li>
     <li>wyjazd<br/>{{ zosia_start|date:"j F Y" }}</li>
     <li>powrót<br/>{{ zosia_final|date:"j F Y" }}</li>
 </ul>
-<h4>Kontakt</h4>
-<p>
-<a href="http://sites.google.com/a/cs.uni.wroc.pl/ksi/"><img src='/static_media/images/logo_ksi.png' alt='Koło Studentów Informatyki' title='Koło Studentów Informatyki UWr' /></a>
-<a href="mailto:ksi@uni.wroc.pl">ksi@uni.wroc.pl</a>
-</p>
-    <h4>Partnerzy i sponsorzy</h4>
-<p>
-<a href="http://www.ii.uni.wroc.pl/"><img src='/static_media/images/logo_uwr.jpg' alt='Instytut Informatyki UWr' title='Instytut Informatyki UWr' /></a>
-<a href="http://www.google.com/"><img src='/static_media/images/logo_google.png' alt='Google' title='Google' /></a>
-<a href="http://www.datax.pl/"><img src='/static_media/images/logo_datax.jpg' alt='DataX' title='DataX' /></a>
-<a href="http://moosefs.org"><img src='/static_media/images/logo_MooseFS.png' alt='MooseFS' title='MooseFS' /></a>
-</p>
-{% comment %}
-<br/>
-<h4>Patronat</h4>
-<p>
-<ul>
-<li><a href="http://www.wmi.uni.wroc.pl/">Wydział Matematyki i Informatyki Uniwersytetu Wrocławskiego</a></li>
-{# <li><a href="http://www.uni.wroc.pl/">JM. Rektor Uniwersytetu Wrocławskiego</a></li> #}
-<li>Dyrektor Insytutu Informatyki Uniwersytetu Wrocławskiego - prof. Leszek Pacholski</li>
-</ul>
 </p>
 
-<h4>Sponsorzy</h4>
+
+
+<h4>Patronat</h4>
+   <p>
+   <ul>
+   {#    <li><a href="http://www.wmi.uni.wroc.pl/">Wydział Matematyki i Informatyki Uniwersytetu Wrocławskiego</a></li>#}
+       {# <li><a href="http://www.uni.wroc.pl/">JM. Rektor Uniwersytetu Wrocławskiego</a></li> #}
+       <li>Dyrektor Insytutu Informatyki Uniwersytetu Wrocławskiego - prof. Leszek Pacholski</li>
+   </ul>
+   </p>
+
+<h4>Partnerzy i sponsorzy</h4>
 <p>
-<div class="sponsor_logo">
-<a href="http://www.ii.uni.wroc.pl/"><img src='/static_media/images/ii1.png' alt='Instytut Informatyki UWr' title='Instytut Informatyki UWr' /></a>
-</div>
-{#<div class="sponsor_logo">#}
-        {# <a href="http://sprezentuj.pl"><img src='/static_media/images/logo_sprezentuj.pl_175x120.png' alt='Sprezentuj.pl' title='Sprezentuj.pl' /></a> #}
-{# </div> #}
-<div class="sponsor_logo"> 
-	 <a href="http://nk.pl/"><img src='/static_media/images/logo_poziome_175x88_bg.png' alt='Nasza Klasa - miejsce spotkań' title='Nasza Klasa - miejsce spotkań' /></a> 
-</div> 
-<div class="sponsor_logo"> 
-	 <a href="http://www.neurosoft.pl/?lang=pl"><img src='/static_media/images/Logo_neurosoft175x30_ciemne.jpg' alt='Neurosoft' title='Neurosoft' /></a> 
-</div> 
-<div class="sponsor_logo"> 
-	 <a href="http://www.techland.pl/"><img src='/static_media/images/logo_techland175x60.png' alt='Techland' title='Techland' /></a> 
-</div> 
+
+    <a href="http://www.google.com/"><img src='/static_media/images/logo_google.png' alt='Google' title='Google'/></a>
+    <a href="http://www.datax.pl/"><img src='/static_media/images/logo_datax.jpg' alt='DataX' title='DataX'/></a>
+    <div style="text-align: center"><a href="http://moosefs.org"><img src='/static_media/images/logo_MooseFS.png' alt='MooseFS' title='MooseFS'/></a></div>
 </p>
-{% endcomment %}
+
 {% endblock %}
 {% endcache %}
