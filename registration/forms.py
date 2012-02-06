@@ -165,3 +165,11 @@ class ChangePrefsForm(ModelForm):
     def disable_field(self, name):
         widget = self.fields[name].widget
         widget.attrs['readonly'] = True
+
+    def clean_bus_hour(self):
+        bus_hour = self.cleaned_data.get('bus_hour', '')
+        bus      = self.cleaned_data.get('bus', '')
+        if not bus:
+            if bus_hour <> BUS_HOUR_CHOICES[0][0]:
+                raise forms.ValidationError("Musisz zaznaczyć chęć jazdy autokarem.")
+        return bus_hour

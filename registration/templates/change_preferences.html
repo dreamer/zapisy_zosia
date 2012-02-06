@@ -141,6 +141,13 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             </li>
 
             <li>
+                {% if form.bus_hour.errors %}
+                <ul class="errorlist">
+                {% for error in form.bus_hour.errors %}
+                    <li>{{error|escape}}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
             <label>{% trans "bus hour" %}</label> {{ form.bus_hour}} 
             </li>
 
