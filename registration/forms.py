@@ -171,5 +171,5 @@ class ChangePrefsForm(ModelForm):
         bus      = self.cleaned_data.get('bus', '')
         if not bus:
             if bus_hour <> BUS_HOUR_CHOICES[0][0]:
-                raise forms.ValidationError("Musisz zaznaczyć chęć jazdy autokarem.")
+                raise forms.ValidationError("Musisz zaznaczyć chęć jazdy autokarem lub pozostawić polę godzinę pustą.")
         return bus_hour

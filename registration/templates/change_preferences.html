@@ -141,13 +141,6 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             </li>
 
             <li>
-                {% if form.bus_hour.errors %}
-                <ul class="errorlist">
-                {% for error in form.bus_hour.errors %}
-                    <li>{{error|escape}}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
             <label>{% trans "bus hour" %}</label> {{ form.bus_hour}} 
             </li>
 
@@ -233,6 +226,14 @@ Potwierdzenie przyjęcia wpłaty zostanie wysłane na&nbsp;Twój adres e-mail.
             {{ form.vegetarian }}  <label for="id_vegetarian">{% trans "veggies" %}</label>
             </li>
             <li>
+
+            {% if form.bus_hour.errors %}
+            <ul class="errorlist">
+            {% for error in form.bus_hour.errors %}
+                <li>{{error|escape}}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
             {% if free_seats %}{{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label>{% else %}
                 <div style="display:none">{{ form.bus }}  <label for="id_bus">{% trans "bussies" %}</label></div>
                 <div class="messages"><div style="height: auto; background-image: none;">
