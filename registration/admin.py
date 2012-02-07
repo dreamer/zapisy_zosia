@@ -6,9 +6,9 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     list_per_page = 200
     list_display = (
     'user',
-    'total_cost',
     'ZOSIA_cost',
-    'bus_cost',
+    'bus',
+    'bus_hour',
     'days',
     'breakfasts',
     'dinners',
@@ -19,7 +19,7 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'minutes_early',
     )
     search_fields = ('user__first_name', 'user__last_name')
-    list_filter = ('bus_hour',)
+    list_filter = ('bus_hour', 'paid', 'bus')
     list_editable = ('minutes_early', 'paid')
 
     def anim_icon(self,id):
@@ -58,13 +58,6 @@ class UserPreferencesAdmin(admin.ModelAdmin):
         xhr.send('id=%s');
         }""" % (obj, id, id, id)
 
-
-    def total_cost(self, obj):
-        r = self.no_icon
-        if obj.paid and (obj.paid_for_bus or not obj.bus):
-            r = self.yes_icon
-        return u"%s %s&nbsp;z\u0142" % (r, (count_payment(obj)+40))
-    total_cost.allow_tags = True
 
     def ZOSIA_cost(self, obj):
         if obj.paid:
