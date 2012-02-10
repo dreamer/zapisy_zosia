@@ -253,6 +253,8 @@ def change_preferences(request):
                        'dinner_1', 'dinner_3', 'dinner_2', 'bus', 'vegetarian' ]:
                 if prefs.__dict__[k]:
                     rewritten_post[k] = u'on'
+                elif k in rewritten_post:
+                    del rewritten_post[k]
             rewritten_post['shirt_type'] = prefs.__dict__['shirt_type']
             rewritten_post['shirt_size'] = prefs.__dict__['shirt_size']
             form = ChangePrefsForm(rewritten_post, instance=prefs)
