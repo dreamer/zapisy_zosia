@@ -63,7 +63,7 @@ class NRoom(models.Model):
         no_locators = self.get_no_locators()
 
         # doesnt' matter what, if room is empty, it is unlocked
-        if no_locators == 0:
+        if not no_locators:
             return 0 
         if no_locators >= self.capacity:
             return 2 # room is full

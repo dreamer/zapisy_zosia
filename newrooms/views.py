@@ -17,84 +17,12 @@ from common.helpers import *
 
 @login_required
 def index(request):
-	user = request.user
-	title = "Rooms"
-	if has_user_opened_records(user):
- 	   return render_to_response('rooms.html',locals())
-	else:
-                prefs = UserPreferences.objects.get(user=user)
-                user_openning_hour = datetime(2011,2,26,20,00) - timedelta(minutes=prefs.minutes_early)                
-		return render_to_response('rooming_disabled.html',locals())
+    """
 
-
-def fill_rooms(request):
-    # maybe update this for serious usage?
-    def save_room(n,b,c):
-        room = NRoom( number = "%s %s"%(b,n),
-                      capacity = c,
-                      password = "",
-                      short_unlock_time = datetime.now()
-                    )
-        room.save()
-
-    for n in [1,2,3]:
-        save_room(n,'A',4)
-    save_room(101,'A',3)
-    save_room(102,'A',4)
-    save_room(103,'A',4)
-    save_room(104,'A',2)
-    save_room(105,'A',4)
-    save_room(106,'A',4)
-    save_room(107,'A',3)
-    save_room(108,'A',2)
-    save_room(109,'A',2)
-    save_room('półpiętro','A',1)
-    save_room(201,'A',2)
-    save_room(202,'A',2)
-    save_room(203,'A',3)
-    save_room(204,'A',3)
-    save_room(205,'A',2)
-    save_room(206,'A',4)
-    save_room(208,'A',3)
-    save_room('apartament','A',6)
-
-    save_room(1,'B',3)
-    save_room(2,'B',2)
-    save_room(3,'B',2)
-    save_room(4,'B',2)
-    save_room(5,'B',2)
-    save_room(6,'B',2)
-    save_room(7,'B',2)
-    save_room(8,'B',2)
-    save_room(9,'B',2)
-    save_room(10,'B',4)
-    save_room(11,'B',2)
-    save_room(12,'B',1)
-    save_room(101,'B',4)
-    save_room(102,'B',2)
-    save_room(103,'B',2)
-    save_room(104,'B',2)
-    save_room(105,'B',2)
-    save_room(106,'B',2)
-    save_room(107,'B',4)
-    save_room(108,'B',4)
-    save_room(109,'B',2)
-    save_room(110,'B',4)
-    save_room(111,'B',2)
-    save_room(112,'B',1)
-    save_room(201,'B',4)
-    save_room(202,'B',2)
-    save_room(203,'B',3)
-    save_room(204,'B',2)
-    save_room(205,'B',2)
-    save_room(206,'B',2)
-    save_room(207,'B',2)
-    save_room(208,'B',2)
-    save_room(209,'B',2)
-    save_room(210,'B',2)
-    save_room(211,'B',4)
-
-    return HttpResponse("ok")
+    """
+    user = request.user
+    title = "Rooms"
+    return render_to_response('rooms.html',locals())
 
 
 #@login_required
@@ -154,9 +82,10 @@ def close_room(request):
     occupation = UserInRoom.objects.get(locator=request.user)
     if occupation.ownership:
         room = occupation.room
+        no_locators = 0
         if room.password == request.POST['key']:
-    	    no_locators = UserInRoom.objects.filter(room=room).count()
-	    if no_locators == 1: # user is still alone in this room
+            no_locators = UserInRoom.objects.filter(room=room).count()
+        if no_locators == 1: # user is still alone in this room
                 timeout = timedelta(0,10800,0) # 3h == 10800s
                 occupation.room.short_unlock_time = datetime.now() + timeout
                 occupation.room.save()
@@ -196,13 +125,13 @@ def modify_room(request):
         prev_occupation = UserInRoom.objects.get(locator=request.user)
     except Exception:
         pass
-    if status == 0:
+    if not status:
         #
         # this room is open
         #
         msg = ''
         no_locators = room.get_no_locators()
-        if no_locators == 0:
+        if not no_locators:
             #
             # case when room is empty
             #
@@ -252,8 +181,8 @@ def modify_room(request):
         json['msg'] = u"<br/>Ten pokój jest już pełny.<br/>"
         json['buttons'] = CONST_OK_BTN
         if prev_occupation and (prev_occupation.room == room):
-	    json['buttons'] = CONST_OK_BTN + CONST_LEAVE_ROOM_BTN
-    #
+            json['buttons'] = CONST_OK_BTN + CONST_LEAVE_ROOM_BTN
+
     elif status == 3:
         json['msg'] = u"<br/>Zapisy na pokoje są jeszcze zamknięte.<br/>"
         json['buttons'] = CONST_OK_BTN
