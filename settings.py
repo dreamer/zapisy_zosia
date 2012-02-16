@@ -86,7 +86,6 @@ INSTALLED_APPS = (
     #'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.formtools',
-    #'zapisy_zosia.rooms',
     'zapisy_zosia.newrooms',
     'zapisy_zosia.lectures',
     'zapisy_zosia.registration',
