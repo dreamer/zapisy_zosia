@@ -118,7 +118,7 @@ def modify_room(request):
     # get correct room based on rid
     room_number = request.POST['rid'][1:]
     room = NRoom.objects.get(number=room_number)
-    status = room.get_status()
+    status = room.get_status(request)
     json = { "room_number":room_number, "buttons":'', 'msg':'', 'form':'' }
     prev_occupation = None
     try:

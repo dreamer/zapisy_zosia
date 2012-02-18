@@ -58,8 +58,8 @@ class NRoom(models.Model):
     def get_no_locators(self):
         return UserInRoom.objects.filter(room=self.id).count()
 
-    def get_status(self):
-        if is_rooming_disabled(): return 3 # zapisy są zamknięte
+    def get_status(self, request=None):
+        if is_rooming_disabled(request): return 3 # zapisy są zamknięte
         no_locators = self.get_no_locators()
 
         # doesnt' matter what, if room is empty, it is unlocked
