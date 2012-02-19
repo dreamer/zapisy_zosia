@@ -123,7 +123,7 @@ class ChangePrefsForm(ModelForm):
     disabled_fields = ['day_1', 'day_2', 'day_3',
                    'breakfast_2', 'breakfast_3', 'breakfast_4',
                    'dinner_1', 'dinner_2', 'dinner_3', 'shirt_type', 'shirt_size',
-                   'vegetarian', 'bus' ]
+                   'vegetarian', 'bus', 'bus_hour' ]
 
     def __init__(self, *args, **kwargs) :
         super(ChangePrefsForm, self) .__init__(*args, **kwargs)
