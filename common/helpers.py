@@ -60,7 +60,7 @@ def has_user_opened_records(user):
         raise Http404
     prefs = UserPreferences.objects.get(user=user)
     user_openning_hour = definition.rooming_start - timedelta(minutes=prefs.minutes_early)
-    return user_openning_hour <= datetime.now()
+    return user_openning_hour <= datetime.now() <= definition.rooming_final
 
 
 def is_rooming_disabled(request=None):

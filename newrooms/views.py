@@ -184,7 +184,7 @@ def modify_room(request):
             json['buttons'] = CONST_OK_BTN + CONST_LEAVE_ROOM_BTN
 
     elif status == 3:
-        json['msg'] = u"<br/>Zapisy na pokoje są jeszcze zamknięte.<br/>"
+        json['msg'] = u"<br/>Zapisy na pokoje są zamknięte.<br/>"
         json['buttons'] = CONST_OK_BTN
     json['locators'] = get_room_locators(room)
     return HttpResponse(dict_to_json(json), mimetype="application/json")
