@@ -119,3 +119,11 @@ class UserInRoom(models.Model):
     room      = models.ForeignKey(NRoom)
     ownership = models.BooleanField()
 
+    def firstname(self):
+        return self.locator.first_name
+
+    def lastname(self):
+        return self.locator.last_name
+
+    class Meta:
+        ordering = ['locator__last_name', 'locator__first_name']

@@ -18,8 +18,8 @@ class UserPreferencesAdmin(admin.ModelAdmin):
     'paid',
     'minutes_early',
     )
-    search_fields = ('user__first_name', 'user__last_name')
-    list_filter = ('bus_hour', 'paid', 'bus')
+    search_fields = ('user__last_name', 'user__last_name')
+    list_filter = ['bus_hour', 'paid', 'bus', 'breakfast_2', 'breakfast_3', 'breakfast_4', 'dinner_1', 'dinner_2', 'dinner_3', 'day_1', 'day_2', 'day_3']
     list_editable = ('minutes_early', 'paid')
 
     def anim_icon(self,id):

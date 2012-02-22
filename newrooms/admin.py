@@ -10,6 +10,8 @@ class NewroomsAdmin(admin.ModelAdmin):
 admin.site.register(NRoom, NewroomsAdmin)
 
 class UserInRoomAdmin(admin.ModelAdmin):
-    list_display = ['locator','room']
+    list_display = ['firstname', 'lastname','room']
+
+
 
 admin.site.register(UserInRoom, UserInRoomAdmin)
